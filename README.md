@@ -115,15 +115,24 @@ the one that makes the probit table, so exactly one of the paper’s two
 numeric tables sits behind the only script that does not run.
 
 And whether it runs is a smaller question than it sounds, because the
-deposit writes nothing. Not one live `ggsave`, `sink`, `write.csv` or
-`print.xtable` call survives in any of the thirteen scripts: every one
-of them is commented out, under headings like `# Uncomment to save`. The
-scripts that succeed print their tables to the console and build their
-figures as objects in memory, and the run ends. Nothing on disk changes,
-so there is no artifact a reader can compare against the published
-paper, and the eleven scripts that run clean cannot be said to reproduce
-anything. Reading the numbers back out required capturing them from the
-session rather than from files.
+deposit writes nothing. Across all thirteen scripts the only uncommented
+call that touches a file is one `source()`. Every `ggsave`, `sink`,
+`write.csv` and `print.xtable` is commented out, several under the
+heading `# Uncomment to save`. Running all twelve numbered scripts in a
+scratch copy of the deposit leaves every file in that copy
+byte-identical to the deposited version: nothing is created, nothing is
+overwritten.
+
+Most of the scripts do not even print. Scripts 01, 02, 03 and 09
+assemble their table into an object on the last line and stop, so the
+four descriptive tables the archive’s own `README.txt` advertises never
+reach the screen either. Scripts 10 and 11 do the same with their plot
+objects. What a full run actually emits is four LaTeX tables on standard
+output, from scripts 04, 05, 07 and 08, and one line of counts from
+script 12. So there is no artifact a reader can compare against the
+published paper, and the eleven scripts that run clean cannot be said to
+reproduce anything. Reading the numbers back out means capturing them
+from the session rather than from files.
 
 29 of the 192 published claims the deposited scripts can be checked
 against fail to reproduce. 25 of them are standard errors in appendix
@@ -192,7 +201,7 @@ on Lucid in 2016 as it did on the original sample in 2010.
 
 | Script | Status on current R | Resolution |
 |:---|:---|:---|
-| LucidValidationHelperFunctions.R | Clean (sourced by seven scripts) | No changes required |
+| LucidValidationHelperFunctions.R | Clean (sourced by nine scripts) | No changes required |
 | 01_DemographicsTableAnalysis.R | Runs; funs() and melt/dcast deprecation warnings | No changes required |
 | 02_PoliticalTableAnalysis.R | Runs; same warnings | No changes required |
 | 03_PsychologicalTableAnalysis.R | Runs; same warnings | No changes required |
@@ -817,14 +826,14 @@ Deprecated patterns and their replacements in the maintained rewrite.
 Two rows of that table describe intentions rather than live code.
 `xtable` is loaded by five archive scripts and called by none of them:
 every `xtable()` and `print.xtable()` sits inside a commented-out block.
-The five other scripts, the ones that build regression tables, bracket
-their `stargazer` calls in a commented `sink("...tex")` and `sink()`
-pair. So the deposit as it stands writes no file at all: it prints
-twelve tables to the console and saves none of them, and the `.tex`
-files the commented lines name exist nowhere in the archive. The rewrite
-writes every table to `maintained/output/` as CSV, and the regression
-tables additionally as `.tex` through `modelsummary(output =)`, which
-needs no `sink()`.
+The other five, the ones that build regression tables, bracket their
+`stargazer` calls in a commented `sink("...tex")` and `sink()` pair, so
+the `stargazer` call is live and the redirection that would have
+captured it is not. The six `.tex` files those `sink()` lines name exist
+nowhere in the archive. The rewrite writes every table to
+`maintained/output/` as CSV, and the regression tables additionally as
+`.tex` through `modelsummary(output =)`, which needs no `sink()` and so
+cannot be disabled by commenting one line out.
 
 # Figures
 
