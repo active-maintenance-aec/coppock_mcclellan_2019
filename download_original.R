@@ -53,18 +53,32 @@ print(str_glue("Downloaded {sum(planned$needs_download)} of {nrow(planned)} file
                "{sum(!planned$needs_download)} already present and verified."))
 
 # Verify ----
+# md5_served is the MD5 of the bytes `?format=original` returns, and it is the gate.
+# md5_published is what Dataverse displays for those same bytes: where the two agree it
+# adds nothing a check could fail on, and where they disagree the archive's own metadata
+# is wrong and no local copy could satisfy both, so it is reported rather than enforced.
 verified <- planned |>
   mutate(
     md5_downloaded = unname(tools::md5sum(path)),
-    match = md5_downloaded == md5_served,
+    bytes_on_disk = file.size(path),
+    md5_ok = md5_downloaded == md5_served,
+    bytes_ok = bytes_on_disk == bytes,
     published_agrees = md5_served == md5_published
   ) |>
-  select(file, bytes, md5_served, md5_downloaded, match, published_agrees)
+  select(file, bytes, bytes_on_disk, bytes_ok, md5_served, md5_downloaded, md5_ok,
+         published_agrees)
 
-print(verified, n = nrow(verified))
+print(verified |> select(file, bytes, bytes_ok, md5_ok, published_agrees), n = nrow(verified))
 
-if (!all(verified$match)) {
-  stop("Checksum mismatch: the downloaded archive does not match what Dataverse served when this code was written.")
+if (!all(verified$md5_ok)) {
+  stop("Checksum mismatch in original/: ",
+       paste(verified$file[!verified$md5_ok], collapse = ", "),
+       ". Delete the offending files and re-run to refetch them from Dataverse.")
+}
+
+if (!all(verified$bytes_ok)) {
+  stop("Byte size mismatch in original/: ",
+       paste(verified$file[!verified$bytes_ok], collapse = ", "), ".")
 }
 
 # original/ must hold the deposit and nothing else ----
@@ -82,6 +96,7 @@ if (length(strays) > 0) {
                 "{str_flatten_comma(strays)}. Move them elsewhere before running again."))
 }
 
-print(str_glue("All {nrow(verified)} files match md5_served and original/ holds nothing else. ",
-               "{sum(!verified$published_agrees)} carry a published checksum that disagrees."))
+print(str_glue("All {nrow(verified)} files match on MD5 and byte size, and original/ holds ",
+               "nothing else. {sum(!verified$published_agrees)} carry a published checksum ",
+               "that disagrees with what Dataverse serves."))
 print(str_glue("Archive: {dataset_doi}"))
