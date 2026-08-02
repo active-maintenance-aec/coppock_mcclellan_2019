@@ -1,0 +1,26 @@
+\begin{table}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+caption={Welfare replications},
+note{}={+ p \num{< 0.1}, * p \num{< 0.05}, ** p \num{< 0.01}, *** p \num{< 0.001}},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+hline{2}={1-5}{solid, black, 0.05em},
+hline{8}={1-5}{solid, black, 0.05em},
+hline{1}={1-5}{solid, black, 0.08em},
+hline{10}={1-5}{solid, black, 0.08em},
+column{2-5}={}{halign=c},
+column{1}={}{halign=l},
+}                     %% tabularray inner close
+& lucid & mturk & GSS84 & GSS14 \\
+(Intercept) & 1.768*** & 1.695*** & 1.837*** & 1.712*** \\
+& (0.025) & (0.056) & (0.037) & (0.022) \\
+welfareassistance to the poor & 0.613*** & 0.668*** & 0.693*** & 0.808*** \\
+& (0.034) & (0.085) & (0.048) & (0.030) \\
+welfarecaring for the poor & 0.738*** & 0.781*** &  &  \\
+& (0.033) & (0.080) &  &  \\
+Num.Obs. & 3294 & 494 & 943 & 2457 \\
+R2 & 0.151 & 0.178 & 0.179 & 0.229 \\
+\end{talltblr}
+\end{table}

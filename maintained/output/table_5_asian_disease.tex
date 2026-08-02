@@ -1,0 +1,24 @@
+\begin{table}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+caption={Asian Disease replications},
+note{}={+ p \num{< 0.1}, * p \num{< 0.05}, ** p \num{< 0.01}, *** p \num{< 0.001}},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]},
+hline{2}={1-4}{solid, black, 0.05em},
+hline{6}={1-4}{solid, black, 0.05em},
+hline{1}={1-4}{solid, black, 0.08em},
+hline{8}={1-4}{solid, black, 0.08em},
+column{2-4}={}{halign=c},
+column{1}={}{halign=l},
+}                     %% tabularray inner close
+& lucid & mturk & original \\
+(Intercept) & 0.397*** & 0.260*** & 0.283*** \\
+& (0.016) & (0.031) & (0.037) \\
+mortality\_frame & 0.239*** & 0.355*** & 0.498*** \\
+& (0.023) & (0.048) & (0.050) \\
+Num.Obs. & 1813 & 379 & 307 \\
+R2 & 0.057 & 0.128 & 0.249 \\
+\end{talltblr}
+\end{table}

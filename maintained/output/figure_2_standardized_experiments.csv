@@ -1,0 +1,36 @@
+facet,variable,Variable,survey,Survey,coef,se,li,ui
+Welfare,Assistance to the poor,Welfare replication: Assistance to the poor,GSS14,Original,0.95758254367816,0.035443695294639,0.8881129009006675,1.0270521864556523
+Welfare,Assistance to the poor,Welfare replication: Assistance to the poor,lucid,Lucid,0.726305805155265,0.0400485445469701,0.6478106578432036,0.8048009524673264
+Welfare,Assistance to the poor,Welfare replication: Assistance to the poor,mturk,MTurk,0.791684518025248,0.100599032081708,0.5945104151451003,0.9888586209053957
+Asian Disease,Mortality Frame,Asian Disease replication: Mortality frame,lucid,Lucid,0.478441360963326,0.0456681406087561,0.38893180537016403,0.567950916556488
+Asian Disease,Mortality Frame,Asian Disease replication: Mortality frame,mturk,MTurk,0.709556519902993,0.0959359199512956,0.5215221167984536,0.8975909230075323
+Asian Disease,Mortality Frame,Asian Disease replication: Mortality frame,original,Original,0.996211606560929,0.099175062334845,0.8018284843846328,1.1905947287372252
+Kam and Simas,mortalityframe,Kam and Simas replication: Mortality frame,lucid,Lucid,0.869780757903078,0.144807829912197,0.5859574112751718,1.1536041045309842
+Kam and Simas,mortalityframe,Kam and Simas replication: Mortality frame,mturk,MTurk,0.975668726007301,0.19596225722045,0.5915827018552191,1.359754750159383
+Kam and Simas,mortalityframe,Kam and Simas replication: Mortality frame,kam,Original,0.818434223533162,0.202208353103679,0.42210585144995116,1.2147625956163728
+Kam and Simas,ramean,Kam and Simas replication: Risk acceptance,lucid,Lucid,0.358333987143432,0.187666300497933,-0.00949196183251666,0.7261599361193807
+Kam and Simas,ramean,Kam and Simas replication: Risk acceptance,mturk,MTurk,0.687498330090565,0.24526757827215,0.20677387667715103,1.1682227835039791
+Kam and Simas,ramean,Kam and Simas replication: Risk acceptance,kam,Original,0.36026488651549,0.342434063128887,-0.31090587721712853,1.0314356502481086
+Kam and Simas,interaction,Kam and Simas replication: RA x MF,lucid,Lucid,-0.35923183541774,0.283563826320807,-0.9150169350065218,0.19655326417104174
+Kam and Simas,interaction,Kam and Simas replication: RA x MF,mturk,MTurk,-0.18396551088029,0.365718940694028,-0.9007746346405848,0.5328436128800048
+Kam and Simas,interaction,Kam and Simas replication: RA x MF,kam,Original,-0.0114868325262414,0.427813499613204,-0.8500012917681211,0.8270276267156383
+Hiscox,expert,Hiscox replication: Expert,lucid,Lucid,0.23355765773122,0.0444466377299779,0.14644224778046333,0.3206730676819767
+Hiscox,expert,Hiscox replication: Expert,mturk,MTurk,0.264942994820079,0.0320161238236829,0.2021913921256605,0.3276945975144975
+Hiscox,expert,Hiscox replication: Expert,hiscox,Original,0.232730201704988,0.049884918530394,0.13495576138541576,0.33050464202456026
+Hiscox,positive,Hiscox replication: Positive frame,lucid,Lucid,0.0268948992843809,0.0602453630518181,-0.09118601229718257,0.14497581086594438
+Hiscox,positive,Hiscox replication: Positive frame,mturk,MTurk,-0.0738819155587726,0.0406829430776287,-0.15362048399092487,0.00585665287337965
+Hiscox,positive,Hiscox replication: Positive frame,hiscox,Original,-0.123374491370443,0.0664861245877689,-0.25368729556247005,0.006938312821584039
+Hiscox,negative,Hiscox replication: Negative frame,lucid,Lucid,-0.192381692288118,0.0629057766270483,-0.31567701447713264,-0.06908637009910333
+Hiscox,negative,Hiscox replication: Negative frame,mturk,MTurk,-0.307875341295955,0.0447392378001823,-0.3955642473843123,-0.2201864352075977
+Hiscox,negative,Hiscox replication: Negative frame,hiscox,Original,-0.273122345245899,0.0693466413547636,-0.4090417623012357,-0.13720292819056237
+Hiscox,both,Hiscox replication: Both frames,lucid,Lucid,-0.101216475631264,0.0640106321171448,-0.22667731458086782,0.024244363318339804
+Hiscox,both,Hiscox replication: Both frames,mturk,MTurk,-0.318438883606709,0.0445573925920684,-0.4057713730871631,-0.23110639412625494
+Hiscox,both,Hiscox replication: Both frames,hiscox,Original,-0.379698914789186,0.0701105435116811,-0.5171155800720809,-0.24228224950629104
+Berinsky,rumor,Berinsky replication: Rumor Only,lucid,Lucid,-0.0104977918394082,0.0564256098939341,-0.12109198723151904,0.10009640355270263
+Berinsky,rumor,Berinsky replication: Rumor Only,original,Original,-0.0388529139553528,0.0800440133242732,-0.19573918007092828,0.11803335216022266
+Berinsky,nonpartisan,Berinsky replication: Rumor + Nonpartisan Correction,lucid,Lucid,-0.0224971875706443,0.0553617370107109,-0.13100619211163766,0.08601181697034906
+Berinsky,nonpartisan,Berinsky replication: Rumor + Nonpartisan Correction,original,Original,-0.228407164215165,0.0773279926929508,-0.3799700298933486,-0.07684429853698141
+Berinsky,republican,Berinsky replication: Rumor + Republican Correction,lucid,Lucid,-0.0980728079368553,0.0545838603493003,-0.2050571742214839,0.008911558347773296
+Berinsky,republican,Berinsky replication: Rumor + Republican Correction,original,Original,-0.222494702761182,0.0787620408129432,-0.37686830275455063,-0.06812110276781333
+Berinsky,democrat,Berinsky replication: Rumor + Democratic Correction,lucid,Lucid,-0.0391317766895497,0.0543793110370117,-0.14571522632209263,0.06745167294299323
+Berinsky,democrat,Berinsky replication: Rumor + Democratic Correction,original,Original,-0.237032481153348,0.0778958846001955,-0.3897084149697312,-0.0843565473369648

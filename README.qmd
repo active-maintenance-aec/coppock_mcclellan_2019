@@ -1,0 +1,563 @@
+---
+title: "Active Maintenance Report: coppock_mcclellan_2019"
+subtitle: "Coppock and McClellan (2019, Research & Politics): Validating the Demographic, Political, Psychological, and Experimental Results Obtained from a New Source of Online Survey Respondents"
+format:
+  gfm:
+    output-file: README.md
+    toc: true
+  pdf:
+    output-file: coppock_mcclellan_2019_report.pdf
+    toc: true
+    toc-depth: 2
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(here)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+here::i_am("README.qmd")
+
+# kableExtra styling is LaTeX-only; the GitHub README build takes plain pipe tables.
+latex_out <- knitr::is_latex_output()
+
+# kableExtra's styling verbs emit LaTeX and have no meaning under gfm, where the same
+# table renders as a pipe table. Each call site says what LaTeX alone gets.
+latex_only <- function(k, f) if (latex_out) f(k) else k
+
+gt <- read_csv(here::here("ground_truth", "coppock_mcclellan_2019_ground_truth.csv"),
+               show_col_types = FALSE)
+out <- function(f) read_csv(here::here("maintained", "output", f), show_col_types = FALSE)
+counts <- out("appendix_table_1_distance_counts.csv")
+headline <- out("appendix_table_1_bootstrap_headline.csv")
+stability <- out("appendix_table_1_bootstrap_stability.csv")
+rounding <- out("appendix_table_1_rounding_headline.csv")
+distances <- out("appendix_table_1_distance_tests.csv")
+manifest <- read_csv(here::here("original_manifest.csv"), show_col_types = FALSE)
+```
+
+*Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
+
+This repository holds the actively maintained replication code for Coppock and McClellan (2019), together with the reproducibility report that documents what the original archive did and did not do. It is part of a program applying the maintenance proposal in Peer, Orr and Coppock (2021, *PS: Political Science & Politics*, doi [10.1017/S1049096521000366](https://doi.org/10.1017/S1049096521000366)) to a set of published archives.
+
+| | |
+|---|---|
+| Article | [10.1177/2053168018822174](https://doi.org/10.1177/2053168018822174) |
+| Replication archive | [10.7910/DVN/DDWWJW](https://doi.org/10.7910/DVN/DDWWJW) |
+| Pre-analysis plan | None. The article states that the analyses were not pre-registered. |
+
+**The data are not redistributed here.** The deposit is `r nrow(manifest)` files and lives at Harvard Dataverse, which is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` pins the file identifiers, sizes and checksums, so the exact bytes this code was written against are recorded in version control even though the bytes themselves are not.
+
+**Repository layout.** `maintained/` is the maintained rewrite: one script per table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it. `original/` is created by the download script and is deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
+
+**License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains. See `LICENSE`.
+
+**To reproduce.** Clone or download the repository, open `coppock_mcclellan_2019.Rproj`, and run:
+
+``` r
+source("run_all.R")
+```
+
+That fetches the deposit, verifies its `r nrow(manifest)` files, and produces every table and figure into `maintained/output/`. Required packages: tidyverse, estimatr, broom, scales, matrixStats, rsample, sandwich, modelsummary, knitr, kableExtra, here. Paths resolve through `here`, so nothing depends on the working directory and the scripts run equally well under `Rscript` outside RStudio. Individual scripts can be run on their own in any order, with one exception: `text_in_text_claims.R` reads the table outputs, so it comes after them.
+
+The full run takes about nine minutes, eight of them in the two scripts that repeat the appendix's bootstrap two hundred times each to measure how much of it is noise. A successful run overwrites `maintained/output/`, which is committed: **`git diff` on that folder is the reproduction check**, and the CSV, TeX and PNG output should come back byte-identical. The five PDF figures always show as changed, because a PDF records the time it was written; compare their PNG twins instead.
+
+# Summary
+
+```{r summary_setup, include=FALSE}
+n_claims <- nrow(gt)
+n_archive_verifiable <- sum(!is.na(gt$match))
+n_archive_match <- sum(gt$match == 1, na.rm = TRUE)
+n_archive_fail <- sum(gt$match == 0, na.rm = TRUE)
+n_rewrite_verifiable <- sum(!is.na(gt$match_rewrite))
+n_rewrite_match <- sum(gt$match_rewrite == 1, na.rm = TRUE)
+n_rewrite_fail <- sum(gt$match_rewrite == 0, na.rm = TRUE)
+n_unverifiable <- sum(is.na(gt$match_rewrite))
+
+# The appendix Table 2 standard errors are the block where the deposited code and the
+# published table part company, so they are counted on their own rather than read off
+# the whole-table failure count.
+a2_se <- gt |> filter(str_starts(claim, "SE, "))
+n_a2_se <- nrow(a2_se)
+n_a2_se_script_fail <- sum(a2_se$match == 0, na.rm = TRUE)
+n_a2_se_rewrite_match <- sum(a2_se$match_rewrite == 1, na.rm = TRUE)
+n_other_fail <- n_archive_fail - n_a2_se_script_fail
+
+# The 21 bootstrap standard errors are tested against a sampling distribution rather
+# than against a single draw, so they are counted separately from the rest.
+a1_se <- gt |> filter(str_starts(claim, "Bootstrap SE, "))
+n_a1_se <- nrow(a1_se)
+n_a1_se_in <- sum(a1_se$match_rewrite == 1, na.rm = TRUE)
+n_paper_internal <- sum(gt$defect_locus == "paper_internal", na.rm = TRUE)
+```
+
+Two questions, answered before the detail.
+
+## Does the deposited archive run?
+
+On this machine, almost. Eleven of the twelve numbered scripts run to completion on a current R installation, and every package they name still installs from CRAN, `coefplot` and `matrixStats` included. The one script that fails is `06_KamSimasReplicationAnalysis.R`, and it fails inside `stargazer`, on a bug that turns on how long the names of its model objects are.
+
+On a case-sensitive filesystem, no. Eleven of the archive's twelve `load()` calls name a file the deposit does not contain: the code asks for `WelfareReplicationStacked.rdata` and Dataverse holds `WelfareReplicationStacked.RData`. macOS and Windows resolve the mismatch silently and Linux does not, so ten of the thirteen scripts halt on their first data line for anyone who downloads the deposit onto a case-sensitive disk. Details on both below.
+
+The failure lands badly. The published article prints one table, a prose summary of the five experiments, and its online appendix prints two, the distance tests and the Kam and Simas probit specifications. Script 06 is the one that makes the probit table, so exactly one of the paper's two numeric tables sits behind the only script that does not run.
+
+And whether it runs is a smaller question than it sounds, because the deposit writes nothing. Not one live `ggsave`, `sink`, `write.csv` or `print.xtable` call survives in any of the thirteen scripts: every one of them is commented out, under headings like `# Uncomment to save`. The scripts that succeed print their tables to the console and build their figures as objects in memory, and the run ends. Nothing on disk changes, so there is no artifact a reader can compare against the published paper, and the eleven scripts that run clean cannot be said to reproduce anything. Reading the numbers back out required capturing them from the session rather than from files.
+
+`r n_archive_fail` of the `r n_archive_verifiable` published claims the deposited scripts can be checked against fail to reproduce. `r n_a2_se_script_fail` of them are standard errors in appendix Table 2, and none is a coefficient. `r n_paper_internal` of the remaining `r n_other_fail` are places where the paper disagrees with itself, and the last is a bootstrap standard error the deposit's unseeded procedure cannot pin down. See the errata below.
+
+## Does the maintained rewrite reproduce the paper?
+
+Yes. `r n_rewrite_match` of the `r n_rewrite_verifiable` verifiable ground truth claims match the published values to reported precision. `r n_paper_internal` of the `r n_rewrite_fail` that do not are places where the article disagrees with its own appendix rather than with the code: a sample size the appendix appears to have copied from a different experiment, a sample size the appendix's prose and its own table state differently, and a count of significant differences that the article gives as five where the appendix table shows six. The last is a bootstrap standard error whose published value falls just outside the range the deposit's own unseeded procedure produces, discussed under bootstrap stability below. The remaining `r n_unverifiable` recorded quantities are ones the rewrite computes but the paper never states.
+
+Two published quantities turn out not to mean what the paper says they mean. The p-values in appendix Table 1 are described as "two-tailed p-values under a normal approximation" and are not: the archive computes `pnorm(2 * (1 - |z|))`, which calls a difference significant at the 0.05 level once `|z|` passes 1.82 rather than 1.96. Separately, the deposited probit script omits the `se = starprep(...)` argument that the OLS call in the same file carries, so as deposited it would print model-based standard errors where the published table carries the HC2 robust ones its note describes. The rewrite reports both quantities in both cases and changes nothing silently.
+
+A third finding is about precision rather than correctness. The appendix's headline count, that Lucid is significantly closer to the 2012 ANES than MTurk on 14 of 21 characteristics, rests on standard errors from 100 bootstrap resamples drawn without a seed. Running the deposited procedure 200 times returns 14 on `r sprintf("%.0f", 100 * headline$share_archive_equals_14)`% of them and ranges from `r headline$archive_min` to `r headline$archive_max`. The number is not wrong; it is simply not pinned down by the deposit.
+
+# Paper overview
+
+**Citation**: Coppock, A. and McClellan, O. A. (2019). "Validating the demographic, political, psychological, and experimental results obtained from a new source of online survey respondents." *Research & Politics*, 6(1). DOI: 10.1177/2053168018822174
+
+**Summary**: The paper asks whether the Lucid Fulcrum Exchange is a usable source of subjects for survey experiments, following the template Berinsky, Huber and Lenz (2012) used for Mechanical Turk. A single quota-sampled Lucid sample of 3,504 respondents collected in March 2016 is compared with MTurk, the 2012 ANES, the CPS, the ANES panel, the CCES and the CCAP on demographics, political attitudes and Big Five traits, and five experiments are replicated on it: the GSS welfare question-wording experiment, Tversky and Kahneman's Asian Disease problem, Kam and Simas (2010) on risk acceptance and framing, Hiscox (2006) on free-trade frames, and Berinsky (2017) on death-panel rumor corrections. Lucid is closer to the 2012 ANES than MTurk on 18 of 21 standardized characteristics, and four of the five experiments recover treatment effects close to the originals. The exception is the rumor-correction experiment, where none of the corrections works as well on Lucid in 2016 as it did on the original sample in 2010.
+
+# Original archive reproducibility
+
+```{r repro_table}
+tibble(
+  Script = c(
+    "LucidValidationHelperFunctions.R",
+    "01_DemographicsTableAnalysis.R",
+    "02_PoliticalTableAnalysis.R",
+    "03_PsychologicalTableAnalysis.R",
+    "04_WelfareReplicationAnalysis.R",
+    "05_AsianDiseaseReplicationAnalysis.R",
+    "06_KamSimasReplicationAnalysis.R",
+    "07_HiscoxReplicationAnalysis.R",
+    "08_HealthRumorsReplicationAnalysis.R",
+    "09_SurveyBehaviorTableAnalysis.R",
+    "10_StandardizedPlots.R",
+    "11_StandardizedPlotsHeterogeneousEffects.R",
+    "12_DistanceTests.R"
+  ),
+  Status = c(
+    "Clean (sourced by seven scripts)",
+    "Runs; funs() and melt/dcast deprecation warnings",
+    "Runs; same warnings",
+    "Runs; same warnings",
+    "Runs",
+    "Runs",
+    "FAILS at the first stargazer call",
+    "Runs",
+    "Runs",
+    "Runs; same warnings",
+    "Runs; geom_errorbarh() deprecation warning",
+    "Runs; same warning, plus duplicated scale warnings",
+    "Runs; funs() warning and unnest() without cols="
+  ),
+  Resolution = c(
+    "No changes required",
+    "No changes required",
+    "No changes required",
+    "No changes required",
+    "No changes required",
+    "No changes required",
+    "Assign the filtered subsets before fitting, or drop stargazer",
+    "No changes required",
+    "No changes required",
+    "No changes required",
+    "geom_linerange(); position_dodge() on the discrete axis",
+    "Same, and keep one scale per aesthetic",
+    "unnest(cols = c(model))"
+  )
+) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Script", "Status on current R", "Resolution"),
+    caption = "Original archive reproducibility, checked against R 4.6.0. Scripts were run from a scratch copy of the deposit stripped to code and data, and the deposit's checksums were re-verified afterwards."
+  ) |>
+  latex_only(\(k) k |>
+    kable_styling(latex_options = c("hold_position", "scale_down"), font_size = 7) |>
+    column_spec(1, width = "4.5cm") |>
+    column_spec(2, width = "4cm") |>
+    column_spec(3, width = "4.5cm"))
+```
+
+Nothing here is a missing package. `matrixStats`, `coefplot`, `stargazer`, `xtable`, `reshape2` and `estimatr` all install from CRAN today. `geom_errorbarh()` is deprecated in ggplot2 4.0 but still draws, so scripts 10 and 11 produce their figures with a warning rather than an error, and `coefplot::position_dodgev()` is loaded by both of them and still works.
+
+The "Runs" in that table means the script reaches its last line without an error. It does not mean the script produced anything, because none of them does: the deposit's every write is commented out, so a complete run of all twelve leaves the directory exactly as it found it. That is worth separating from the two defects above, since a script can pass a "does it run" check while being unable, in principle, to produce a file anybody could check.
+
+## The stargazer failure
+
+`06_KamSimasReplicationAnalysis.R` fits nine models and passes all nine to `stargazer`. To label the columns, `stargazer` recovers the names of the objects it was given:
+
+``` r
+object.names.string <- deparse(substitute(list(...)))
+.global.object.names.all <- .get.object.names(object.names.string)
+```
+
+`deparse()` breaks its output into several strings once the deparsed expression passes 60 characters, so `object.names.string` is a character vector rather than a scalar whenever the argument names are long enough. `.get.object.names()` hands it straight to `.inside.bracket()`, which opens with
+
+``` r
+if (!is.character(s)) return("")
+if (is.null(s)) return("")
+if (is.na(s)) return("")
+if (s == "") return("")
+if (length(s) > 1) return("")
+```
+
+The guard for a vector argument is the last of the five, three lines after the `is.na()` that a vector argument breaks. Until R 4.2 a length-greater-than-one condition in `if` was a warning and the function limped through; R 4.2 made it an error, and the script now halts with `the condition has length > 1`.
+
+Nothing about the failure involves `filter()`, the `data =` argument, or the `==` inside it. `list(fit_kam_lucid, fit_kam_lucid_ctrl, ... fit_kam_kam_X)` deparses to three lines; the argument lists of scripts 04, 05, 07 and 08 have between two and four models with shorter names and deparse to one line each, which is the whole of the difference. Passing the same nine fitted models under one-character names produces the table without complaint. Pre-assigning the filtered subsets before fitting does not help, because it leaves the nine long argument names exactly where they were.
+
+The consequence is larger than one table. The probit models of appendix section 2.3.4, and the second `stargazer` call that formats them, sit below the failing line, so nothing after it runs.
+
+## The data file names
+
+The deposit's data files are named `.RData` with one exception, `DemosTableStacked.rdata`. The scripts ask for `.rdata` without exception. The result is eleven `load()` calls across ten of the thirteen scripts that name a file the deposit does not contain, and one call, in `01_DemographicsTableAnalysis.R`, that happens to be right.
+
+```{r case_table}
+tibble(
+  Script = c("02_PoliticalTableAnalysis.R", "03_PsychologicalTableAnalysis.R",
+             "04_WelfareReplicationAnalysis.R", "05_AsianDiseaseReplicationAnalysis.R",
+             "06_KamSimasReplicationAnalysis.R", "07_HiscoxReplicationAnalysis.R",
+             "08_HealthRumorsReplicationAnalysis.R", "09_SurveyBehaviorTableAnalysis.R",
+             "10_StandardizedPlots.R", "10_StandardizedPlots.R",
+             "11_StandardizedPlotsHeterogeneousEffects.R"),
+  Requested = c("PoliticsTableStacked.rdata", "PsychTableStacked.rdata",
+                "WelfareReplicationStacked.rdata", "AsianDiseaseStacked.rdata",
+                "KamSimasReplicationStacked.rdata", "HiscoxReplicationStacked.rdata",
+                "HealthRumorsReplicationStacked.rdata", "SurveyBehavior.rdata",
+                "StandardizedDemos.rdata", "StandardizedExperiments.rdata",
+                "standardizedExperimentsHeterogeneousEffects.rdata"),
+  Deposited = c("PoliticsTableStacked.RData", "PsychTableStacked.RData",
+                "WelfareReplicationStacked.RData", "AsianDiseaseStacked.RData",
+                "KamSimasReplicationStacked.RData", "HiscoxReplicationStacked.RData",
+                "HealthRumorsReplicationStacked.RData", "SurveyBehavior.RData",
+                "StandardizedDemos.RData", "StandardizedExperiments.RData",
+                "standardizedExperimentsHeterogeneousEffects.RData")
+) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Script", "Name requested", "Name deposited"),
+    caption = "The eleven load() calls whose file name does not match the deposit. Each runs on macOS and Windows and stops on Linux."
+  ) |>
+  latex_only(\(k) k |>
+    kable_styling(latex_options = c("hold_position", "scale_down"), font_size = 6) |>
+    column_spec(1, width = "5cm") |>
+    column_spec(2, width = "5.5cm") |>
+    column_spec(3, width = "5.5cm"))
+```
+
+The deposit's own `README.txt` writes the same twelve names the same wrong way, ending each in `.rdata`, and gets only `standardized_stacked_st.rds` right. So the code and the document that describes it agree with each other and both disagree with the files. `README.txt` gets two other names wrong too. It lists `11_StandardizedExperimentsHeterogeneousEffects.R`, and the deposited file is `11_StandardizedPlotsHeterogeneousEffects.R`. It assigns "Appendix Table 1" to two different scripts, 06 and 12, and only one of them can be right: script 12 makes appendix Table 1 and the probit half of script 06 makes appendix Table 2.
+
+This class of defect cannot be detected by running the archive on the machine it was written on, and it is invisible to a checksum, which verifies the bytes of a file and says nothing about the name a script uses to ask for it. The maintained rewrite spells every one of these names exactly as the deposit does, and none of the deposited files was renamed to accommodate it.
+
+## What the archive says it produces, and what the paper prints
+
+The deposited `README.txt` maps its scripts onto nine numbered tables:
+
+> `01_DemographicsTableAnalysis.R` (Produces Table 1) ... `09_SurveyBehaviorTableAnalysis.R` (Produces Table 9)
+
+No such tables appear in the published article or in the online appendix. The article's only table is a prose summary of the theoretical scope of the five experiments; the appendix has two, the distance tests of section 1 and the probit specifications of section 2.3.4. The nine numbered tables belong to an earlier draft, and the article's own text still points at one of them: "included in the online appendix, Table 2" is used twice, for political knowledge and for policy preferences, and the appendix's Table 2 is the probit table.
+
+That leaves the demographic, political, psychological, welfare, Asian Disease, Kam and Simas OLS, Hiscox, Berinsky and survey-behavior results with no published form other than the standardized versions plotted in Figures 1 and 2 and a handful of numbers quoted in prose. All nine are computed here, under the archive's own numbering, and each script says in its header that the number is the archive's rather than the paper's. The prose numbers are checked one by one in `maintained/text_in_text_claims.R`.
+
+Every `value_paper` in this repository's ground truth is transcribed from the article or the online appendix and from nowhere else. Quantities the paper does not state are left blank rather than filled from a script run, which is why the nine archive tables contribute rows to the ground truth without contributing comparisons.
+
+# Errata
+
+Two published quantities do not come from the procedure the paper describes. Neither is a coding slip that the maintained rewrite silently corrects: both are reported in both forms, so the published number stays reproducible and the intended one is available beside it.
+
+## The appendix Table 1 p-values
+
+Section 1 of the online appendix says the standard errors come from a nonparametric bootstrap and that "we obtain two-tailed p-values under a normal approximation." The archive's `12_DistanceTests.R` computes
+
+``` r
+p = pnorm(q = 2 * (1 - abs(lucid_is_closer / se)), lower.tail = TRUE)
+```
+
+which is not a p-value for any hypothesis. A two-tailed normal-approximation p-value is `2 * pnorm(-abs(z))`. The two expressions agree in spirit and differ in threshold: the archive's calls a difference significant at 0.05 once `|z|` exceeds 1.82, where the two-tailed test needs 1.96. The published p-value column reproduces exactly under the archive's expression and not under the two-tailed one, so the published table is the archive's expression, not the appendix's description of it.
+
+```{r errata_p_table}
+gt |>
+  filter(str_starts(claim, "p-value, ")) |>
+  transmute(variable = str_remove(claim, "^p-value, "), published = value_paper,
+            archive_formula = value_rewrite) |>
+  left_join(
+    gt |> filter(str_starts(claim, "Two-tailed p-value, ")) |>
+      transmute(variable = str_remove(claim, "^Two-tailed p-value, "),
+                two_tailed = value_rewrite),
+    by = "variable"
+  ) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Variable", "Published", "Archive expression", "Two-tailed"),
+    caption = "Appendix Table 1 p-values under the archive's expression and under the two-tailed test the appendix describes. Bootstrap standard errors are stochastic, so the reproduced column will not agree digit for digit with the published one; see the stability section."
+  ) |>
+  latex_only(\(k) k |> kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 8))
+```
+
+What turns on it: the appendix reports that Lucid is significantly closer to the ANES than MTurk on `r counts$n_sig_closer_archive` of the 21 characteristics, and the two-tailed test gives `r counts$n_sig_closer_twotail`. The variable that changes is extraversion, whose bootstrap `z` sits between 1.82 and 1.96. In the article, the sentence "Formal hypothesis tests demonstrate that Lucid is significantly closer to the ANES 2012 than MTurk on all five traits" becomes four of five.
+
+## The appendix Table 2 standard errors
+
+The note under appendix Table 2 reads "Robust standard errors are in parentheses," and its numbers are HC2 sandwich standard errors, consistent with the article's statement that "In all cases, we estimate HC2 robust standard errors." The deposited probit `stargazer` call passes no `se =` argument, unlike the OLS call in the same script, so the code as deposited would print model-based probit standard errors instead. All `r n_a2_se` published coefficients, all nine sample sizes, all nine log-likelihoods and all nine AIC values reproduce exactly. `r n_a2_se_script_fail` of the `r n_a2_se` published standard errors do not, and `r n_a2_se_rewrite_match` of the `r n_a2_se` match once the robust variance the note describes is used.
+
+The maintained rewrite reports both: `robust.std.error` reproduces the published table, `std.error` is what the deposited script would print.
+
+## Two counts the paper states inconsistently
+
+Neither of these is an archive defect; both are visible only once the numbers are recomputed.
+
+The article says that of the 11 demographic variables, "the Lucid mean is closer to the ANES mean in nine instances, five of which are statistically significant." Nine is right. The appendix table's own p-value column marks six of those nine significant, not five: female, education, age, mean income, black and south.
+
+Appendix section 2.1.3 gives the Lucid welfare replication a sample of 1,811, which is the Lucid sample size of the Hiscox experiment reported in section 2.4.2. The welfare data have 3,294 respondents. Appendix section 2.3.1 gives the original Kam and Simas study 761 respondents where appendix Table 2 reports 752 for the same models, and section 2.5.1 describes the original Berinsky sample as MTurk where the article describes it as Survey Sampling International.
+
+# Bootstrap stability
+
+The standard errors of appendix Table 1 come from 100 bootstrap resamples drawn without a seed, so they are different every time the deposited script is run, and so are the p-values computed from them and the counts computed from those. The point estimates are not: they involve no resampling, and all 21 reproduce to three decimals.
+
+`appendix_table_1_bootstrap_stability.R` runs the archive's whole 100-resample procedure 200 times and records the spread. A published standard error is then checked against the sampling distribution of the estimator rather than against one draw. `r n_a1_se_in` of the `r n_a1_se` published standard errors fall inside the 95 per cent range of that distribution. The exception is political interest, whose published 0.082 sits just above a range ending at 0.082. One exceedance in `r n_a1_se` variables is what a 95 per cent interval produces by chance, and the sampler change discussed below does not widen the range enough to cover it, so the cause is left unresolved rather than guessed at.
+
+```{r stability_table}
+# The ground truth keys its claims on the display name the published table uses, so the
+# published SE is looked up through the variable-to-display-name map the distance test
+# output already carries.
+stability |>
+  left_join(select(distances, variable, varname), by = "variable") |>
+  transmute(
+    varname,
+    published_se = sprintf("%.3f", gt$value_paper[match(paste0("Bootstrap SE, ", varname),
+                                                        gt$claim)]),
+    se_mean = sprintf("%.3f", se_mean),
+    interval = sprintf("[%.3f, %.3f]", se_q025, se_q975),
+    share_sig = sprintf("%.2f", share_sig_archive)
+  ) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Variable", "Published SE", "Mean SE", "95% interval over 200 seeds",
+                  "Share of seeds significant"),
+    caption = "How much of appendix Table 1 is Monte Carlo noise: the distribution of the bootstrap standard error over 200 independent runs of the archive's own 100-resample procedure."
+  ) |>
+  latex_only(\(k) k |> kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 8))
+```
+
+The headline count moves too. Across `r headline$passes` seeds the published figure of 14 significantly closer characteristics comes up `r sprintf("%.0f", 100 * headline$share_archive_equals_14)`% of the time, and the count ranges from `r headline$archive_min` to `r headline$archive_max`. Under the two-tailed test it ranges from `r headline$twotail_min` to `r headline$twotail_max`. A reader who runs the deposited script once and gets 13 has not found a reproducibility failure; the deposit simply does not pin the number down. The maintained rewrite sets a seed so that it does.
+
+## The sampler the archive was written under
+
+The archive was deposited in December 2018. R 3.6.0, released in April 2019, changed how `sample()` maps a stream of uniform draws onto integers, and `rsample::bootstraps()` resamples through `sample.int()`, so the standard errors of appendix Table 1 were produced by a generator no current R installation uses by default.
+
+Whether that matters is a question about the archive, not about the maintained rewrite, and the two are kept apart. `appendix_table_1_rounding_sampler.R` re-runs the same 200-seed procedure under `RNGkind(sample.kind = "Rounding")`, then restores the sampler explicitly and asserts the restoration, so that nothing `run_all.R` sources afterwards can inherit the old generator. The rewrite itself keeps the current sampler, which is the correct one.
+
+Under the old sampler the published count of 14 comes up `r sprintf("%.0f", 100 * rounding$share_archive_equals_14)`% of the time and ranges from `r rounding$archive_min` to `r rounding$archive_max`, against `r sprintf("%.0f", 100 * headline$share_archive_equals_14)`% and `r headline$archive_min` to `r headline$archive_max` under the current one. The sampler change is not what makes the number move. An unseeded 100-resample bootstrap is, under either generator.
+
+# Ground truth
+
+Every value in `value_paper` is transcribed from the published article or the published online appendix. Where the paper does not state a quantity, the cell is blank and the match column is empty.
+
+```{r gt_table}
+gt |>
+  mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
+  select(table_figure, claim, value_paper, value_script, match, value_rewrite, match_rewrite) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Location", "Claim", "Paper", "Archive", "Match", "Rewrite", "Match"),
+    caption = "Ground truth: published value against the deposited scripts and against the maintained rewrite."
+  ) |>
+  latex_only(\(k) k |>
+    kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 5) |>
+    column_spec(2, width = "4cm"))
+```
+
+Of the `r n_claims` recorded claims, `r n_archive_verifiable` can be compared against a published value. `r n_archive_match` of those match what the deposited scripts produce and `r n_archive_fail` do not; `r n_rewrite_match` match the maintained rewrite and `r n_rewrite_fail` do not.
+
+# Maintained rewrite
+
+The rewrite lives in `maintained/`: seventeen scripts and a `helpers.R`, covering the nine tables the archive's README names, the five figures, the two published appendix tables, two stability checks on the bootstrap, and the article's in-text numbers. It is a translation, not a reanalysis: every estimator, specification and sample restriction is the one the paper used.
+
+```{r scripts_table}
+tibble(
+  Script = c(
+    "helpers.R",
+    "table_1_demographics.R",
+    "table_2_political.R",
+    "table_3_psychological.R",
+    "table_4_welfare.R",
+    "table_5_asian_disease.R",
+    "table_6_kamsimas.R",
+    "table_7_hiscox.R",
+    "table_8_health_rumors.R",
+    "table_9_survey_behavior.R",
+    "figure_1_standardized_demos.R",
+    "figure_2_standardized_experiments.R",
+    "figures_3_4_5_heterogeneous_effects.R",
+    "appendix_table_1_distance_tests.R",
+    "appendix_table_1_bootstrap_stability.R",
+    "appendix_table_1_rounding_sampler.R",
+    "appendix_table_2_kamsimas_probit.R",
+    "text_in_text_claims.R"
+  ),
+  Archive = c(
+    "LucidValidationHelperFunctions.R",
+    "01", "02", "03", "04", "05", "06 (OLS half)", "07", "08", "09",
+    "10", "10", "11", "12", "none", "none", "06 (probit half)", "none"
+  ),
+  Published = c(
+    "",
+    "Figure 1 only", "Figure 1 and prose", "Figure 1", "Figure 2", "Figure 2",
+    "Figure 2", "Figure 2", "Figure 2 and prose", "prose",
+    "Figure 1", "Figure 2", "Figures 3 to 5",
+    "Appendix Table 1", "", "", "Appendix Table 2", "prose"
+  )
+) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Script", "Archive script", "Where it reaches print"),
+    caption = "Maintained rewrite scripts, the archive script each replaces, and what of it the published paper actually shows."
+  ) |>
+  latex_only(\(k) k |>
+    kable_styling(latex_options = c("hold_position", "scale_down"), font_size = 7) |>
+    column_spec(1, width = "5.5cm"))
+```
+
+## Deprecated patterns replaced
+
+```{r replacements_table}
+tibble(
+  Original = c(
+    "`rm(list = ls())`",
+    "magrittr pipe and `.` functional sequences",
+    "`summarize_all(funs(...))`",
+    "`reshape2::melt` / `dcast`",
+    "`within()` blocks over base indexing",
+    "`lm()` + `starprep()` + `stargazer`",
+    "`glm()` + `stargazer` with no `se =`",
+    "`sink()` to a hardcoded path",
+    "`load(\"*.rdata\")` against a deposited `.RData`",
+    "`coefplot::position_dodgev(height =)`",
+    "`geom_errorbarh(height = 0)`",
+    "`unnest()` with no `cols =`",
+    "`weighted.se()` from the archive's helper file",
+    "positional assignment of display names",
+    "unseeded bootstrap"
+  ),
+  Replacement = c(
+    "(omitted)",
+    "native pipe",
+    "`summarize(across(...))`",
+    "`pivot_longer()` / `pivot_wider()`",
+    "`mutate()` paragraphs",
+    "`estimatr::lm_robust()`, whose default is HC2, plus `modelsummary(output =)`",
+    "`glm()` + `sandwich::vcovHC(type = \"HC2\")`, both SEs written out",
+    "`write_csv()` to `output/`",
+    "the name the deposit actually uses, checked against `ls` output",
+    "`position_dodge(width = 0.5)`",
+    "`geom_linerange()`",
+    "`unnest(cols = c(model))`",
+    "`weighted_se_mean()` in `helpers.R`, same formula",
+    "named lookup keyed on the variable name",
+    "`set.seed(20260321)`, plus a stability check over 200 seeds"
+  )
+) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Original pattern", "Replacement"),
+    caption = "Deprecated patterns and their replacements in the maintained rewrite."
+  ) |>
+  latex_only(\(k) k |>
+    kable_styling(latex_options = c("hold_position", "scale_down"), font_size = 8) |>
+    column_spec(1, width = "6cm") |>
+    column_spec(2, width = "6.5cm"))
+```
+
+Two rows of that table describe intentions rather than live code. `xtable` is loaded by five archive scripts and called by none of them: every `xtable()` and `print.xtable()` sits inside a commented-out block. The five other scripts, the ones that build regression tables, bracket their `stargazer` calls in a commented `sink("...tex")` and `sink()` pair. So the deposit as it stands writes no file at all: it prints twelve tables to the console and saves none of them, and the `.tex` files the commented lines name exist nowhere in the archive. The rewrite writes every table to `maintained/output/` as CSV, and the regression tables additionally as `.tex` through `modelsummary(output =)`, which needs no `sink()`.
+
+# Figures
+
+The five figures are the paper's main quantitative content. Each is drawn from a data file the archive deposits pre-computed, so the rewrite redraws them rather than recomputing their contents.
+
+```{r figure_1, out.width="100%", fig.cap="Figure 1, standardized means for demographic, political and psychological variables, as reproduced by the maintained rewrite."}
+knitr::include_graphics(
+  if (latex_out) {
+    here::here("maintained", "output", "figure_1_standardized_demos.pdf")
+  } else {
+    "maintained/output/figure_1_standardized_demos.png"
+  }
+)
+```
+
+```{r figure_2, out.width="100%", fig.cap="Figure 2, standardized treatment effects for the five experimental replications, as reproduced by the maintained rewrite."}
+knitr::include_graphics(
+  if (latex_out) {
+    here::here("maintained", "output", "figure_2_standardized_experiments.pdf")
+  } else {
+    "maintained/output/figure_2_standardized_experiments.png"
+  }
+)
+```
+
+# In-text numbers
+
+The article states most of its quantitative content in prose rather than in tables, so `maintained/text_in_text_claims.R` is where the bulk of the number-by-number check happens. That script reads only from `maintained/output/` and holds no published value at all. The article's own figures enter one file, `ground_truth/build_ground_truth.R`, and the two are joined there, which is what the table below shows.
+
+```{r text_table}
+gt |>
+  filter(str_starts(table_figure, "Text, ")) |>
+  transmute(
+    section = str_remove(table_figure, "^Text, "),
+    claim,
+    pipeline = as.character(value_rewrite),
+    article = replace_na(as.character(value_paper), "")
+  ) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Section", "Claim", "Pipeline", "Article"),
+    caption = "In-text claims. A blank article column marks a quantity the pipeline produces to support a comparative claim the article states in words rather than in numbers."
+  ) |>
+  latex_only(\(k) k |>
+    kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 7) |>
+    column_spec(2, width = "5.5cm"))
+```
+
+The one benchmark this cannot check is the 50.8% Census female share the article compares its 52% against: it is cited from outside the deposit and no file here contains it.
+
+# Rewrite verification
+
+Two consecutive runs of `run_all.R` produce byte-identical CSV, TeX and PNG output. The five PDF figures differ between runs and only between runs, because a PDF records the time it was written; their PNG twins are the copies to compare. Every stochastic script sets a seed, and the two that sweep seeds deliberately sweep a fixed range.
+
+No maintained script takes a published number as an input. Every value in `maintained/output/` traces to the deposited data, and the published figures appear only in `ground_truth/build_ground_truth.R`, where they are transcribed from the article and the online appendix and used only as comparison targets. `build_ground_truth.R` reads `value_rewrite` back out of `maintained/output/` rather than carrying a typed copy, so the ground truth cannot drift from the scripts, and it runs as the last step of `run_all.R`.
+
+The deposit itself is checked rather than trusted. `download_original.R` verifies all `r nrow(manifest)` files against the MD5 of the bytes Dataverse serves, stops if any disagrees, and also stops if `original/` holds a single file the manifest does not list, since a checksum can only speak for files it knows about. It runs at the top of `run_all.R`, so the check happens on every run rather than once. The repository holds no copy of the deposit, and the archive's own scripts are run from a scratch copy, so a script that writes into its working directory cannot alter the deposited bytes. Running all twelve numbered scripts leaves the copy byte-identical to the deposit, which is a consequence of the archive writing nothing at all.
+
+# R environment
+
+```{r env}
+si <- sessionInfo()
+tibble(
+  Item = c("R version", "Platform", "Date run"),
+  Value = c(
+    paste(si$R.version$major, si$R.version$minor, sep = "."),
+    si$platform,
+    format(Sys.Date())
+  )
+) |>
+  kable(booktabs = TRUE) |>
+  latex_only(\(k) k |> kable_styling(latex_options = "hold_position"))
+```
+
+```{r env_pkgs}
+pkgs <- c("tidyverse", "estimatr", "broom", "scales", "matrixStats", "rsample",
+          "sandwich", "modelsummary", "ggplot2", "here")
+tibble(
+  Package = pkgs,
+  Version = map_chr(pkgs, \(p) as.character(packageVersion(p)))
+) |>
+  kable(booktabs = TRUE, caption = "Package versions used for the run behind this report.") |>
+  latex_only(\(k) k |> kable_styling(latex_options = "hold_position"))
+```

@@ -1,0 +1,227 @@
+paper_id,table_figure,claim,value_script,value_paper,match,value_rewrite,match_rewrite,defect_locus,notes
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Female",0.159,0.159,1,0.159,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Education",0.285,0.285,1,0.285,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Age",0.708,0.708,1,0.708,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Mean income",0.099,0.099,1,0.099,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, White",0.018,0.018,1,0.018,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Black",0.152,0.152,1,0.152,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Hispanic",-0.042,-0.042,1,-0.042,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Northeast",0.079,0.079,1,0.079,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Midwest",0.052,0.052,1,0.052,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, South",0.137,0.137,1,0.137,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, West",-0.007,-0.007,1,-0.007,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Voter registration",0.076,0.076,1,0.076,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Voter turnout",-0.124,-0.124,1,-0.124,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Party ID",0.117,0.117,1,0.117,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Ideology",0.465,0.465,1,0.465,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Political Interest",0.54,0.54,1,0.54,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Extraverted",0.1,0.1,1,0.1,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Agreeable",0.203,0.203,1,0.203,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Conscientious",0.42,0.42,1,0.42,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Stable",0.248,0.248,1,0.248,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Distance, Open",0.157,0.157,1,0.157,1,NA,|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Female",0.053,0.049,1,0.053,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.047, 0.063]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Education",0.04,0.041,1,0.04,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.037, 0.048]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Age",0.033,0.032,1,0.033,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.027, 0.035]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Mean income",0.036,0.033,1,0.036,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.028, 0.037]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, White",0.044,0.041,1,0.044,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.035, 0.047]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Black",0.032,0.033,1,0.032,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.026, 0.034]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Hispanic",0.036,0.035,1,0.036,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.031, 0.042]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Northeast",0.049,0.054,1,0.049,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.044, 0.058]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Midwest",0.044,0.046,1,0.044,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.040, 0.052]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, South",0.063,0.064,1,0.063,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.049, 0.067]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, West",0.037,0.039,1,0.037,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.032, 0.044]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Voter registration",0.052,0.05,1,0.052,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.045, 0.059]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Voter turnout",0.042,0.044,1,0.042,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.037, 0.051]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Party ID",0.057,0.055,1,0.057,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.047, 0.062]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Ideology",0.065,0.069,1,0.065,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.058, 0.074]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Political Interest",0.075,0.082,0,0.075,0,unresolved,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.062, 0.082]. The published value sits outside that range. The sampler change of R 3.6 does not account for it: the range is no wider under RNGkind(sample.kind = ""Rounding""). One exceedance in 21 variables is what a 95 per cent interval produces by chance, so the cause is not established"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Extraverted",0.053,0.052,1,0.053,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.048, 0.063]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Agreeable",0.069,0.077,1,0.069,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.064, 0.084]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Conscientious",0.065,0.065,1,0.065,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.055, 0.075]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Stable",0.051,0.054,1,0.051,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.046, 0.060]"
+coppock_mcclellan_2019,Appendix Table 1,"Bootstrap SE, Open",0.064,0.069,1,0.064,1,NA,"Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [0.056, 0.074]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Female",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.001]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Education",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Age",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Mean income",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, White",0.883,0.873,1,0.883,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.838, 0.894]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Black",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Hispanic",0.382,0.357,1,0.382,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.242, 0.507]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Northeast",0.11,0.179,1,0.11,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.059, 0.229]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Midwest",0.373,0.409,1,0.373,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.277, 0.501]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, South",0.009,0.01,1,0.009,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.017]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, West",0.945,0.948,1,0.945,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.938, 0.952]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Voter registration",0.186,0.157,1,0.186,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.084, 0.284]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Voter turnout",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.002]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Party ID",0.016,0.01,1,0.016,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.001, 0.038]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Ideology",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Political Interest",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Extraverted",0.037,0.034,1,0.037,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.016, 0.120]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Agreeable",0,0.001,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.002]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Conscientious",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Stable",0,0,1,0,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.000]"
+coppock_mcclellan_2019,Appendix Table 1,"p-value, Open",0.002,0.005,1,0.002,1,NA,"The published column is pnorm(2 * (1 - |z|)), the deposit's expression, not the two-tailed test the appendix describes. Over 200 runs it falls in [0.000, 0.013]"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Female",NA,NA,NA,0.003,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Education",NA,NA,NA,0,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Age",NA,NA,NA,0,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Mean income",NA,NA,NA,0.006,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, White",NA,NA,NA,0.686,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Black",NA,NA,NA,0,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Hispanic",NA,NA,NA,0.25,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Northeast",NA,NA,NA,0.107,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Midwest",NA,NA,NA,0.245,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, South",NA,NA,NA,0.029,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, West",NA,NA,NA,0.842,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Voter registration",NA,NA,NA,0.148,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Voter turnout",NA,NA,NA,0.003,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Party ID",NA,NA,NA,0.038,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Ideology",NA,NA,NA,0,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Political Interest",NA,NA,NA,0,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Extraverted",NA,NA,NA,0.059,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Agreeable",NA,NA,NA,0.003,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Conscientious",NA,NA,NA,0,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Stable",NA,NA,NA,0,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 1,"Two-tailed p-value, Open",NA,NA,NA,0.013,NA,NA,"2 * pnorm(-|z|), the test the appendix text describes. The published table does not use it and does not print it; added by the rewrite"
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_base, mortalityfirst",0.898,0.898,1,0.898,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_ctrl, mortalityfirst",0.898,0.898,1,0.898,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_int, mortalityfirst",1.155,1.155,1,1.155,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_base, mortalityfirst",1.182,1.182,1,1.182,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_ctrl, mortalityfirst",1.184,1.184,1,1.184,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_int, mortalityfirst",1.37,1.37,1,1.37,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_base, mortalityfirst",1.068,1.068,1,1.068,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_ctrl, mortalityfirst",1.091,1.091,1,1.091,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_int, mortalityfirst",1.059,1.059,1,1.059,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_base, ramean",0.253,0.253,1,0.253,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_ctrl, ramean",0.516,0.516,1,0.516,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_int, ramean",0.522,0.522,1,0.522,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_base, ramean",0.906,0.906,1,0.906,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_ctrl, ramean",0.953,0.953,1,0.953,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_int, ramean",1.09,1.09,1,1.09,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_base, ramean",0.52,0.52,1,0.52,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_ctrl, ramean",0.587,0.587,1,0.587,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_int, ramean",0.506,0.506,1,0.506,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_int, mortalityfirst:ramean",-0.523,-0.523,1,-0.523,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_int, mortalityfirst:ramean",-0.368,-0.368,1,-0.368,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_int, mortalityfirst:ramean",0.022,0.022,1,0.022,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_base, (Intercept)",-0.634,-0.634,1,-0.634,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_ctrl, (Intercept)",-1.04,-1.04,1,-1.04,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, lucid_int, (Intercept)",-0.767,-0.767,1,-0.767,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_base, (Intercept)",-1.128,-1.128,1,-1.128,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_ctrl, (Intercept)",-1.193,-1.193,1,-1.193,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, mturk_int, (Intercept)",-1.225,-1.225,1,-1.225,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_base, (Intercept)",-0.705,-0.705,1,-0.705,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_ctrl, (Intercept)",-0.814,-0.814,1,-0.814,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Coefficient, kam_int, (Intercept)",-0.7,-0.7,1,-0.7,1,NA,Probit coefficient. The deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_base, mortalityfirst",0.065,0.065,1,0.065,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_ctrl, mortalityfirst",0.065,0.065,1,0.065,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_int, mortalityfirst",0.206,0.203,0,0.203,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_base, mortalityfirst",0.097,0.097,1,0.097,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_ctrl, mortalityfirst",0.098,0.098,1,0.098,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_int, mortalityfirst",0.301,0.31,0,0.31,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_base, mortalityfirst",0.097,0.098,0,0.098,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_ctrl, mortalityfirst",0.099,0.1,0,0.1,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_int, mortalityfirst",0.294,0.294,1,0.294,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_base, ramean",0.199,0.196,0,0.196,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_ctrl, ramean",0.209,0.205,0,0.205,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_int, ramean",0.284,0.269,0,0.269,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_base, ramean",0.276,0.283,0,0.283,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_ctrl, ramean",0.29,0.293,0,0.293,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_int, ramean",0.394,0.412,0,0.412,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_base, ramean",0.306,0.303,0,0.303,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_ctrl, ramean",0.32,0.325,0,0.325,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_int, ramean",0.482,0.485,0,0.485,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_int, mortalityfirst:ramean",0.399,0.393,0,0.393,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_int, mortalityfirst:ramean",0.554,0.569,0,0.569,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_int, mortalityfirst:ramean",0.623,0.621,0,0.621,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_base, (Intercept)",0.108,0.106,0,0.106,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_ctrl, (Intercept)",0.177,0.176,0,0.176,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, lucid_int, (Intercept)",0.148,0.141,0,0.141,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_base, (Intercept)",0.161,0.163,0,0.163,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_ctrl, (Intercept)",0.28,0.281,0,0.281,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, mturk_int, (Intercept)",0.219,0.229,0,0.229,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_base, (Intercept)",0.155,0.154,0,0.154,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_ctrl, (Intercept)",0.271,0.275,0,0.275,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"SE, kam_int, (Intercept)",0.227,0.229,0,0.229,1,NA,"Published SE is HC2 robust, matching the table's own note. The deposited script passes no se = argument and would print the model-based SE in value_script"
+coppock_mcclellan_2019,Appendix Table 2,"N, lucid_base",1629,1629,1,1629,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, lucid_base",-1027.212,-1027.212,1,-1027.212,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, lucid_base",2060.424,2060.424,1,2060.424,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, lucid_ctrl",1629,1629,1,1629,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, lucid_ctrl",-1015.762,-1015.762,1,-1015.762,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, lucid_ctrl",2047.524,2047.524,1,2047.524,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, lucid_int",1629,1629,1,1629,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, lucid_int",-1026.356,-1026.356,1,-1026.356,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, lucid_int",2060.713,2060.713,1,2060.713,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, mturk_base",766,766,1,766,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, mturk_base",-448.046,-448.046,1,-448.046,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, mturk_base",902.092,902.092,1,902.092,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, mturk_ctrl",766,766,1,766,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, mturk_ctrl",-447.878,-447.878,1,-447.878,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, mturk_ctrl",911.755,911.755,1,911.755,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, mturk_int",766,766,1,766,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, mturk_int",-447.823,-447.823,1,-447.823,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, mturk_int",903.646,903.646,1,903.646,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, kam_base",752,752,1,752,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, kam_base",-453.196,-453.196,1,-453.196,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, kam_base",912.392,912.392,1,912.392,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, kam_ctrl",752,752,1,752,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, kam_ctrl",-450.863,-450.863,1,-450.863,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, kam_ctrl",917.727,917.727,1,917.727,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"N, kam_int",752,752,1,752,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"Log likelihood, kam_int",-453.195,-453.195,1,-453.195,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix Table 2,"AIC, kam_int",914.391,914.391,1,914.391,1,NA,Model fit statistic; the deposited script and the rewrite agree exactly
+coppock_mcclellan_2019,Appendix study manifest,"Welfare, GSS 1984 N",943,943,1,943,1,NA,Appendix 2.1.1
+coppock_mcclellan_2019,Appendix study manifest,"Welfare, GSS 2014 N",2457,2457,1,2457,1,NA,Appendix 2.1.2
+coppock_mcclellan_2019,Appendix study manifest,"Welfare, Lucid N",3294,1811,0,3294,0,paper_internal,"Appendix 2.1.3 states 1,811, which is the Lucid sample size of the Hiscox experiment in section 2.4.2. The welfare data hold 3,504 Lucid rows of which 3,294 have a usable outcome"
+coppock_mcclellan_2019,Appendix study manifest,"Welfare, MTurk N",494,494,1,494,1,NA,Appendix 2.1.4
+coppock_mcclellan_2019,Appendix study manifest,"Asian Disease, original N",307,307,1,307,1,NA,Appendix 2.2.1
+coppock_mcclellan_2019,Appendix study manifest,"Asian Disease, Lucid N",1813,1813,1,1813,1,NA,Appendix 2.2.2
+coppock_mcclellan_2019,Appendix study manifest,"Kam and Simas, original N",752,761,0,752,0,paper_internal,"Appendix 2.3.1 states 761 in prose; appendix Table 2 reports 752 for the same models, and 752 is what the data give"
+coppock_mcclellan_2019,Appendix study manifest,"Kam and Simas, Lucid N",1629,1629,1,1629,1,NA,Appendix 2.3.2
+coppock_mcclellan_2019,Appendix study manifest,"Kam and Simas, MTurk N",766,766,1,766,1,NA,Appendix 2.3.3
+coppock_mcclellan_2019,Appendix study manifest,"Hiscox, original N",1578,1578,1,1578,1,NA,Appendix 2.4.1
+coppock_mcclellan_2019,Appendix study manifest,"Hiscox, Lucid N",1811,1811,1,1811,1,NA,Appendix 2.4.2
+coppock_mcclellan_2019,Appendix study manifest,"Hiscox, GfK N",2084,2084,1,2084,1,NA,Appendix 2.4.3
+coppock_mcclellan_2019,Appendix study manifest,"Hiscox, MTurk N",2972,2972,1,2972,1,NA,Appendix 2.4.4
+coppock_mcclellan_2019,Appendix study manifest,"Healthcare rumors, original N",1593,1593,1,1593,1,NA,"Appendix 2.5.1, which calls the original sample MTurk where the article calls it Survey Sampling International. The data agree with the article"
+coppock_mcclellan_2019,Appendix study manifest,"Healthcare rumors, Lucid N",3503,3503,1,3503,1,NA,Appendix 2.5.2
+coppock_mcclellan_2019,"Text, Our sample",Lucid sample N,3504,3504,1,3504,1,NA,
+coppock_mcclellan_2019,"Text, Our sample","Surveys per month, mean",4.28,4.28,1,4.28,1,NA,
+coppock_mcclellan_2019,"Text, Our sample",Percent taking fewer than one survey per day,98.06,98,1,98.06,1,NA,
+coppock_mcclellan_2019,"Text, Our sample","Surveys per month among those, mean",2.43,2.43,1,2.43,1,NA,
+coppock_mcclellan_2019,"Text, Our sample",Percent taking surveys at home,93.51,94,1,93.51,1,NA,
+coppock_mcclellan_2019,"Text, Our sample","Expected compensation, mean dollars",5.01,5.01,1,5.01,1,NA,
+coppock_mcclellan_2019,"Text, Our sample","Expected compensation, mean dollars, trimmed",1.16,1.16,1,1.16,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Percent female, Lucid",52.15,52,1,52.15,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Percent female, MTurk",60.07,60,1,60.07,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Years of education, Lucid",14.16,14.2,1,14.16,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Years of education, ANES",13.5,13.5,1,13.5,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Years of education, MTurk",14.88,NA,NA,14.88,NA,NA,Computed to support a claim the article states in words rather than in numbers
+coppock_mcclellan_2019,"Text, Baseline characteristics","Party ID, Lucid",3.73,3.7,1,3.73,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Party ID, ANES 2012",3.73,3.7,1,3.73,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Party ID, MTurk",3.49,3.5,1,3.49,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Political interest, Lucid minus MTurk",1.19,1.2,1,1.19,1,NA,
+coppock_mcclellan_2019,"Text, Baseline characteristics","Political knowledge, Lucid",58.39,NA,NA,58.39,NA,NA,Computed to support a claim the article states in words rather than in numbers
+coppock_mcclellan_2019,"Text, Baseline characteristics","Political knowledge, MTurk",70.51,NA,NA,70.51,NA,NA,Computed to support a claim the article states in words rather than in numbers
+coppock_mcclellan_2019,"Text, Baseline characteristics","Political knowledge, ANES panel",59.91,NA,NA,59.91,NA,NA,Computed to support a claim the article states in words rather than in numbers
+coppock_mcclellan_2019,"Text, Distance tests",Variables tested,21,21,1,21,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests",Lucid closer,18,18,1,18,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests",MTurk closer,3,3,1,3,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests","Lucid significantly closer, archive p",14,14,1,14,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests","MTurk significantly closer, archive p",1,1,1,1,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests","Lucid significantly closer, two-tailed p",13,NA,NA,13,NA,NA,Computed to support a claim the article states in words rather than in numbers
+coppock_mcclellan_2019,"Text, Distance tests","MTurk significantly closer, two-tailed p",1,NA,NA,1,NA,NA,Computed to support a claim the article states in words rather than in numbers
+coppock_mcclellan_2019,"Text, Distance tests",Demographic variables tested,11,11,1,11,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests","Demographic, Lucid closer",9,9,1,9,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests","Demographic, significantly closer, archive p",6,5,0,6,0,paper_internal,"The article's prose says five. Its own appendix Table 1 prints 6 demographic rows that are both positive and below 0.05, which is what the pipeline reproduces, so the disagreement is between the article's text and the article's table"
+coppock_mcclellan_2019,"Text, Distance tests","Political, significantly closer, archive p",3,3,1,3,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests","Traits, significantly closer, archive p",5,5,1,5,1,NA,
+coppock_mcclellan_2019,"Text, Distance tests","Traits, significantly closer, two-tailed p",4,NA,NA,4,NA,NA,Computed to support a claim the article states in words rather than in numbers
+coppock_mcclellan_2019,"Text, Healthcare rumors","Death panel belief, Lucid control mean",-0.172,-0.17,1,-0.172,1,NA,
+coppock_mcclellan_2019,"Text, Healthcare rumors","Death panel belief, original control mean",-0.19,-0.19,1,-0.19,1,NA,
+coppock_mcclellan_2019,Figure 1,All plotted estimates and confidence bounds,NA,NA,NA,NA,NA,NA,The published figure prints no numbers. Its 69 plotted estimates are drawn from a data file the deposit ships pre-computed and are written to maintained/output/figure_1_standardized_demos.csv
+coppock_mcclellan_2019,Figure 2,All plotted estimates and confidence bounds,NA,NA,NA,NA,NA,NA,The published figure prints no numbers. Its 35 plotted estimates are drawn from a data file the deposit ships pre-computed and are written to maintained/output/figure_2_standardized_experiments.csv
+coppock_mcclellan_2019,Figure 3,All plotted estimates and confidence bounds,NA,NA,NA,NA,NA,NA,The published figure prints no numbers. Its 14 plotted estimates are drawn from a data file the deposit ships pre-computed and are written to maintained/output/figure_3_cate_welfare_ad_ks.csv
+coppock_mcclellan_2019,Figure 4,All plotted estimates and confidence bounds,NA,NA,NA,NA,NA,NA,The published figure prints no numbers. Its 30 plotted estimates are drawn from a data file the deposit ships pre-computed and are written to maintained/output/figure_4_cate_hiscox.csv
+coppock_mcclellan_2019,Figure 5,All plotted estimates and confidence bounds,NA,NA,NA,NA,NA,NA,The published figure prints no numbers. Its 24 plotted estimates are drawn from a data file the deposit ships pre-computed and are written to maintained/output/figure_5_cate_berinsky.csv
+coppock_mcclellan_2019,Table 1,Theoretical applicability of five experimental studies,NA,NA,NA,NA,NA,NA,The article's only table is a prose summary of the scope conditions of the five experiments and contains no numeric content

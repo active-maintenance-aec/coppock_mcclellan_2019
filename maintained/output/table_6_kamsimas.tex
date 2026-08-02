@@ -1,0 +1,28 @@
+\begin{table}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+caption={Kam and Simas (2010) replication, OLS},
+note{}={+ p \num{< 0.1}, * p \num{< 0.05}, ** p \num{< 0.01}, *** p \num{< 0.001}},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+hline{2}={1-10}{solid, black, 0.05em},
+hline{10}={1-10}{solid, black, 0.05em},
+hline{1}={1-10}{solid, black, 0.08em},
+hline{12}={1-10}{solid, black, 0.08em},
+column{2-10}={}{halign=c},
+column{1}={}{halign=l},
+}                     %% tabularray inner close
+& lucid\_base & lucid\_ctrl & lucid\_int & mturk\_base & mturk\_ctrl & mturk\_int & kam\_base & kam\_ctrl & kam\_int \\
+(Intercept) & 0.261*** & 0.118+ & 0.218*** & 0.104* & 0.081 & 0.081 & 0.240*** & 0.203* & 0.238** \\
+& (0.038) & (0.061) & (0.048) & (0.049) & (0.090) & (0.063) & (0.051) & (0.092) & (0.079) \\
+mortalityfirst & 0.346*** & 0.342*** & 0.433*** & 0.439*** & 0.439*** & 0.486*** & 0.405*** & 0.411*** & 0.407*** \\
+& (0.023) & (0.023) & (0.072) & (0.032) & (0.032) & (0.098) & (0.034) & (0.034) & (0.101) \\
+ramean & 0.090 & 0.182* & 0.178+ & 0.299** & 0.307** & 0.342** & 0.176+ & 0.203+ & 0.179 \\
+& (0.071) & (0.073) & (0.093) & (0.091) & (0.095) & (0.122) & (0.102) & (0.109) & (0.170) \\
+mortalityfirst × ramean &  &  & -0.179 &  &  & -0.092 &  &  & -0.006 \\
+&  &  & (0.141) &  &  & (0.182) &  &  & (0.213) \\
+Num.Obs. & 1629 & 1629 & 1629 & 766 & 766 & 766 & 752 & 752 & 752 \\
+R2 & 0.120 & 0.133 & 0.121 & 0.204 & 0.205 & 0.204 & 0.166 & 0.172 & 0.166 \\
+\end{talltblr}
+\end{table}

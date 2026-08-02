@@ -1,0 +1,35 @@
+section,claim,value_pipeline
+Our sample,Lucid sample N,"3,504"
+Our sample,"Surveys per month, mean",4.28 (0.40)
+Our sample,Percent taking fewer than one survey per day,98.06
+Our sample,"Surveys per month among those, mean",2.43 (0.07)
+Our sample,Percent taking surveys at home,93.51 (0.42)
+Our sample,"Expected compensation, mean dollars",5.01 (0.30)
+Our sample,"Expected compensation, mean dollars, trimmed",1.16 (0.04)
+Baseline characteristics,"Percent female, Lucid",52.15 (0.85)
+Baseline characteristics,"Percent female, MTurk",60.07 (2.09)
+Baseline characteristics,"Years of education, Lucid",14.16 (0.04)
+Baseline characteristics,"Years of education, ANES",13.50 (0.07)
+Baseline characteristics,"Years of education, MTurk",14.88 (0.10)
+Baseline characteristics,"Party ID, Lucid",3.73 (0.04)
+Baseline characteristics,"Party ID, ANES 2012",3.73 (0.06)
+Baseline characteristics,"Party ID, MTurk",3.49 (0.09)
+Baseline characteristics,"Political interest, Lucid minus MTurk",1.19
+Baseline characteristics,"Political knowledge, Lucid",58.39 (0.46)
+Baseline characteristics,"Political knowledge, MTurk",70.51 (1.03)
+Baseline characteristics,"Political knowledge, ANES panel",59.91 (1.22)
+Distance tests,Variables tested,21
+Distance tests,Lucid closer,18
+Distance tests,MTurk closer,3
+Distance tests,"Lucid significantly closer, archive p",14
+Distance tests,"MTurk significantly closer, archive p",1
+Distance tests,"Lucid significantly closer, two-tailed p",13
+Distance tests,"MTurk significantly closer, two-tailed p",1
+Distance tests,Demographic variables tested,11
+Distance tests,"Demographic, Lucid closer",9
+Distance tests,"Demographic, significantly closer, archive p",6
+Distance tests,"Political, significantly closer, archive p",3
+Distance tests,"Traits, significantly closer, archive p",5
+Distance tests,"Traits, significantly closer, two-tailed p",4
+Healthcare rumors,"Death panel belief, Lucid control mean",-0.172
+Healthcare rumors,"Death panel belief, original control mean",-0.190

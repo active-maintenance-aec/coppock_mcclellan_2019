@@ -1,0 +1,30 @@
+\begin{table}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+caption={Hiscox (2006) replications},
+note{}={+ p \num{< 0.1}, * p \num{< 0.05}, ** p \num{< 0.01}, *** p \num{< 0.001}},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+hline{2}={1-5}{solid, black, 0.05em},
+hline{12}={1-5}{solid, black, 0.05em},
+hline{1}={1-5}{solid, black, 0.08em},
+hline{14}={1-5}{solid, black, 0.08em},
+column{2-5}={}{halign=c},
+column{1}={}{halign=l},
+}                     %% tabularray inner close
+& lucid & mturk & tess & hiscox \\
+(Intercept) & 0.686*** & 0.784*** & 0.723*** & 0.702*** \\
+& (0.023) & (0.016) & (0.021) & (0.024) \\
+Z\_Hiscox\_expert & 0.111*** & 0.126*** & 0.087*** & 0.111*** \\
+& (0.021) & (0.015) & (0.020) & (0.024) \\
+Z\_Hiscox\_valencepositive & 0.013 & -0.035+ & -0.019 & -0.059+ \\
+& (0.029) & (0.019) & (0.027) & (0.032) \\
+Z\_Hiscox\_valencenegative & -0.092** & -0.146*** & -0.170*** & -0.130*** \\
+& (0.030) & (0.021) & (0.028) & (0.033) \\
+Z\_Hiscox\_valenceboth & -0.048 & -0.151*** & -0.109*** & -0.181*** \\
+& (0.030) & (0.021) & (0.028) & (0.033) \\
+Num.Obs. & 1811 & 2972 & 2084 & 1578 \\
+R2 & 0.023 & 0.046 & 0.032 & 0.033 \\
+\end{talltblr}
+\end{table}
