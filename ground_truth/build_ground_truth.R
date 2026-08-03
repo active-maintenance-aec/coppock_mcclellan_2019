@@ -671,7 +671,34 @@ if (nrow(locus_gate) > 0) {
   stop("Rows carrying a failure with no locus, a locus with no failure, or a claim compared by nothing.")
 }
 
+# value_paper is committed as the string the article prints ----
+# The comparisons above need it as a number, and the committed file needs it as a string:
+# 0.100 and 0.1 are the same double and different claims, and a reader of the CSV can only
+# see which one the page carries if the digits survive. The digit count each block already
+# recorded is what renders it, and where the extraction carries the same claim the two
+# strings must agree, which is a stricter test than the numeric one above and catches a
+# block whose digits are right about the value and wrong about the precision.
+stopifnot(!any(!is.na(gt$value_paper) & is.na(gt$digits)))
+
 gt <- gt |>
+  mutate(value_paper_printed = if_else(
+    is.na(value_paper), NA_character_,
+    format_to_page(value_paper, replace_na(digits, 0))))
+
+printed_gaps <- gt |>
+  drop_na(claim_id, value_paper_printed) |>
+  inner_join(select(published_claims, claim_id, extraction = value_paper),
+             by = "claim_id") |>
+  filter(!is.na(extraction), value_paper_printed != extraction)
+
+if (nrow(printed_gaps) > 0) {
+  print(select(printed_gaps, claim_id, value_paper_printed, extraction), n = 40)
+  stop(str_glue("The ground truth prints {nrow(printed_gaps)} published values at a ",
+                "different precision from ground_truth/published_claims.csv."))
+}
+
+gt <- gt |>
+  mutate(value_paper = value_paper_printed) |>
   select(paper_id, claim_id, table_figure, claim, value_script, value_paper, match,
          value_rewrite, match_rewrite, holds, defect_locus, notes)
 

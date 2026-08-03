@@ -31,8 +31,11 @@ latex_out <- knitr::is_latex_output()
 # table renders as a pipe table. Each call site says what LaTeX alone gets.
 latex_only <- function(k, f) if (latex_out) f(k) else k
 
+# value_paper is the string the article prints. Left to a type guess it is read as a
+# double, which cannot tell 0.100 from 0.1, and the committed precision is destroyed on
+# the way into the report.
 gt <- read_csv(here::here("ground_truth", "coppock_mcclellan_2019_ground_truth.csv"),
-               show_col_types = FALSE)
+               col_types = cols(value_paper = col_character(), .default = col_guess()))
 out <- function(f) read_csv(here::here("maintained", "output", f), show_col_types = FALSE)
 counts <- out("appendix_table_1_distance_counts.csv")
 headline <- out("appendix_table_1_bootstrap_headline.csv")
@@ -320,6 +323,9 @@ gt |>
   ) |>
   kable(
     booktabs = TRUE,
+    # The published column is the string the appendix prints, so it arrives as text and
+    # would otherwise be left aligned against three numeric columns beside it.
+    align = c("l", "r", "r", "r"),
     col.names = c("Variable", "Published", "Archive expression", "Two-tailed"),
     caption = "Appendix Table 1 p-values under the archive's expression and under the two-tailed test the appendix describes. Bootstrap standard errors are stochastic, so the reproduced column will not agree digit for digit with the published one; see the stability section."
   ) |>
@@ -364,8 +370,7 @@ stability |>
   left_join(select(distances, variable, varname), by = "variable") |>
   transmute(
     varname,
-    published_se = sprintf("%.3f", gt$value_paper[match(paste0("Bootstrap SE, ", varname),
-                                                        gt$claim)]),
+    published_se = gt$value_paper[match(paste0("Bootstrap SE, ", varname), gt$claim)],
     se_mean = sprintf("%.3f", se_mean),
     interval = sprintf("[%.3f, %.3f]", se_q025, se_q975),
     share_sig = sprintf("%.2f", share_sig_archive)

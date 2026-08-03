@@ -599,10 +599,10 @@ quantity, the cell is blank and the match column is empty.
 | Appendix Table 1 | Distance, Voter turnout | -0.124 | -0.124 | 1 | -0.124 | 1 |
 | Appendix Table 1 | Distance, Party ID | 0.117 | 0.117 | 1 | 0.117 | 1 |
 | Appendix Table 1 | Distance, Ideology | 0.465 | 0.465 | 1 | 0.465 | 1 |
-| Appendix Table 1 | Distance, Political Interest | 0.54 | 0.54 | 1 | 0.54 | 1 |
-| Appendix Table 1 | Distance, Extraverted | 0.1 | 0.1 | 1 | 0.1 | 1 |
+| Appendix Table 1 | Distance, Political Interest | 0.540 | 0.54 | 1 | 0.54 | 1 |
+| Appendix Table 1 | Distance, Extraverted | 0.100 | 0.1 | 1 | 0.1 | 1 |
 | Appendix Table 1 | Distance, Agreeable | 0.203 | 0.203 | 1 | 0.203 | 1 |
-| Appendix Table 1 | Distance, Conscientious | 0.42 | 0.42 | 1 | 0.42 | 1 |
+| Appendix Table 1 | Distance, Conscientious | 0.420 | 0.42 | 1 | 0.42 | 1 |
 | Appendix Table 1 | Distance, Stable | 0.248 | 0.248 | 1 | 0.248 | 1 |
 | Appendix Table 1 | Distance, Open | 0.157 | 0.157 | 1 | 0.157 | 1 |
 | Appendix Table 1 | Bootstrap SE, Female | 0.049 | 0.053 | 1 | 0.053 | 1 |
@@ -616,7 +616,7 @@ quantity, the cell is blank and the match column is empty.
 | Appendix Table 1 | Bootstrap SE, Midwest | 0.046 | 0.044 | 1 | 0.044 | 1 |
 | Appendix Table 1 | Bootstrap SE, South | 0.064 | 0.063 | 1 | 0.063 | 1 |
 | Appendix Table 1 | Bootstrap SE, West | 0.039 | 0.037 | 1 | 0.037 | 1 |
-| Appendix Table 1 | Bootstrap SE, Voter registration | 0.05 | 0.052 | 1 | 0.052 | 1 |
+| Appendix Table 1 | Bootstrap SE, Voter registration | 0.050 | 0.052 | 1 | 0.052 | 1 |
 | Appendix Table 1 | Bootstrap SE, Voter turnout | 0.044 | 0.042 | 1 | 0.042 | 1 |
 | Appendix Table 1 | Bootstrap SE, Party ID | 0.055 | 0.057 | 1 | 0.057 | 1 |
 | Appendix Table 1 | Bootstrap SE, Ideology | 0.069 | 0.065 | 1 | 0.065 | 1 |
@@ -626,26 +626,26 @@ quantity, the cell is blank and the match column is empty.
 | Appendix Table 1 | Bootstrap SE, Conscientious | 0.065 | 0.065 | 1 | 0.065 | 1 |
 | Appendix Table 1 | Bootstrap SE, Stable | 0.054 | 0.051 | 1 | 0.051 | 1 |
 | Appendix Table 1 | Bootstrap SE, Open | 0.069 | 0.064 | 1 | 0.064 | 1 |
-| Appendix Table 1 | p-value, Female | 0 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Education | 0 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Age | 0 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Mean income | 0 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Female | 0.000 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Education | 0.000 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Age | 0.000 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Mean income | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, White | 0.873 | 0.883 | 1 | 0.883 | 1 |
-| Appendix Table 1 | p-value, Black | 0 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Black | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Hispanic | 0.357 | 0.382 | 1 | 0.382 | 1 |
 | Appendix Table 1 | p-value, Northeast | 0.179 | 0.11 | 1 | 0.11 | 1 |
 | Appendix Table 1 | p-value, Midwest | 0.409 | 0.373 | 1 | 0.373 | 1 |
-| Appendix Table 1 | p-value, South | 0.01 | 0.009 | 1 | 0.009 | 1 |
+| Appendix Table 1 | p-value, South | 0.010 | 0.009 | 1 | 0.009 | 1 |
 | Appendix Table 1 | p-value, West | 0.948 | 0.945 | 1 | 0.945 | 1 |
 | Appendix Table 1 | p-value, Voter registration | 0.157 | 0.186 | 1 | 0.186 | 1 |
-| Appendix Table 1 | p-value, Voter turnout | 0 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Party ID | 0.01 | 0.016 | 1 | 0.016 | 1 |
-| Appendix Table 1 | p-value, Ideology | 0 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Political Interest | 0 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Voter turnout | 0.000 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Party ID | 0.010 | 0.016 | 1 | 0.016 | 1 |
+| Appendix Table 1 | p-value, Ideology | 0.000 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Political Interest | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Extraverted | 0.034 | 0.037 | 1 | 0.037 | 1 |
 | Appendix Table 1 | p-value, Agreeable | 0.001 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Conscientious | 0 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Stable | 0 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Conscientious | 0.000 | 0 | 1 | 0 | 1 |
+| Appendix Table 1 | p-value, Stable | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Open | 0.005 | 0.002 | 1 | 0.002 | 1 |
 | Appendix Table 1 | Two-tailed p-value, Female |  |  |  | 0.003 |  |
 | Appendix Table 1 | Two-tailed p-value, Education |  |  |  | 0 |  |
@@ -673,7 +673,7 @@ quantity, the cell is blank and the match column is empty.
 | Appendix Table 2 | Coefficient, lucid_int, mortalityfirst | 1.155 | 1.155 | 1 | 1.155 | 1 |
 | Appendix Table 2 | Coefficient, mturk_base, mortalityfirst | 1.182 | 1.182 | 1 | 1.182 | 1 |
 | Appendix Table 2 | Coefficient, mturk_ctrl, mortalityfirst | 1.184 | 1.184 | 1 | 1.184 | 1 |
-| Appendix Table 2 | Coefficient, mturk_int, mortalityfirst | 1.37 | 1.37 | 1 | 1.37 | 1 |
+| Appendix Table 2 | Coefficient, mturk_int, mortalityfirst | 1.370 | 1.37 | 1 | 1.37 | 1 |
 | Appendix Table 2 | Coefficient, kam_base, mortalityfirst | 1.068 | 1.068 | 1 | 1.068 | 1 |
 | Appendix Table 2 | Coefficient, kam_ctrl, mortalityfirst | 1.091 | 1.091 | 1 | 1.091 | 1 |
 | Appendix Table 2 | Coefficient, kam_int, mortalityfirst | 1.059 | 1.059 | 1 | 1.059 | 1 |
@@ -682,30 +682,30 @@ quantity, the cell is blank and the match column is empty.
 | Appendix Table 2 | Coefficient, lucid_int, ramean | 0.522 | 0.522 | 1 | 0.522 | 1 |
 | Appendix Table 2 | Coefficient, mturk_base, ramean | 0.906 | 0.906 | 1 | 0.906 | 1 |
 | Appendix Table 2 | Coefficient, mturk_ctrl, ramean | 0.953 | 0.953 | 1 | 0.953 | 1 |
-| Appendix Table 2 | Coefficient, mturk_int, ramean | 1.09 | 1.09 | 1 | 1.09 | 1 |
-| Appendix Table 2 | Coefficient, kam_base, ramean | 0.52 | 0.52 | 1 | 0.52 | 1 |
+| Appendix Table 2 | Coefficient, mturk_int, ramean | 1.090 | 1.09 | 1 | 1.09 | 1 |
+| Appendix Table 2 | Coefficient, kam_base, ramean | 0.520 | 0.52 | 1 | 0.52 | 1 |
 | Appendix Table 2 | Coefficient, kam_ctrl, ramean | 0.587 | 0.587 | 1 | 0.587 | 1 |
 | Appendix Table 2 | Coefficient, kam_int, ramean | 0.506 | 0.506 | 1 | 0.506 | 1 |
 | Appendix Table 2 | Coefficient, lucid_int, mortalityfirst:ramean | -0.523 | -0.523 | 1 | -0.523 | 1 |
 | Appendix Table 2 | Coefficient, mturk_int, mortalityfirst:ramean | -0.368 | -0.368 | 1 | -0.368 | 1 |
 | Appendix Table 2 | Coefficient, kam_int, mortalityfirst:ramean | 0.022 | 0.022 | 1 | 0.022 | 1 |
 | Appendix Table 2 | Coefficient, lucid_base, (Intercept) | -0.634 | -0.634 | 1 | -0.634 | 1 |
-| Appendix Table 2 | Coefficient, lucid_ctrl, (Intercept) | -1.04 | -1.04 | 1 | -1.04 | 1 |
+| Appendix Table 2 | Coefficient, lucid_ctrl, (Intercept) | -1.040 | -1.04 | 1 | -1.04 | 1 |
 | Appendix Table 2 | Coefficient, lucid_int, (Intercept) | -0.767 | -0.767 | 1 | -0.767 | 1 |
 | Appendix Table 2 | Coefficient, mturk_base, (Intercept) | -1.128 | -1.128 | 1 | -1.128 | 1 |
 | Appendix Table 2 | Coefficient, mturk_ctrl, (Intercept) | -1.193 | -1.193 | 1 | -1.193 | 1 |
 | Appendix Table 2 | Coefficient, mturk_int, (Intercept) | -1.225 | -1.225 | 1 | -1.225 | 1 |
 | Appendix Table 2 | Coefficient, kam_base, (Intercept) | -0.705 | -0.705 | 1 | -0.705 | 1 |
 | Appendix Table 2 | Coefficient, kam_ctrl, (Intercept) | -0.814 | -0.814 | 1 | -0.814 | 1 |
-| Appendix Table 2 | Coefficient, kam_int, (Intercept) | -0.7 | -0.7 | 1 | -0.7 | 1 |
+| Appendix Table 2 | Coefficient, kam_int, (Intercept) | -0.700 | -0.7 | 1 | -0.7 | 1 |
 | Appendix Table 2 | SE, lucid_base, mortalityfirst | 0.065 | 0.065 | 1 | 0.065 | 1 |
 | Appendix Table 2 | SE, lucid_ctrl, mortalityfirst | 0.065 | 0.065 | 1 | 0.065 | 1 |
 | Appendix Table 2 | SE, lucid_int, mortalityfirst | 0.203 | 0.206 | 0 | 0.203 | 1 |
 | Appendix Table 2 | SE, mturk_base, mortalityfirst | 0.097 | 0.097 | 1 | 0.097 | 1 |
 | Appendix Table 2 | SE, mturk_ctrl, mortalityfirst | 0.098 | 0.098 | 1 | 0.098 | 1 |
-| Appendix Table 2 | SE, mturk_int, mortalityfirst | 0.31 | 0.301 | 0 | 0.31 | 1 |
+| Appendix Table 2 | SE, mturk_int, mortalityfirst | 0.310 | 0.301 | 0 | 0.31 | 1 |
 | Appendix Table 2 | SE, kam_base, mortalityfirst | 0.098 | 0.097 | 0 | 0.098 | 1 |
-| Appendix Table 2 | SE, kam_ctrl, mortalityfirst | 0.1 | 0.099 | 0 | 0.1 | 1 |
+| Appendix Table 2 | SE, kam_ctrl, mortalityfirst | 0.100 | 0.099 | 0 | 0.1 | 1 |
 | Appendix Table 2 | SE, kam_int, mortalityfirst | 0.294 | 0.294 | 1 | 0.294 | 1 |
 | Appendix Table 2 | SE, lucid_base, ramean | 0.196 | 0.199 | 0 | 0.196 | 1 |
 | Appendix Table 2 | SE, lucid_ctrl, ramean | 0.205 | 0.209 | 0 | 0.205 | 1 |
