@@ -54,7 +54,7 @@ This repository holds the actively maintained replication code for Coppock and M
 
 **The data are not redistributed here.** The deposit is `r nrow(manifest)` files and lives at Harvard Dataverse, which is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` pins the file identifiers, sizes and checksums, so the exact bytes this code was written against are recorded in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it. `original/` is created by the download script and is deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it and holds the extraction of every claim the article makes. `errata.qmd` builds `coppock_mcclellan_2019_errata.pdf`, which lists the sentences in the article that the deposited data do not support. `original/` is created by the download script and is deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains. See `LICENSE`.
 
@@ -95,6 +95,26 @@ a1_se <- gt |> filter(str_starts(claim, "Bootstrap SE, "))
 n_a1_se <- nrow(a1_se)
 n_a1_se_in <- sum(a1_se$match_rewrite == 1, na.rm = TRUE)
 n_paper_internal <- sum(gt$defect_locus == "paper_internal", na.rm = TRUE)
+
+# The extraction of every quantity the article and its appendix state, which is what
+# coverage is measured against rather than against what the pipeline happens to produce.
+published_claims <- read_csv(here::here("ground_truth", "published_claims.csv"),
+                             col_types = cols(.default = col_character()))
+n_extracted <- nrow(published_claims)
+n_needs_block <- sum(published_claims$needs_block == "TRUE")
+n_descriptive <- sum(published_claims$claim_type == "descriptive")
+
+# The regional balance sentence, whose direction the standardized figure contradicts.
+demos_readme <- out("table_1_demographics.csv")
+fig1_readme <- out("figure_1_standardized_demos.csv")
+south_pct <- function(survey_id) {
+  as.numeric(str_extract(demos_readme[[survey_id]][demos_readme$variable == "region_south"],
+                         "^[0-9.]+"))
+}
+region_south_mturk <- south_pct("mturk")
+region_south_anes <- south_pct("anes2012")
+region_south_mturk_sd <- fig1_readme$mean[fig1_readme$variable == "region_south" &
+                                            fig1_readme$survey == "mturk"]
 ```
 
 Two questions, answered before the detail.
@@ -275,6 +295,8 @@ Every `value_paper` in this repository's ground truth is transcribed from the ar
 
 Two published quantities do not come from the procedure the paper describes. Neither is a coding slip that the maintained rewrite silently corrects: both are reported in both forms, so the published number stays reproducible and the intended one is available beside it.
 
+Six sentences in the article and its appendix state something the deposited data do not support. They are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the six changes a conclusion. What follows here is the analysis behind them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
+
 ## The appendix Table 1 p-values
 
 Section 1 of the online appendix says the standard errors come from a nonparametric bootstrap and that "we obtain two-tailed p-values under a normal approximation." The archive's `12_DistanceTests.R` computes
@@ -312,13 +334,21 @@ The note under appendix Table 2 reads "Robust standard errors are in parentheses
 
 The maintained rewrite reports both: `robust.std.error` reproduces the published table, `std.error` is what the deposited script would print.
 
-## Two counts the paper states inconsistently
+## Where the article disagrees with itself
 
-Neither of these is an archive defect; both are visible only once the numbers are recomputed.
+None of these is an archive defect; all are visible only once the numbers are recomputed.
 
-The article says that of the 11 demographic variables, "the Lucid mean is closer to the ANES mean in nine instances, five of which are statistically significant." Nine is right. The appendix table's own p-value column marks six of those nine significant, not five: female, education, age, mean income, black and south.
+The article says that of the 11 demographic variables, "the Lucid mean is closer to the ANES mean in nine instances, five of which are statistically significant." Nine is right. The appendix table's own p-value column marks six of those nine significant, not five: female, education, age, mean income, black and south. Six is also the count under the two-tailed test, so this one does not turn on the p-value expression above.
+
+"The regional balance on Lucid comes very close to the 2012 ANES, whereas the MTurk sample appears to overrepresent southerners" has the direction backwards. The southern share is `r sprintf("%.1f", region_south_mturk)` per cent on MTurk against an ANES 2012 benchmark of `r sprintf("%.1f", region_south_anes)`, and Figure 1, where the sentence sends the reader, puts MTurk `r sprintf("%.3f", abs(region_south_mturk_sd))` standard deviations below the benchmark. MTurk over-represents the Northeast and the Midwest.
 
 Appendix section 2.1.3 gives the Lucid welfare replication a sample of 1,811, which is the Lucid sample size of the Hiscox experiment reported in section 2.4.2. The welfare data have 3,294 respondents. Appendix section 2.3.1 gives the original Kam and Simas study 761 respondents where appendix Table 2 reports 752 for the same models, and section 2.5.1 describes the original Berinsky sample as MTurk where the article describes it as Survey Sampling International.
+
+## Two findings the deposit does not settle
+
+The article says the Lucid sample corresponds "more closely to the 2012 ANES baseline for voter registration and voter turnout," and says on the same page that "MTurk is significantly closer for voter turnout." Both statements are supported by a deposited file, and the two files disagree. The standardized file the distance tests read puts the ANES 2012 turnout benchmark at 0.702, which makes MTurk the closer sample and gives appendix Table 1 its −0.124; the political table's weighted mean puts the same benchmark at 0.756, which makes Lucid the closer sample. The registration comparison is unaffected and favours Lucid under both. Choosing between two deposited benchmarks is an analytical decision, which the rewrite does not make, so this is recorded rather than corrected.
+
+The heterogeneity section places the welfare replication's conditional effects "among both the Lucid sample and respondents in the 2016 GSS," twice. The deposited welfare data hold the 1984 and 2014 General Social Surveys and no other, and the article's own Experiment 1 section names the 2014 GSS as the baseline. The deposited `standardizedExperimentsHeterogeneousEffects.RData` is a pre-computed table whose comparison sample is labelled "Original" with no year and which no deposited script builds, so which survey Figure 3's original panel draws on cannot be established from the deposit.
 
 # Bootstrap stability
 
@@ -528,6 +558,14 @@ gt |>
 ```
 
 The one benchmark this cannot check is the 50.8% Census female share the article compares its 52% against: it is cited from outside the deposit and no file here contains it.
+
+## Coverage, and the second instrument
+
+The table above shows what the pipeline produces. What decides whether that is enough is `ground_truth/published_claims.csv`, an extraction of every quantity the article and the online appendix state, obtained by pulling every numeric token out of both documents with its surrounding context, sweeping separately for numbers spelled out as words, and classifying each by hand. It holds `r n_extracted` claims. `r n_needs_block` of them are quantities the pipeline can reach and each has a block in `maintained/in_text_claims.R`; the rest are scale endpoints, question wordings, field dates and figures cited from other papers, which nothing here can check and which are marked as such rather than passed over.
+
+`r n_descriptive` of the claims are descriptive: sentences about shape, sign or count, with no number in them at all. "The MTurk sample appears to overrepresent southerners" and "Lucid is significantly closer to the ANES 2012 than MTurk on all five traits" are of that kind, and neither would be caught by any comparison of numbers, because neither states one. `maintained/text_descriptive_claims.R` gives each a computed truth value from the estimates in `maintained/output/`, and the two that come back false are in the errata.
+
+`maintained/in_text_claims.R` prints every claim beside the sentence that makes it. It reaches each number out of `maintained/output/` by its own path, doing its own selection and rounding, and it never reads the ground truth. `build_ground_truth.R` runs it, counts the claims it printed against the extraction in both directions, and compares the two instruments value by value; a disagreement between them stops the build, as does a claim with a block and no ground-truth row, or a row and no block.
 
 # Rewrite verification
 

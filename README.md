@@ -15,8 +15,10 @@
   - [The appendix Table 1 p-values](#the-appendix-table-1-p-values)
   - [The appendix Table 2 standard
     errors](#the-appendix-table-2-standard-errors)
-  - [Two counts the paper states
-    inconsistently](#two-counts-the-paper-states-inconsistently)
+  - [Where the article disagrees with
+    itself](#where-the-article-disagrees-with-itself)
+  - [Two findings the deposit does not
+    settle](#two-findings-the-deposit-does-not-settle)
 - [Bootstrap stability](#bootstrap-stability)
   - [The sampler the archive was written
     under](#the-sampler-the-archive-was-written-under)
@@ -25,6 +27,8 @@
   - [Deprecated patterns replaced](#deprecated-patterns-replaced)
 - [Figures](#figures)
 - [In-text numbers](#in-text-numbers)
+  - [Coverage, and the second
+    instrument](#coverage-and-the-second-instrument)
 - [Rewrite verification](#rewrite-verification)
 - [R environment](#r-environment)
 
@@ -55,9 +59,12 @@ control even though the bytes themselves are not.
 script per table or figure, writing to `output/`, which is committed so
 a reader can compare a fresh run against it without downloading
 anything. `ground_truth/` ties every published number to the code that
-produces it. `original/` is created by the download script and is
-deliberately absent from the repository. This file is the
-reproducibility report, also available as a PDF in `report/`.
+produces it and holds the extraction of every claim the article makes.
+`errata.qmd` builds `coppock_mcclellan_2019_errata.pdf`, which lists the
+sentences in the article that the deposited data do not support.
+`original/` is created by the download script and is deliberately absent
+from the repository. This file is the reproducibility report, also
+available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this
 repository maintains. See `LICENSE`.
@@ -134,17 +141,17 @@ published paper, and the eleven scripts that run clean cannot be said to
 reproduce anything. Reading the numbers back out means capturing them
 from the session rather than from files.
 
-29 of the 192 published claims the deposited scripts can be checked
+30 of the 199 published claims the deposited scripts can be checked
 against fail to reproduce. 25 of them are standard errors in appendix
-Table 2, and none is a coefficient. 3 of the remaining 4 are places
+Table 2, and none is a coefficient. 5 of the remaining 5 are places
 where the paper disagrees with itself, and the last is a bootstrap
 standard error the deposit’s unseeded procedure cannot pin down. See the
 errata below.
 
 ## Does the maintained rewrite reproduce the paper?
 
-Yes. 188 of the 192 verifiable ground truth claims match the published
-values to reported precision. 3 of the 4 that do not are places where
+Yes. 194 of the 199 verifiable ground truth claims match the published
+values to reported precision. 5 of the 5 that do not are places where
 the article disagrees with its own appendix rather than with the code: a
 sample size the appendix appears to have copied from a different
 experiment, a sample size the appendix’s prose and its own table state
@@ -152,7 +159,7 @@ differently, and a count of significant differences that the article
 gives as five where the appendix table shows six. The last is a
 bootstrap standard error whose published value falls just outside the
 range the deposit’s own unseeded procedure produces, discussed under
-bootstrap stability below. The remaining 34 recorded quantities are ones
+bootstrap stability below. The remaining 60 recorded quantities are ones
 the rewrite computes but the paper never states.
 
 Two published quantities turn out not to mean what the paper says they
@@ -360,6 +367,15 @@ describes. Neither is a coding slip that the maintained rewrite silently
 corrects: both are reported in both forms, so the published number stays
 reproducible and the intended one is available beside it.
 
+Six sentences in the article and its appendix state something the
+deposited data do not support. They are collected in
+`coppock_mcclellan_2019_errata.pdf` at the root of this repository,
+built by `errata.qmd`, which recomputes every number in every corrected
+sentence from the deposit each time it is rendered. None of the six
+changes a conclusion. What follows here is the analysis behind them,
+plus two further findings that could not go in an errata because the
+deposit does not settle what the corrected sentence should say.
+
 ## The appendix Table 1 p-values
 
 Section 1 of the online appendix says the standard errors come from a
@@ -432,16 +448,25 @@ variance the note describes is used.
 The maintained rewrite reports both: `robust.std.error` reproduces the
 published table, `std.error` is what the deposited script would print.
 
-## Two counts the paper states inconsistently
+## Where the article disagrees with itself
 
-Neither of these is an archive defect; both are visible only once the
+None of these is an archive defect; all are visible only once the
 numbers are recomputed.
 
 The article says that of the 11 demographic variables, “the Lucid mean
 is closer to the ANES mean in nine instances, five of which are
 statistically significant.” Nine is right. The appendix table’s own
 p-value column marks six of those nine significant, not five: female,
-education, age, mean income, black and south.
+education, age, mean income, black and south. Six is also the count
+under the two-tailed test, so this one does not turn on the p-value
+expression above.
+
+“The regional balance on Lucid comes very close to the 2012 ANES,
+whereas the MTurk sample appears to overrepresent southerners” has the
+direction backwards. The southern share is 30.1 per cent on MTurk
+against an ANES 2012 benchmark of 37.2, and Figure 1, where the sentence
+sends the reader, puts MTurk 0.146 standard deviations below the
+benchmark. MTurk over-represents the Northeast and the Midwest.
 
 Appendix section 2.1.3 gives the Lucid welfare replication a sample of
 1,811, which is the Lucid sample size of the Hiscox experiment reported
@@ -450,6 +475,31 @@ section 2.3.1 gives the original Kam and Simas study 761 respondents
 where appendix Table 2 reports 752 for the same models, and section
 2.5.1 describes the original Berinsky sample as MTurk where the article
 describes it as Survey Sampling International.
+
+## Two findings the deposit does not settle
+
+The article says the Lucid sample corresponds “more closely to the 2012
+ANES baseline for voter registration and voter turnout,” and says on the
+same page that “MTurk is significantly closer for voter turnout.” Both
+statements are supported by a deposited file, and the two files
+disagree. The standardized file the distance tests read puts the ANES
+2012 turnout benchmark at 0.702, which makes MTurk the closer sample and
+gives appendix Table 1 its −0.124; the political table’s weighted mean
+puts the same benchmark at 0.756, which makes Lucid the closer sample.
+The registration comparison is unaffected and favours Lucid under both.
+Choosing between two deposited benchmarks is an analytical decision,
+which the rewrite does not make, so this is recorded rather than
+corrected.
+
+The heterogeneity section places the welfare replication’s conditional
+effects “among both the Lucid sample and respondents in the 2016 GSS,”
+twice. The deposited welfare data hold the 1984 and 2014 General Social
+Surveys and no other, and the article’s own Experiment 1 section names
+the 2014 GSS as the baseline. The deposited
+`standardizedExperimentsHeterogeneousEffects.RData` is a pre-computed
+table whose comparison sample is labelled “Original” with no year and
+which no deposited script builds, so which survey Figure 3’s original
+panel draws on cannot be established from the deposit.
 
 # Bootstrap stability
 
@@ -720,6 +770,8 @@ quantity, the cell is blank and the match column is empty.
 | Appendix study manifest | Hiscox, MTurk N | 2972 | 2972 | 1 | 2972 | 1 |
 | Appendix study manifest | Healthcare rumors, original N | 1593 | 1593 | 1 | 1593 | 1 |
 | Appendix study manifest | Healthcare rumors, Lucid N | 3503 | 3503 | 1 | 3503 | 1 |
+| Appendix study manifest | Hiscox, GfK wave 2 N | 1838 |  |  |  |  |
+| Appendix study manifest | Hiscox, MTurk wave 2 N | 2307 |  |  |  |  |
 | Text, Our sample | Lucid sample N | 3504 | 3504 | 1 | 3504 | 1 |
 | Text, Our sample | Surveys per month, mean | 4.28 | 4.28 | 1 | 4.28 | 1 |
 | Text, Our sample | Percent taking fewer than one survey per day | 98 | 98.06 | 1 | 98.06 | 1 |
@@ -754,6 +806,37 @@ quantity, the cell is blank and the match column is empty.
 | Text, Distance tests | Traits, significantly closer, two-tailed p |  | 4 |  | 4 |  |
 | Text, Healthcare rumors | Death panel belief, Lucid control mean | -0.17 | -0.172 | 1 | -0.172 | 1 |
 | Text, Healthcare rumors | Death panel belief, original control mean | -0.19 | -0.19 | 1 | -0.19 | 1 |
+| Text, Our sample, p.4 | share paid in dollars or points exceeds half |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.5 | gender, education, age and income all favour Lucid |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.5 | education distance favours Lucid |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.5 | mean and median income both sit between MTurk and the ANES 2012 face-to-face sample |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.5 | both samples sit above the benchmark white share and Lucid by less |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.5 | MTurk’s southern share sits below the benchmark, not above it |  | 0 |  | 0 |  |
+| Text, Baseline characteristics, p.6 | registration favours Lucid and turnout favours MTurk |  | 0 |  | 0 |  |
+| Text, Baseline characteristics, p.6 | MTurk sits furthest below the benchmark on the conservatism scale |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.6 | MTurk lowest and Lucid highest on political interest |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.6 | MTurk above the ANES panel and Lucid nearer to it than MTurk is |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.6 | three characteristics favour Lucid and turnout favours MTurk, all significant |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.6 | MTurk is lowest on support for senior drug benefits and youngest |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.6 | Lucid nearer the ANES 2012 than MTurk on conscientiousness and stability |  | 1 |  | 1 |  |
+| Text, Baseline characteristics, p.6 | under the two-tailed test the appendix describes, extraversion does not clear 0.05 |  | 0 |  | 0 |  |
+| Text, Experiments, p.6 | the Berinsky facet carries no MTurk estimate |  | 1 |  | 1 |  |
+| Text, Treatment effect heterogeneity, p.9 | the three race conditional effects overlap in both samples |  | 1 |  | 1 |  |
+| Text, Treatment effect heterogeneity, p.9 | the risk acceptance interaction spans zero in both samples |  | 1 |  | 1 |  |
+| Text, Treatment effect heterogeneity, p.9 | conditional effects overlap within every frame by sample cell |  | 1 |  | 1 |  |
+| Text, Treatment effect heterogeneity, p.9 | the Democratic correction among Democrats is the only conditional effect that differs between samples |  | 1 |  | 1 |  |
+| Text, Discussion, p.12 | more than half the Lucid estimates agree with the original on sign and significance |  | 1 |  | 1 |  |
+| Text, Appendix 1 | the published p-value column is the archive’s own expression, not the two-tailed test |  | 0 |  | 0 |  |
+| Text, Treatment effect heterogeneity, p.9 | experiments with at least one conditional average treatment effect | 4 | 4 | 1 | 4 | 1 |
+| Text, Baseline characteristics, p.6 | policy items with an unambiguous direction on which Lucid polls more conservatively |  | 2 |  | 2 |  |
+| Text, Discussion, p.12 | Lucid estimates that are significant with the opposite sign from the original | 0 | 0 | 1 | 0 | 1 |
+| Text, Discussion, p.12 | experiments with at least one sign or significance mismatch against the original |  | 2 |  | 2 |  |
+| Text, Fit for purpose | Experiments replicated | 5 | 5 | 1 | 5 | 1 |
+| Figure 1 | ANES 2012 standardized to mean zero |  | 4.74200754701305e-16 |  | 4.74200754701305e-16 |  |
+| Text, Experiments | Confidence level | 95 | 95.0598242256987 | 1 | 95.0598242256987 | 1 |
+| Text, Experiment 4 | Levels of the expert factor | 2 | 2 | 1 | 2 | 1 |
+| Text, Experiment 4 | Levels of the valence factor | 4 | 4 | 1 | 4 | 1 |
+| Text, Treatment effect heterogeneity | GSS baseline year | 2016 | 2014 | 0 | 2014 | 0 |
 | Figure 1 | All plotted estimates and confidence bounds |  |  |  |  |  |
 | Figure 2 | All plotted estimates and confidence bounds |  |  |  |  |  |
 | Figure 3 | All plotted estimates and confidence bounds |  |  |  |  |  |
@@ -764,9 +847,9 @@ quantity, the cell is blank and the match column is empty.
 Ground truth: published value against the deposited scripts and against
 the maintained rewrite.
 
-Of the 226 recorded claims, 192 can be compared against a published
-value. 163 of those match what the deposited scripts produce and 29 do
-not; 188 match the maintained rewrite and 4 do not.
+Of the 259 recorded claims, 199 can be compared against a published
+value. 169 of those match what the deposited scripts produce and 30 do
+not; 194 match the maintained rewrite and 5 do not.
 
 # Maintained rewrite
 
@@ -894,6 +977,36 @@ two are joined there, which is what the table below shows.
 | Distance tests | Traits, significantly closer, two-tailed p | 4 |  |
 | Healthcare rumors | Death panel belief, Lucid control mean | -0.172 | -0.17 |
 | Healthcare rumors | Death panel belief, original control mean | -0.19 | -0.19 |
+| Our sample, p.4 | share paid in dollars or points exceeds half | 1 |  |
+| Baseline characteristics, p.5 | gender, education, age and income all favour Lucid | 1 |  |
+| Baseline characteristics, p.5 | education distance favours Lucid | 1 |  |
+| Baseline characteristics, p.5 | mean and median income both sit between MTurk and the ANES 2012 face-to-face sample | 1 |  |
+| Baseline characteristics, p.5 | both samples sit above the benchmark white share and Lucid by less | 1 |  |
+| Baseline characteristics, p.5 | MTurk’s southern share sits below the benchmark, not above it | 0 |  |
+| Baseline characteristics, p.6 | registration favours Lucid and turnout favours MTurk | 0 |  |
+| Baseline characteristics, p.6 | MTurk sits furthest below the benchmark on the conservatism scale | 1 |  |
+| Baseline characteristics, p.6 | MTurk lowest and Lucid highest on political interest | 1 |  |
+| Baseline characteristics, p.6 | MTurk above the ANES panel and Lucid nearer to it than MTurk is | 1 |  |
+| Baseline characteristics, p.6 | three characteristics favour Lucid and turnout favours MTurk, all significant | 1 |  |
+| Baseline characteristics, p.6 | MTurk is lowest on support for senior drug benefits and youngest | 1 |  |
+| Baseline characteristics, p.6 | Lucid nearer the ANES 2012 than MTurk on conscientiousness and stability | 1 |  |
+| Baseline characteristics, p.6 | under the two-tailed test the appendix describes, extraversion does not clear 0.05 | 0 |  |
+| Experiments, p.6 | the Berinsky facet carries no MTurk estimate | 1 |  |
+| Treatment effect heterogeneity, p.9 | the three race conditional effects overlap in both samples | 1 |  |
+| Treatment effect heterogeneity, p.9 | the risk acceptance interaction spans zero in both samples | 1 |  |
+| Treatment effect heterogeneity, p.9 | conditional effects overlap within every frame by sample cell | 1 |  |
+| Treatment effect heterogeneity, p.9 | the Democratic correction among Democrats is the only conditional effect that differs between samples | 1 |  |
+| Discussion, p.12 | more than half the Lucid estimates agree with the original on sign and significance | 1 |  |
+| Appendix 1 | the published p-value column is the archive’s own expression, not the two-tailed test | 0 |  |
+| Treatment effect heterogeneity, p.9 | experiments with at least one conditional average treatment effect | 4 | 4 |
+| Baseline characteristics, p.6 | policy items with an unambiguous direction on which Lucid polls more conservatively | 2 |  |
+| Discussion, p.12 | Lucid estimates that are significant with the opposite sign from the original | 0 | 0 |
+| Discussion, p.12 | experiments with at least one sign or significance mismatch against the original | 2 |  |
+| Fit for purpose | Experiments replicated | 5 | 5 |
+| Experiments | Confidence level | 95.0598242256987 | 95 |
+| Experiment 4 | Levels of the expert factor | 2 | 2 |
+| Experiment 4 | Levels of the valence factor | 4 | 4 |
+| Treatment effect heterogeneity | GSS baseline year | 2014 | 2016 |
 
 In-text claims. A blank article column marks a quantity the pipeline
 produces to support a comparative claim the article states in words
@@ -902,6 +1015,37 @@ rather than in numbers.
 The one benchmark this cannot check is the 50.8% Census female share the
 article compares its 52% against: it is cited from outside the deposit
 and no file here contains it.
+
+## Coverage, and the second instrument
+
+The table above shows what the pipeline produces. What decides whether
+that is enough is `ground_truth/published_claims.csv`, an extraction of
+every quantity the article and the online appendix state, obtained by
+pulling every numeric token out of both documents with its surrounding
+context, sweeping separately for numbers spelled out as words, and
+classifying each by hand. It holds 255 claims. 221 of them are
+quantities the pipeline can reach and each has a block in
+`maintained/in_text_claims.R`; the rest are scale endpoints, question
+wordings, field dates and figures cited from other papers, which nothing
+here can check and which are marked as such rather than passed over.
+
+25 of the claims are descriptive: sentences about shape, sign or count,
+with no number in them at all. “The MTurk sample appears to
+overrepresent southerners” and “Lucid is significantly closer to the
+ANES 2012 than MTurk on all five traits” are of that kind, and neither
+would be caught by any comparison of numbers, because neither states
+one. `maintained/text_descriptive_claims.R` gives each a computed truth
+value from the estimates in `maintained/output/`, and the two that come
+back false are in the errata.
+
+`maintained/in_text_claims.R` prints every claim beside the sentence
+that makes it. It reaches each number out of `maintained/output/` by its
+own path, doing its own selection and rounding, and it never reads the
+ground truth. `build_ground_truth.R` runs it, counts the claims it
+printed against the extraction in both directions, and compares the two
+instruments value by value; a disagreement between them stops the build,
+as does a claim with a block and no ground-truth row, or a row and no
+block.
 
 # Rewrite verification
 
@@ -938,7 +1082,7 @@ writing nothing at all.
 |:----------|:-----------------------|
 | R version | 4.6.0                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-08-02             |
+| Date run  | 2026-08-03             |
 
 | Package      | Version |
 |:-------------|:--------|

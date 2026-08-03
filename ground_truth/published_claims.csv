@@ -1,0 +1,256 @@
+claim_id,location,claim_type,value_paper,needs_block
+a1_distance_age,Appendix Table 1,pipeline,0.708,TRUE
+a1_distance_agreeableness,Appendix Table 1,pipeline,0.203,TRUE
+a1_distance_conscientiousness,Appendix Table 1,pipeline,0.420,TRUE
+a1_distance_education,Appendix Table 1,pipeline,0.285,TRUE
+a1_distance_emotionalstability,Appendix Table 1,pipeline,0.248,TRUE
+a1_distance_extraversion,Appendix Table 1,pipeline,0.100,TRUE
+a1_distance_female,Appendix Table 1,pipeline,0.159,TRUE
+a1_distance_ideology,Appendix Table 1,pipeline,0.465,TRUE
+a1_distance_income,Appendix Table 1,pipeline,0.099,TRUE
+a1_distance_interest,Appendix Table 1,pipeline,0.540,TRUE
+a1_distance_opennesstoexperiences,Appendix Table 1,pipeline,0.157,TRUE
+a1_distance_party7,Appendix Table 1,pipeline,0.117,TRUE
+a1_distance_race_black,Appendix Table 1,pipeline,0.152,TRUE
+a1_distance_race_hispanic,Appendix Table 1,pipeline,-0.042,TRUE
+a1_distance_race_white,Appendix Table 1,pipeline,0.018,TRUE
+a1_distance_region_midwest,Appendix Table 1,pipeline,0.052,TRUE
+a1_distance_region_northeast,Appendix Table 1,pipeline,0.079,TRUE
+a1_distance_region_south,Appendix Table 1,pipeline,0.137,TRUE
+a1_distance_region_west,Appendix Table 1,pipeline,-0.007,TRUE
+a1_distance_register,Appendix Table 1,pipeline,0.076,TRUE
+a1_distance_vote,Appendix Table 1,pipeline,-0.124,TRUE
+a1_p_age,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_agreeableness,Appendix Table 1,pipeline,0.001,TRUE
+a1_p_conscientiousness,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_education,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_emotionalstability,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_extraversion,Appendix Table 1,pipeline,0.034,TRUE
+a1_p_female,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_ideology,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_income,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_interest,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_opennesstoexperiences,Appendix Table 1,pipeline,0.005,TRUE
+a1_p_party7,Appendix Table 1,pipeline,0.010,TRUE
+a1_p_race_black,Appendix Table 1,pipeline,0.000,TRUE
+a1_p_race_hispanic,Appendix Table 1,pipeline,0.357,TRUE
+a1_p_race_white,Appendix Table 1,pipeline,0.873,TRUE
+a1_p_region_midwest,Appendix Table 1,pipeline,0.409,TRUE
+a1_p_region_northeast,Appendix Table 1,pipeline,0.179,TRUE
+a1_p_region_south,Appendix Table 1,pipeline,0.010,TRUE
+a1_p_region_west,Appendix Table 1,pipeline,0.948,TRUE
+a1_p_register,Appendix Table 1,pipeline,0.157,TRUE
+a1_p_vote,Appendix Table 1,pipeline,0.000,TRUE
+a1_se_age,Appendix Table 1,pipeline,0.032,TRUE
+a1_se_agreeableness,Appendix Table 1,pipeline,0.077,TRUE
+a1_se_conscientiousness,Appendix Table 1,pipeline,0.065,TRUE
+a1_se_education,Appendix Table 1,pipeline,0.041,TRUE
+a1_se_emotionalstability,Appendix Table 1,pipeline,0.054,TRUE
+a1_se_extraversion,Appendix Table 1,pipeline,0.052,TRUE
+a1_se_female,Appendix Table 1,pipeline,0.049,TRUE
+a1_se_ideology,Appendix Table 1,pipeline,0.069,TRUE
+a1_se_income,Appendix Table 1,pipeline,0.033,TRUE
+a1_se_interest,Appendix Table 1,pipeline,0.082,TRUE
+a1_se_opennesstoexperiences,Appendix Table 1,pipeline,0.069,TRUE
+a1_se_party7,Appendix Table 1,pipeline,0.055,TRUE
+a1_se_race_black,Appendix Table 1,pipeline,0.033,TRUE
+a1_se_race_hispanic,Appendix Table 1,pipeline,0.035,TRUE
+a1_se_race_white,Appendix Table 1,pipeline,0.041,TRUE
+a1_se_region_midwest,Appendix Table 1,pipeline,0.046,TRUE
+a1_se_region_northeast,Appendix Table 1,pipeline,0.054,TRUE
+a1_se_region_south,Appendix Table 1,pipeline,0.064,TRUE
+a1_se_region_west,Appendix Table 1,pipeline,0.039,TRUE
+a1_se_register,Appendix Table 1,pipeline,0.050,TRUE
+a1_se_vote,Appendix Table 1,pipeline,0.044,TRUE
+a2_aic_kam_base,Appendix Table 2,pipeline,912.392,TRUE
+a2_aic_kam_ctrl,Appendix Table 2,pipeline,917.727,TRUE
+a2_aic_kam_int,Appendix Table 2,pipeline,914.391,TRUE
+a2_aic_lucid_base,Appendix Table 2,pipeline,2060.424,TRUE
+a2_aic_lucid_ctrl,Appendix Table 2,pipeline,2047.524,TRUE
+a2_aic_lucid_int,Appendix Table 2,pipeline,2060.713,TRUE
+a2_aic_mturk_base,Appendix Table 2,pipeline,902.092,TRUE
+a2_aic_mturk_ctrl,Appendix Table 2,pipeline,911.755,TRUE
+a2_aic_mturk_int,Appendix Table 2,pipeline,903.646,TRUE
+a2_coef_kam_base_int,Appendix Table 2,pipeline,-0.705,TRUE
+a2_coef_kam_base_mf,Appendix Table 2,pipeline,1.068,TRUE
+a2_coef_kam_base_ra,Appendix Table 2,pipeline,0.520,TRUE
+a2_coef_kam_ctrl_int,Appendix Table 2,pipeline,-0.814,TRUE
+a2_coef_kam_ctrl_mf,Appendix Table 2,pipeline,1.091,TRUE
+a2_coef_kam_ctrl_ra,Appendix Table 2,pipeline,0.587,TRUE
+a2_coef_kam_int_int,Appendix Table 2,pipeline,-0.700,TRUE
+a2_coef_kam_int_mf,Appendix Table 2,pipeline,1.059,TRUE
+a2_coef_kam_int_ra,Appendix Table 2,pipeline,0.506,TRUE
+a2_coef_kam_int_raxmf,Appendix Table 2,pipeline,0.022,TRUE
+a2_coef_lucid_base_int,Appendix Table 2,pipeline,-0.634,TRUE
+a2_coef_lucid_base_mf,Appendix Table 2,pipeline,0.898,TRUE
+a2_coef_lucid_base_ra,Appendix Table 2,pipeline,0.253,TRUE
+a2_coef_lucid_ctrl_int,Appendix Table 2,pipeline,-1.040,TRUE
+a2_coef_lucid_ctrl_mf,Appendix Table 2,pipeline,0.898,TRUE
+a2_coef_lucid_ctrl_ra,Appendix Table 2,pipeline,0.516,TRUE
+a2_coef_lucid_int_int,Appendix Table 2,pipeline,-0.767,TRUE
+a2_coef_lucid_int_mf,Appendix Table 2,pipeline,1.155,TRUE
+a2_coef_lucid_int_ra,Appendix Table 2,pipeline,0.522,TRUE
+a2_coef_lucid_int_raxmf,Appendix Table 2,pipeline,-0.523,TRUE
+a2_coef_mturk_base_int,Appendix Table 2,pipeline,-1.128,TRUE
+a2_coef_mturk_base_mf,Appendix Table 2,pipeline,1.182,TRUE
+a2_coef_mturk_base_ra,Appendix Table 2,pipeline,0.906,TRUE
+a2_coef_mturk_ctrl_int,Appendix Table 2,pipeline,-1.193,TRUE
+a2_coef_mturk_ctrl_mf,Appendix Table 2,pipeline,1.184,TRUE
+a2_coef_mturk_ctrl_ra,Appendix Table 2,pipeline,0.953,TRUE
+a2_coef_mturk_int_int,Appendix Table 2,pipeline,-1.225,TRUE
+a2_coef_mturk_int_mf,Appendix Table 2,pipeline,1.370,TRUE
+a2_coef_mturk_int_ra,Appendix Table 2,pipeline,1.090,TRUE
+a2_coef_mturk_int_raxmf,Appendix Table 2,pipeline,-0.368,TRUE
+a2_loglik_kam_base,Appendix Table 2,pipeline,-453.196,TRUE
+a2_loglik_kam_ctrl,Appendix Table 2,pipeline,-450.863,TRUE
+a2_loglik_kam_int,Appendix Table 2,pipeline,-453.195,TRUE
+a2_loglik_lucid_base,Appendix Table 2,pipeline,-1027.212,TRUE
+a2_loglik_lucid_ctrl,Appendix Table 2,pipeline,-1015.762,TRUE
+a2_loglik_lucid_int,Appendix Table 2,pipeline,-1026.356,TRUE
+a2_loglik_mturk_base,Appendix Table 2,pipeline,-448.046,TRUE
+a2_loglik_mturk_ctrl,Appendix Table 2,pipeline,-447.878,TRUE
+a2_loglik_mturk_int,Appendix Table 2,pipeline,-447.823,TRUE
+a2_nobs_kam_base,Appendix Table 2,pipeline,752,TRUE
+a2_nobs_kam_ctrl,Appendix Table 2,pipeline,752,TRUE
+a2_nobs_kam_int,Appendix Table 2,pipeline,752,TRUE
+a2_nobs_lucid_base,Appendix Table 2,pipeline,1629,TRUE
+a2_nobs_lucid_ctrl,Appendix Table 2,pipeline,1629,TRUE
+a2_nobs_lucid_int,Appendix Table 2,pipeline,1629,TRUE
+a2_nobs_mturk_base,Appendix Table 2,pipeline,766,TRUE
+a2_nobs_mturk_ctrl,Appendix Table 2,pipeline,766,TRUE
+a2_nobs_mturk_int,Appendix Table 2,pipeline,766,TRUE
+a2_se_kam_base_int,Appendix Table 2,pipeline,0.154,TRUE
+a2_se_kam_base_mf,Appendix Table 2,pipeline,0.098,TRUE
+a2_se_kam_base_ra,Appendix Table 2,pipeline,0.303,TRUE
+a2_se_kam_ctrl_int,Appendix Table 2,pipeline,0.275,TRUE
+a2_se_kam_ctrl_mf,Appendix Table 2,pipeline,0.100,TRUE
+a2_se_kam_ctrl_ra,Appendix Table 2,pipeline,0.325,TRUE
+a2_se_kam_int_int,Appendix Table 2,pipeline,0.229,TRUE
+a2_se_kam_int_mf,Appendix Table 2,pipeline,0.294,TRUE
+a2_se_kam_int_ra,Appendix Table 2,pipeline,0.485,TRUE
+a2_se_kam_int_raxmf,Appendix Table 2,pipeline,0.621,TRUE
+a2_se_lucid_base_int,Appendix Table 2,pipeline,0.106,TRUE
+a2_se_lucid_base_mf,Appendix Table 2,pipeline,0.065,TRUE
+a2_se_lucid_base_ra,Appendix Table 2,pipeline,0.196,TRUE
+a2_se_lucid_ctrl_int,Appendix Table 2,pipeline,0.176,TRUE
+a2_se_lucid_ctrl_mf,Appendix Table 2,pipeline,0.065,TRUE
+a2_se_lucid_ctrl_ra,Appendix Table 2,pipeline,0.205,TRUE
+a2_se_lucid_int_int,Appendix Table 2,pipeline,0.141,TRUE
+a2_se_lucid_int_mf,Appendix Table 2,pipeline,0.203,TRUE
+a2_se_lucid_int_ra,Appendix Table 2,pipeline,0.269,TRUE
+a2_se_lucid_int_raxmf,Appendix Table 2,pipeline,0.393,TRUE
+a2_se_mturk_base_int,Appendix Table 2,pipeline,0.163,TRUE
+a2_se_mturk_base_mf,Appendix Table 2,pipeline,0.097,TRUE
+a2_se_mturk_base_ra,Appendix Table 2,pipeline,0.283,TRUE
+a2_se_mturk_ctrl_int,Appendix Table 2,pipeline,0.281,TRUE
+a2_se_mturk_ctrl_mf,Appendix Table 2,pipeline,0.098,TRUE
+a2_se_mturk_ctrl_ra,Appendix Table 2,pipeline,0.293,TRUE
+a2_se_mturk_int_int,Appendix Table 2,pipeline,0.229,TRUE
+a2_se_mturk_int_mf,Appendix Table 2,pipeline,0.310,TRUE
+a2_se_mturk_int_ra,Appendix Table 2,pipeline,0.412,TRUE
+a2_se_mturk_int_raxmf,Appendix Table 2,pipeline,0.569,TRUE
+appendix_lucid_closer,Appendix 1,pipeline,18,TRUE
+appendix_lucid_closer_significant,Appendix 1,pipeline,14,TRUE
+appendix_mturk_closer,Appendix 1,pipeline,3,TRUE
+appendix_mturk_closer_significant,Appendix 1,pipeline,1,TRUE
+appendix_opportunities,Appendix 1,pipeline,21,TRUE
+compensation_mean,"Our sample, p.4",pipeline,5.01,TRUE
+compensation_mean_trimmed,"Our sample, p.4",pipeline,1.16,TRUE
+demographic_lucid_closer,"Baseline characteristics, p.6",pipeline,9,TRUE
+demographic_significantly_closer,"Baseline characteristics, p.6",pipeline,5,TRUE
+demographic_variables_tested,"Baseline characteristics, p.6",pipeline,11,TRUE
+education_anes,"Baseline characteristics, p.5",pipeline,13.5,TRUE
+education_lucid,"Baseline characteristics, p.5",pipeline,14.2,TRUE
+female_lucid,"Baseline characteristics, p.5",pipeline,52,TRUE
+female_mturk,"Baseline characteristics, p.5",pipeline,60,TRUE
+interest_lucid_minus_mturk,"Baseline characteristics, p.6",pipeline,1.2,TRUE
+manifest_ad_lucid_n,Appendix 2.2.2,pipeline,1813,TRUE
+manifest_ad_original_n,Appendix 2.2.1,pipeline,307,TRUE
+manifest_hiscox_gfk_n,Appendix 2.4.3,pipeline,2084,TRUE
+manifest_hiscox_lucid_n,Appendix 2.4.2,pipeline,1811,TRUE
+manifest_hiscox_mturk_n,Appendix 2.4.4,pipeline,2972,TRUE
+manifest_hiscox_original_n,Appendix 2.4.1,pipeline,1578,TRUE
+manifest_ks_lucid_n,Appendix 2.3.2,pipeline,1629,TRUE
+manifest_ks_mturk_n,Appendix 2.3.3,pipeline,766,TRUE
+manifest_ks_original_n,Appendix 2.3.1,pipeline,761,TRUE
+manifest_rumors_lucid_n,Appendix 2.5.2,pipeline,3503,TRUE
+manifest_rumors_original_n,Appendix 2.5.1,pipeline,1593,TRUE
+manifest_welfare_gss14_n,Appendix 2.1.2,pipeline,2457,TRUE
+manifest_welfare_gss84_n,Appendix 2.1.1,pipeline,943,TRUE
+manifest_welfare_lucid_n,Appendix 2.1.3,pipeline,1811,TRUE
+manifest_welfare_mturk_n,Appendix 2.1.4,pipeline,494,TRUE
+party7_anes2012,"Baseline characteristics, p.6",pipeline,3.7,TRUE
+party7_lucid,"Baseline characteristics, p.6",pipeline,3.7,TRUE
+party7_mturk,"Baseline characteristics, p.6",pipeline,3.5,TRUE
+rumor_lucid_control_mean,"Experiment 5, p.9",pipeline,-0.17,TRUE
+rumor_original_control_mean,"Experiment 5, p.9",pipeline,-0.19,TRUE
+sample_lucid_n,"Our sample, p.4",pipeline,3504,TRUE
+share_surveys_at_home,"Our sample, p.4",pipeline,94,TRUE
+share_under_one_survey_a_day,"Our sample, p.4",pipeline,98,TRUE
+surveys_per_month_mean,"Our sample, p.4",pipeline,4.28,TRUE
+surveys_per_month_trimmed,"Our sample, p.4",pipeline,2.43,TRUE
+appendix_two_tailed_method,Appendix 1,descriptive,,TRUE
+berinsky_no_mturk_estimate,"Experiments, p.6",descriptive,,TRUE
+berinsky_only_democratic_correction,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
+education_lucid_closer_than_mturk,"Baseline characteristics, p.5",descriptive,,TRUE
+heterogeneity_four_of_five,"Treatment effect heterogeneity, p.9",descriptive,4,TRUE
+hiscox_no_heterogeneity,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
+income_lucid_between_anes_and_mturk,"Baseline characteristics, p.5",descriptive,,TRUE
+interest_mturk_least_lucid_most,"Baseline characteristics, p.6",descriptive,,TRUE
+kamsimas_no_conditioning,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
+knowledge_mturk_above_anes_lucid_similar,"Baseline characteristics, p.6",descriptive,,TRUE
+lucid_closer_on_four_demographics,"Baseline characteristics, p.5",descriptive,,TRUE
+lucid_closer_registration_and_turnout,"Baseline characteristics, p.6",descriptive,,TRUE
+lucid_tracks_benchmarks_on_traits,"Baseline characteristics, p.6",descriptive,,TRUE
+majority_paid_dollars_or_points,"Our sample, p.4",descriptive,,TRUE
+most_cases_matched_sign_and_significance,"Discussion, p.12",descriptive,,TRUE
+mturk_least_favors_senior_drugs,"Baseline characteristics, p.6",descriptive,,TRUE
+mturk_more_liberal,"Baseline characteristics, p.6",descriptive,,TRUE
+mturk_overrepresents_southerners,"Baseline characteristics, p.5",descriptive,,TRUE
+one_substantively_different_result,"Discussion, p.12",descriptive,,TRUE
+policy_lucid_more_conservative,"Baseline characteristics, p.6",descriptive,,TRUE
+sig_closer_party_ideology_interest,"Baseline characteristics, p.6",descriptive,,TRUE
+traits_all_five_significantly_closer,"Baseline characteristics, p.6",descriptive,,TRUE
+welfare_cates_indistinguishable,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
+white_overrepresented_less_on_lucid,"Baseline characteristics, p.5",descriptive,,TRUE
+zero_cases_significant_opposite_sign,"Discussion, p.12",descriptive,0,TRUE
+appendix_hiscox_factorial,Appendix 2.4.1,definitional,2,FALSE
+appendix_rumor_factorial,Appendix 2.5.1,definitional,2,FALSE
+big_five_traits,"Baseline characteristics, p.6",definitional,5,FALSE
+compensation_trim_threshold,"Our sample, p.4",definitional,20.00,FALSE
+figure_1_standardization,"Baseline characteristics, p.5",definitional,,TRUE
+hc2_ci_level,"Experiments, p.6",definitional,95,TRUE
+hiscox_expert_levels,"Experiment 4, p.8",definitional,2,TRUE
+hiscox_valence_levels,"Experiment 4, p.8",definitional,4,TRUE
+interest_scale_points,"Baseline characteristics, p.6",definitional,5,FALSE
+lucid_2015_unique_respondents,"Our sample, p.4",definitional,30,FALSE
+lucid_cost_per_response,"Our sample, p.4",definitional,1,FALSE
+lucid_daily_respondents,"Our sample, p.4",definitional,375000,FALSE
+lucid_demographic_refresh_months,"Our sample, p.4",definitional,3,FALSE
+lucid_double_optin_share,"Our sample, p.4",definitional,95,FALSE
+lucid_survey_minutes,"Our sample, p.4",definitional,10,FALSE
+questionnaire_income_threshold,Appendix questionnaire,definitional,200000,FALSE
+questionnaire_minutes,Appendix questionnaire,definitional,15,FALSE
+questionnaire_tipi_points,Appendix questionnaire,definitional,7,FALSE
+rumor_scale_endpoints,"Experiment 5, p.9",definitional,1,FALSE
+theory_heterogeneity_kinds,"Fit for purpose, p.3",definitional,3,FALSE
+theory_two_by_two,"Fit for purpose, p.3",definitional,2,FALSE
+discussion_five_experiments,"Discussion, p.12",structural,5,FALSE
+intro_five_experiments,"Fit for purpose, p.3",structural,5,TRUE
+manifest_hiscox_gfk_wave2_n,Appendix 2.4.3,structural,1838,FALSE
+manifest_hiscox_mturk_wave2_n,Appendix 2.4.4,structural,2307,FALSE
+questionnaire_items,Appendix questionnaire,structural,92,FALSE
+rumor_intervening_years,"Experiment 5, p.9",structural,6,FALSE
+sample_month,"Our sample, p.4",structural,,FALSE
+table1_all_humans_cases,"Fit for purpose, p.3",structural,2,FALSE
+table1_english_speaking_cases,"Fit for purpose, p.3",structural,3,FALSE
+table1_title_five_studies,Table 1,structural,5,FALSE
+welfare_gss_year,"Treatment effect heterogeneity, p.9",structural,2016,TRUE
+appendix_risk_battery_items,Appendix 2.3,transcribed,7,FALSE
+asian_disease_deaths,"Experiment 2, p.6",transcribed,600,FALSE
+asian_disease_die,"Experiment 2, p.6",transcribed,400,FALSE
+asian_disease_saved,"Experiment 2, p.6",transcribed,200,FALSE
+asian_disease_thirds,"Experiment 2, p.6",transcribed,3,FALSE
+female_census,"Baseline characteristics, p.5",transcribed,50.8,FALSE
+flores_coppock_bilinguals,"Our sample, p.4",transcribed,2866,FALSE
+intro_mturk_pool_size,"Introduction, p.2",transcribed,7300,FALSE

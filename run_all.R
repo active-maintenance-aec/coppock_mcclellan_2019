@@ -42,12 +42,20 @@ source(here::here("maintained", "appendix_table_1_bootstrap_stability.R"))
 source(here::here("maintained", "appendix_table_1_rounding_sampler.R"))
 
 # In-text numbers ----
-# Reads the table outputs above, so it runs last.
+# Both read the table and figure outputs above, so they run after them.
 source(here::here("maintained", "text_in_text_claims.R"))
+source(here::here("maintained", "text_descriptive_claims.R"))
 
 # Ground truth ----
-# Reads maintained/output/ only, so it runs after everything that writes there.
+# Reads maintained/output/ only, so it runs after everything that writes there. It also
+# runs maintained/in_text_claims.R under capture.output, counts the claims that file
+# printed against the extraction, and compares the two instruments value by value.
 source(here::here("ground_truth", "build_ground_truth.R"))
+
+# In-text claims, for a reader ----
+# The gate above ran this file and read only what it printed. Running it again here is
+# what puts the claims beside their sentences in the console log.
+source(here::here("maintained", "in_text_claims.R"))
 
 # Deposited archive, again ----
 # The check at the top of this file is a precondition: it says original/ was intact

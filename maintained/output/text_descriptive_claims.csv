@@ -1,0 +1,26 @@
+claim_id,value,holds,evidence
+majority_paid_dollars_or_points,1,TRUE,share paid in dollars or points exceeds half
+lucid_closer_on_four_demographics,1,TRUE,"gender, education, age and income all favour Lucid"
+education_lucid_closer_than_mturk,1,TRUE,education distance favours Lucid
+income_lucid_between_anes_and_mturk,1,TRUE,mean and median income both sit between MTurk and the ANES 2012 face-to-face sample
+white_overrepresented_less_on_lucid,1,TRUE,both samples sit above the benchmark white share and Lucid by less
+mturk_overrepresents_southerners,0,FALSE,"MTurk's southern share sits below the benchmark, not above it"
+lucid_closer_registration_and_turnout,0,FALSE,registration favours Lucid and turnout favours MTurk
+mturk_more_liberal,1,TRUE,MTurk sits furthest below the benchmark on the conservatism scale
+interest_mturk_least_lucid_most,1,TRUE,MTurk lowest and Lucid highest on political interest
+knowledge_mturk_above_anes_lucid_similar,1,TRUE,MTurk above the ANES panel and Lucid nearer to it than MTurk is
+sig_closer_party_ideology_interest,1,TRUE,"three characteristics favour Lucid and turnout favours MTurk, all significant"
+mturk_least_favors_senior_drugs,1,TRUE,MTurk is lowest on support for senior drug benefits and youngest
+lucid_tracks_benchmarks_on_traits,1,TRUE,Lucid nearer the ANES 2012 than MTurk on conscientiousness and stability
+traits_all_five_significantly_closer,0,FALSE,"under the two-tailed test the appendix describes, extraversion does not clear 0.05"
+berinsky_no_mturk_estimate,1,TRUE,the Berinsky facet carries no MTurk estimate
+welfare_cates_indistinguishable,1,TRUE,the three race conditional effects overlap in both samples
+kamsimas_no_conditioning,1,TRUE,the risk acceptance interaction spans zero in both samples
+hiscox_no_heterogeneity,1,TRUE,conditional effects overlap within every frame by sample cell
+berinsky_only_democratic_correction,1,TRUE,the Democratic correction among Democrats is the only conditional effect that differs between samples
+most_cases_matched_sign_and_significance,1,TRUE,more than half the Lucid estimates agree with the original on sign and significance
+appendix_two_tailed_method,0,FALSE,"the published p-value column is the archive's own expression, not the two-tailed test"
+heterogeneity_four_of_five,4,NA,experiments with at least one conditional average treatment effect
+policy_lucid_more_conservative,2,NA,policy items with an unambiguous direction on which Lucid polls more conservatively
+zero_cases_significant_opposite_sign,0,NA,Lucid estimates that are significant with the opposite sign from the original
+one_substantively_different_result,2,NA,experiments with at least one sign or significance mismatch against the original
