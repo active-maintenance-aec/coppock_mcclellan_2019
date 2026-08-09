@@ -546,9 +546,19 @@ gt$match_rewrite[stochastic] <- gt$in_interval[stochastic]
 # beside the claim it belongs to rather than in a list of claim labels far from them.
 gt <- gt |>
   mutate(
+    # A row is adverse when ANY verdict is 0. Keying the locus on match_rewrite alone
+    # exempts the archive-fails-while-the-rewrite-matches shape, which is 25 of the
+    # rows below and the commonest adverse shape in this paper.
+    adverse = (!is.na(match) & match == 0) |
+      (!is.na(match_rewrite) & match_rewrite == 0) |
+      (!is.na(holds) & holds == 0),
     defect_locus = case_when(
       !is.na(defect_locus_fixed) ~ defect_locus_fixed,
-      is.na(match_rewrite) | match_rewrite == 1 ~ NA_character_,
+      !adverse ~ NA_character_,
+      # Appendix Table 2's standard errors. The table's own note says HC2, the deposited
+      # script passes no se = argument and so prints the model-based SE, and the rewrite
+      # reproduces the published value. The deposit is the side that fails.
+      match == 0 & match_rewrite == 1 & str_starts(claim, "SE, ") ~ "archive",
       claim %in% c("Welfare, Lucid N", "Kam and Simas, original N",
                    "Demographic, significantly closer, archive p") ~ "paper_internal",
       .default = "unresolved"
@@ -654,11 +664,15 @@ if (nrow(instrument_disagreements) > 0) {
 # A failure with no locus reads as a fault in the rewrite, which it almost never is; a
 # locus with no failure is a verdict nothing supports. A claim the article makes that
 # neither instrument can compare either way needs a locus too, since that is exactly the
-# shape that otherwise disappears into the unverifiable bucket.
-failing <- (!is.na(gt$match_rewrite) & gt$match_rewrite == 0) |
+# shape that otherwise disappears into the unverifiable bucket. A row is failing when
+# ANY of the three verdicts is 0, so a row the archive misses and the rewrite matches
+# is a failure here, not a pass.
+failing <- (!is.na(gt$match) & gt$match == 0) |
+  (!is.na(gt$match_rewrite) & gt$match_rewrite == 0) |
   (!is.na(gt$holds) & gt$holds == 0)
-passing <- (!is.na(gt$match_rewrite) & gt$match_rewrite == 1) |
-  (!is.na(gt$holds) & gt$holds == 1)
+passing <- !failing &
+  ((!is.na(gt$match_rewrite) & gt$match_rewrite == 1) |
+     (!is.na(gt$holds) & gt$holds == 1))
 uncompared <- !is.na(gt$claim_id) & is.na(gt$match_rewrite) & is.na(gt$holds)
 
 locus_gate <- gt[(failing & is.na(gt$defect_locus)) |
