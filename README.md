@@ -373,8 +373,9 @@ deposited data do not support. They are collected in
 built by `errata.qmd`, which recomputes every number in every corrected
 sentence from the deposit each time it is rendered. None of the six
 changes a conclusion. What follows here is the analysis behind them,
-plus two further findings that could not go in an errata because the
-deposit does not settle what the corrected sentence should say.
+numbered as the note numbers them, plus two further findings that could
+not go in an errata because the deposit does not settle what the
+corrected sentence should say.
 
 ## The appendix Table 1 p-values
 
@@ -430,7 +431,7 @@ two-tailed test gives 13. The variable that changes is extraversion,
 whose bootstrap `z` sits between 1.82 and 1.96. In the article, the
 sentence “Formal hypothesis tests demonstrate that Lucid is
 significantly closer to the ANES 2012 than MTurk on all five traits”
-becomes four of five.
+becomes four of five. These are entries 1 and 2 of the note.
 
 ## The appendix Table 2 standard errors
 
@@ -1082,7 +1083,7 @@ writing nothing at all.
 |:----------|:-----------------------|
 | R version | 4.6.0                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-08-09             |
+| Date run  | 2026-08-10             |
 
 | Package      | Version |
 |:-------------|:--------|

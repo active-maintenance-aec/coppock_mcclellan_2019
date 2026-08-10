@@ -298,7 +298,18 @@ Every `value_paper` in this repository's ground truth is transcribed from the ar
 
 Two published quantities do not come from the procedure the paper describes. Neither is a coding slip that the maintained rewrite silently corrects: both are reported in both forms, so the published number stays reproducible and the intended one is available beside it.
 
-Six sentences in the article and its appendix state something the deposited data do not support. They are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the six changes a conclusion. What follows here is the analysis behind them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
+```{r errata_spine}
+# The errata are defined once, in errata.qmd, which writes errata_entries.csv when it
+# renders. This section reads that file rather than keeping a second copy of the count or
+# the numbering, because a second copy is how the two would come to disagree.
+spine <- read_csv(here::here("errata_entries.csv"), show_col_types = FALSE)
+n_errata <- nrow(spine)
+# stringr::word() is a different function, so the spelling helper is named for what it does.
+spell_errata <- function(n) c("one", "two", "three", "four", "five", "six", "seven",
+                              "eight", "nine", "ten")[n]
+```
+
+`r str_to_sentence(spell_errata(n_errata))` sentences in the article and its appendix state something the deposited data do not support. They are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the `r spell_errata(n_errata)` changes a conclusion. What follows here is the analysis behind them, numbered as the note numbers them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
 
 ## The appendix Table 1 p-values
 
@@ -332,7 +343,7 @@ gt |>
   latex_only(\(k) k |> kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 8))
 ```
 
-What turns on it: the appendix reports that Lucid is significantly closer to the ANES than MTurk on `r counts$n_sig_closer_archive` of the 21 characteristics, and the two-tailed test gives `r counts$n_sig_closer_twotail`. The variable that changes is extraversion, whose bootstrap `z` sits between 1.82 and 1.96. In the article, the sentence "Formal hypothesis tests demonstrate that Lucid is significantly closer to the ANES 2012 than MTurk on all five traits" becomes four of five.
+What turns on it: the appendix reports that Lucid is significantly closer to the ANES than MTurk on `r counts$n_sig_closer_archive` of the 21 characteristics, and the two-tailed test gives `r counts$n_sig_closer_twotail`. The variable that changes is extraversion, whose bootstrap `z` sits between 1.82 and 1.96. In the article, the sentence "Formal hypothesis tests demonstrate that Lucid is significantly closer to the ANES 2012 than MTurk on all five traits" becomes four of five. These are entries 1 and 2 of the note.
 
 ## The appendix Table 2 standard errors
 
