@@ -120,8 +120,16 @@ p_fmt <- function(x) sprintf("%.3f", x)
 #
 # Numbering is the published note's and is APPEND-ONLY: an entry can already have been
 # cited, so a later finding is added at the end and never interleaved.
+#
+# claim_ids names the ground-truth rows an entry corrects, semicolon-separated, so that "is
+# this finding published?" is a query rather than a judgment. Entries 1 and 2 each carry the
+# method row appendix_two_tailed_method alongside their own claim, because that row is the
+# cause both descend from and it is stated in the preamble rather than in an entry of its
+# own. Entry 2's own number matches the deposit, which is the point: the article agrees with
+# its own code and both depart from the test the appendix describes. Every id listed here is
+# checked against the ground truth by build_ground_truth.R.
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
 
   1, "quantity", "pipeline", "full",
   "Lucid is not significantly closer than MTurk on all five personality traits",
@@ -139,6 +147,7 @@ entries <- tribble(
     "{sprintf('%.2f', dist_row('extraversion')$z)} and p = ",
     "{p_fmt(dist_row('extraversion')$p_twotail)}. The other four traits clear 0.05 by a ",
     "wide margin under either test."),
+  "traits_all_five_significantly_closer;appendix_two_tailed_method",
 
   2, "quantity", "pipeline", "full",
   "The number of significant differences in the online appendix",
@@ -151,6 +160,7 @@ entries <- tribble(
     "gives the same {counts$n_sig_closer_twotail}. The sentence that follows it is ",
     "unaffected: MTurk is closer in {counts$n_mturk_closer} instances and significant in ",
     "{word(counts$n_sig_farther_twotail)}, voter turnout, under both tests."),
+  "appendix_lucid_closer_significant;appendix_two_tailed_method",
 
   3, "description", "pipeline", "full",
   "The MTurk sample under-represents southerners",
@@ -169,6 +179,7 @@ entries <- tribble(
     "over-represents the Northeast and the Midwest instead. Appendix Table 1 is unaffected: ",
     "it reports the distance between the two samples rather than the direction of either, ",
     "and its South row is right."),
+  "mturk_overrepresents_southerners",
 
   4, "quantity", "pipeline", "full",
   "Six demographic differences are significant, not five",
@@ -181,6 +192,7 @@ entries <- tribble(
     "and Lucid is the closer sample on all {word(demographic_significant)}. The count is the ",
     "same under the two-tailed test corrected in the first two entries, so it does not turn ",
     "on which p-value is used."),
+  "demographic_significantly_closer",
 
   5, "quantity", "pipeline", "brief",
   "The sample size of the Lucid welfare replication",
@@ -193,6 +205,7 @@ entries <- tribble(
     "data hold {n_fmt(welfare_ns$rows[welfare_ns$survey == 'lucid'])} Lucid rows, of which ",
     "{n_fmt(welfare_ns$n[welfare_ns$survey == 'lucid'])} have a usable outcome, and the ",
     "manifest reports the analysed sample in every other section."),
+  "manifest_welfare_lucid_n",
 
   6, "quantity", "pipeline", "brief",
   "The sample size of the original Kam and Simas study",
@@ -205,9 +218,10 @@ entries <- tribble(
     "is what the deposited data give. The manifest reports the analysed sample rather than ",
     "the source study's throughout: its entry for the 1984 General Social Survey gives ",
     "{n_fmt(welfare_ns$n[welfare_ns$survey == 'GSS84'])}, where the deposited file holds ",
-    "{n_fmt(welfare_ns$rows[welfare_ns$survey == 'GSS84'])} respondents for that survey.")
+    "{n_fmt(welfare_ns$rows[welfare_ns$survey == 'GSS84'])} respondents for that survey."),
+  "manifest_ks_original_n"
 ) |>
-  mutate(across(c(title, published, corrected, note), as.character))
+  mutate(across(c(title, published, corrected, note, claim_ids), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
 
