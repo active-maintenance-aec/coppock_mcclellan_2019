@@ -368,12 +368,12 @@ corrects: both are reported in both forms, so the published number stays
 reproducible and the intended one is available beside it.
 
 Seven sentences in the article and its appendix state something the
-deposited data do not support, and one further entry corrects the
-appendix page itself, where the deposit has nothing to say. All eight
-are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this
-repository, built by `errata.qmd`, which recomputes every number in
+deposited data do not support, and two further entries correct the
+published pages themselves, where the deposit has nothing to say. All
+nine are collected in `coppock_mcclellan_2019_errata.pdf` at the root of
+this repository, built by `errata.qmd`, which recomputes every number in
 every corrected sentence from the deposit each time it is rendered. None
-of the eight changes a conclusion. What follows here is the analysis
+of the nine changes a conclusion. What follows here is the analysis
 behind them, numbered as the note numbers them, plus two further
 findings that could not go in an errata because the deposit does not
 settle what the corrected sentence should say.

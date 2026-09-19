@@ -326,9 +326,17 @@ n_errata_deposit <- sum(spine$source == "pipeline")
 # stringr::word() is a different function, so the spelling helper is named for what it does.
 spell_errata <- function(n) c("one", "two", "three", "four", "five", "six", "seven",
                               "eight", "nine", "ten")[n]
+# The clause about them has to agree in number with a count that changes, so it is
+# built here rather than typed in the sentence below.
+n_errata_page <- n_errata - n_errata_deposit
+errata_page_clause <- if (n_errata_page == 1) {
+  str_glue("{spell_errata(n_errata_page)} further entry corrects a published page itself")
+} else {
+  str_glue("{spell_errata(n_errata_page)} further entries correct the published pages themselves")
+}
 ```
 
-`r str_to_sentence(spell_errata(n_errata_deposit))` sentences in the article and its appendix state something the deposited data do not support, and `r spell_errata(n_errata - n_errata_deposit)` further entry corrects the appendix page itself, where the deposit has nothing to say. All `r spell_errata(n_errata)` are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the `r spell_errata(n_errata)` changes a conclusion. What follows here is the analysis behind them, numbered as the note numbers them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
+`r str_to_sentence(spell_errata(n_errata_deposit))` sentences in the article and its appendix state something the deposited data do not support, and `r errata_page_clause`, where the deposit has nothing to say. All `r spell_errata(n_errata)` are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the `r spell_errata(n_errata)` changes a conclusion. What follows here is the analysis behind them, numbered as the note numbers them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
 
 ## The appendix Table 1 p-values
 

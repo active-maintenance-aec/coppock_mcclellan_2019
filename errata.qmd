@@ -320,6 +320,36 @@ entries <- tribble(
   # EMPTY AND NOT NA: write_csv puts the literal string "NA" in the file, and the
   # remaster's Python reader takes the cell as text without a missing-value
   # convention, so the spine would carry a claim id called NA.
+  "",
+
+  # A DROPPED WORD, SUPPLIED. Decision 13 of the remaster protocol allows it
+  # where the replacement is recoverable from the document rather than invented
+  # for it, and this one is not quite: the sentence wants a verb after "to" and
+  # "imply", "say" and "suggest" all fit. Alex, 2026-09-19, shown the three:
+  # go with "imply". It is recorded as a choice in the note rather than passed
+  # off as a transcription.
+  9, "wording", "remaster", "full",
+  "A missing word in the Discussion",
+  "published, main text p. 12",
+  str_c("While we think the theories that underlie most survey experiments ",
+        "conducted in the USA would extend to Lucid, we emphatically do not ",
+        "mean [[to]] that any experiment conducted on a convenience sample is ",
+        "relevant for theory."),
+  str_c("While we think the theories that underlie most survey experiments ",
+        "conducted in the USA would extend to Lucid, we emphatically do not ",
+        "mean [[to imply]] that any experiment conducted on a convenience ",
+        "sample is relevant for theory."),
+  str_c("The published page sets \"do not mean to that\", which is ",
+        "ungrammatical: a verb is missing after \"to\". The authors' own ",
+        "LaTeX source for the article, in the archived working folder, reads ",
+        "the same, so the omission is not the publisher's typesetting. The ",
+        "paragraph around it separates a theory's predictions extending to a ",
+        "sample from that sample being drawn at random from a population, and ",
+        "the sentence is the authors declining the stronger reading of their ",
+        "own argument, so the missing verb is one of \"imply\", \"say\" or ",
+        "\"suggest\". \"Imply\" is the one supplied here and the choice is ",
+        "recorded rather than presented as a reading of the page: nothing in ",
+        "the paragraph turns on which of the three it is."),
   ""
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids), as.character))
@@ -338,9 +368,9 @@ emit <- function(n) {
 }
 ```
 
-This note lists `r word(nrow(entries))` corrections to "Validating the demographic, political, psychological, and experimental results obtained from a new source of online survey respondents," published in *Research and Politics* 6(1), doi [10.1177/2053168018822174](https://doi.org/10.1177/2053168018822174). **None of them changes a conclusion of the paper.** Two are counts of statistically significant differences in the online appendix, one reverses the direction of a descriptive comparison, one is a count off by one, two are sample sizes in the appendix study manifest, one is the bootstrap behind appendix Table 1, which the deposited code leaves unseeded and runs too few times to settle the third decimal it prints, and one is a missing space in the appendix study manifest. The paper's finding, that Lucid respondents track US national benchmarks well and can serve as a drop-in replacement for Mechanical Turk, is unaffected, as is its one negative result on the healthcare rumor corrections.
+This note lists `r word(nrow(entries))` corrections to "Validating the demographic, political, psychological, and experimental results obtained from a new source of online survey respondents," published in *Research and Politics* 6(1), doi [10.1177/2053168018822174](https://doi.org/10.1177/2053168018822174). **None of them changes a conclusion of the paper.** Two are counts of statistically significant differences in the online appendix, one reverses the direction of a descriptive comparison, one is a count off by one, two are sample sizes in the appendix study manifest, one is the bootstrap behind appendix Table 1, which the deposited code leaves unseeded and runs too few times to settle the third decimal it prints, one is a missing space in the appendix study manifest, and one supplies a word the Discussion drops. The paper's finding, that Lucid respondents track US national benchmarks well and can serve as a drop-in replacement for Mechanical Turk, is unaffected, as is its one negative result on the healthcare rumor corrections.
 
-Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/DDWWJW](https://doi.org/10.7910/DVN/DDWWJW)) at the time this document is rendered, including the numbers that were not wrong. Bold marks the corrections. The code and output supporting each correction are at [github.com/active-maintenance-aec/coppock_mcclellan_2019](https://github.com/active-maintenance-aec/coppock_mcclellan_2019). Entry 8 is the exception to all three: it states no number, its evidence is the published PDF rather than the archive, and it was found by setting the appendix's pages beside the published ones rather than by running anything.
+Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/DDWWJW](https://doi.org/10.7910/DVN/DDWWJW)) at the time this document is rendered, including the numbers that were not wrong. Bold marks the corrections. The code and output supporting each correction are at [github.com/active-maintenance-aec/coppock_mcclellan_2019](https://github.com/active-maintenance-aec/coppock_mcclellan_2019). Entries 8 and 9 are the exception to all three: neither states a number, the evidence for both is the published PDF rather than the archive, and both were found by setting this edition's pages beside the published ones rather than by running anything.
 
 The first two entries share a cause, and the seventh is why they no longer rest on it. Section 1 of the online appendix states that "we obtain two-tailed p-values under a normal approximation," and the deposited `12_DistanceTests.R` instead computes `pnorm(2 * (1 - abs(z)))`, which is not a p-value for any hypothesis. The two expressions differ in where they put the threshold: the deposit's calls a difference significant at the 0.05 level once `|z|` exceeds 1.82, where the two-tailed test needs 1.96. Read off the standard errors appendix Table 1 prints, extraversion is the only one of the 21 characteristics whose verdict falls between them, and the corrections below are what follows for the two sentences that count significant differences. Those printed standard errors are themselves a single draw from an unseeded bootstrap, which is entry 7. Under the seeded `r n_fmt(counts$n_resamples)`-resample bootstrap this note now runs, extraversion clears neither threshold, so both corrections hold whichever expression is used, and both are also recomputed from the distance and the standard error the published table prints, which do not move.
 
