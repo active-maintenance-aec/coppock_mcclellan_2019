@@ -60,10 +60,13 @@ compute_distances <- function(df) {
               lucid_is_closer = abs(mturk - anes2012) - abs(lucid - anes2012))
 }
 
-# One run of the deposit's whole bootstrap: 100 resamples, the standard error of the
-# distance across them. The seed is an argument because the two stability scripts vary
-# it deliberately, and the number of resamples is the deposit's 100 rather than a
-# default, so no call site can silently disagree with the published procedure.
+# One run of the bootstrap behind appendix Table 1: `times` resamples, the standard error
+# of the distance across them. The seed is an argument because the two stability scripts
+# vary it deliberately, and `times` is one because the call sites need DIFFERENT values and
+# the difference is the point. The default is the deposit's 100, which is what the two
+# stability scripts measure; appendix_table_1_distance_tests.R passes 125,000, because at
+# 100 the third decimal the appendix prints is a property of the seed rather than of the
+# data. Neither call site may take the default silently: see that script's header.
 bootstrap_distance_ses <- function(seed, df, times = 100) {
   set.seed(seed)
   bootstraps(df, times = times) |>

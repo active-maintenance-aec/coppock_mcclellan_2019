@@ -303,13 +303,32 @@ Two published quantities do not come from the procedure the paper describes. Nei
 # renders. This section reads that file rather than keeping a second copy of the count or
 # the numbering, because a second copy is how the two would come to disagree.
 spine <- read_csv(here::here("errata_entries.csv"), show_col_types = FALSE)
+
+# Appendix Table 1 recomputed FROM THE PUBLISHED COLUMN, which is not the same thing as
+# this repository's own run and must not be read off it: the published standard errors are
+# a draw from an unseeded bootstrap this pipeline cannot reproduce, so a sentence about
+# what the printed table implies has to do the arithmetic on the printed numbers. The
+# errata note derives the same quantity the same way.
+published_a1 <- published_claims |>
+  filter(str_starts(claim_id, "a1_")) |>
+  transmute(quantity = str_extract(claim_id, "(?<=^a1_)[a-z]+"),
+            variable = str_remove(claim_id, "^a1_[a-z]+_"),
+            value = as.numeric(value_paper)) |>
+  pivot_wider(names_from = quantity, values_from = value) |>
+  mutate(z = distance / se, p_twotail = 2 * pnorm(-abs(z)))
+page_a1_twotail_closer <- sum(published_a1$distance > 0 & published_a1$p_twotail < 0.05)
 n_errata <- nrow(spine)
+# The spine's `source` column says which channel found an entry, so the split between the
+# entries the deposit settles and the ones it cannot is read off the spine rather than
+# counted by hand here. Entry 8 is a space the appendix page does not set: no run of the
+# archive bears on it and it cites no ground-truth row.
+n_errata_deposit <- sum(spine$source == "pipeline")
 # stringr::word() is a different function, so the spelling helper is named for what it does.
 spell_errata <- function(n) c("one", "two", "three", "four", "five", "six", "seven",
                               "eight", "nine", "ten")[n]
 ```
 
-`r str_to_sentence(spell_errata(n_errata))` sentences in the article and its appendix state something the deposited data do not support. They are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the `r spell_errata(n_errata)` changes a conclusion. What follows here is the analysis behind them, numbered as the note numbers them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
+`r str_to_sentence(spell_errata(n_errata_deposit))` sentences in the article and its appendix state something the deposited data do not support, and `r spell_errata(n_errata - n_errata_deposit)` further entry corrects the appendix page itself, where the deposit has nothing to say. All `r spell_errata(n_errata)` are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the `r spell_errata(n_errata)` changes a conclusion. What follows here is the analysis behind them, numbered as the note numbers them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
 
 ## The appendix Table 1 p-values
 
@@ -343,7 +362,9 @@ gt |>
   latex_only(\(k) k |> kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 8))
 ```
 
-What turns on it: the appendix reports that Lucid is significantly closer to the ANES than MTurk on `r counts$n_sig_closer_archive` of the 21 characteristics, and the two-tailed test gives `r counts$n_sig_closer_twotail`. The variable that changes is extraversion, whose bootstrap `z` sits between 1.82 and 1.96. In the article, the sentence "Formal hypothesis tests demonstrate that Lucid is significantly closer to the ANES 2012 than MTurk on all five traits" becomes four of five. These are entries 1 and 2 of the note.
+What turns on it: the appendix reports that Lucid is significantly closer to the ANES than MTurk on `r gt$value_paper[match("Lucid significantly closer, archive p", gt$claim)]` of the 21 characteristics. Read off the standard errors the published table prints, the two-tailed test gives `r page_a1_twotail_closer`: extraversion is the only one of the 21 whose verdict falls between the two thresholds, its published `z` of 1.92 sitting between 1.82 and 1.96. In the article, the sentence "Formal hypothesis tests demonstrate that Lucid is significantly closer to the ANES 2012 than MTurk on all five traits" becomes four of five. These are entries 1 and 2 of the note.
+
+The published count is `r gt$value_paper[match("Lucid significantly closer, archive p", gt$claim)]` and this repository's own bootstrap now returns `r counts$n_sig_closer_archive` under the archive's expression as well as `r counts$n_sig_closer_twotail` under the two-tailed test, so the two corrections no longer depend on which expression is read. The reason the two numbers used to agree is that the maintained run then drew the deposit's 100 resamples: at that `B` the count is itself a coin toss, reaching 14 on `r sprintf("%.1f", 100 * headline$share_archive_equals_14)` per cent of 200 seeds. That is entry 7, and the next section is the measurement behind it.
 
 ## The appendix Table 2 standard errors
 

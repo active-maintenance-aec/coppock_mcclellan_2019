@@ -18,6 +18,9 @@ out <- function(f) read_csv(here("maintained", "output", f), show_col_types = FA
 
 distances <- out("appendix_table_1_distance_tests.csv")
 counts <- out("appendix_table_1_distance_counts.csv")
+# What the deposit's own procedure does over 200 seeds, which is entry 7's evidence that
+# the published columns are not reproducible.
+headline <- out("appendix_table_1_bootstrap_headline.csv")
 demos <- out("table_1_demographics.csv")
 fig1 <- out("figure_1_standardized_demos.csv")
 welfare_ns <- out("table_4_welfare_ns.csv")
@@ -92,6 +95,39 @@ demographic_significant <- sum(demographic_rows$lucid_is_closer > 0 &
 demographic_names <- demographic_rows$varname[demographic_rows$lucid_is_closer > 0 &
                                                 demographic_rows$p_archive < 0.05]
 
+# ENTRY 7. The published standard error and p-value columns against this run's, both sides
+# rounded to the three decimals appendix Table 1 prints before they are compared, because
+# the entry is about what the page shows rather than about the precision behind it.
+a1_compare <- published_a1 |>
+  select(variable, page_distance = distance, page_se = se, page_p = p) |>
+  left_join(select(distances, variable, run_distance = lucid_is_closer,
+                   run_se = se, run_p = p_archive), by = "variable") |>
+  mutate(across(everything(), identity),
+         distance_differs = sprintf("%.3f", page_distance) != sprintf("%.3f", run_distance),
+         se_differs = sprintf("%.3f", page_se) != sprintf("%.3f", run_se),
+         p_differs = sprintf("%.3f", page_p) != sprintf("%.3f", run_p))
+stopifnot(nrow(a1_compare) == nrow(published_a1), !anyNA(a1_compare$run_se))
+n_a1_rows <- nrow(a1_compare)
+n_a1_distance_differ <- sum(a1_compare$distance_differs)
+n_a1_se_differ <- sum(a1_compare$se_differs)
+n_a1_p_differ <- sum(a1_compare$p_differs)
+
+# The implied Monte Carlo standard deviation of the largest printed standard error. The
+# sampling error of a bootstrap SD is about SE / sqrt(2B), so this is derived from two
+# quantities the pipeline already records rather than from a rerun over several seeds,
+# which would cost an hour to say the same thing.
+a1_mc_sd <- max(distances$se) / sqrt(2 * counts$n_resamples)
+a1_mc_share <- 0.001 / a1_mc_sd
+
+# Entry 7 corrects every cell of both columns, so it cites every one of their ground-truth
+# rows. Naming the shape rather than an instance is the point: the entry is about the two
+# columns, not about any one standard error in them.
+a1_claim_ids <- published |>
+  filter(str_detect(claim_id, "^a1_(se|p)_")) |>
+  pull(claim_id) |>
+  sort() |>
+  str_c(collapse = ";")
+
 # A corrected count that the article spelled out has to come back as a word.
 words <- c("zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
            "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
@@ -115,7 +151,14 @@ p_fmt <- function(x) sprintf("%.3f", x)
 #
 # [[...]] marks the span that changes. Each renderer supplies its own markup for it: bold
 # here, \was{} in an edition. Nothing else in a field is markup, so the same string can be
-# set by either. Every unmarked number in a corrected sentence is computed too, so a reader
+# set by either. NOTHING ELSE MEANS NOTHING ELSE: `published` is the sentence as the page
+# sets it and nothing more. Entries 5 and 6 used to end theirs with a bracketed
+# "[Online appendix, section 2.1.3]", which is not on the page, is already the `location`
+# column's job, and made `published` and `corrected` differ by a clause as well as by the
+# marked span. An edition patches by finding `published` in the carried-across text, so a
+# field carrying a locator matches nothing and the entry is skipped IN SILENCE; both were,
+# and the appendix builder's routing assertion is what said so. A locator a reader needs
+# goes in `note`. Every unmarked number in a corrected sentence is computed too, so a reader
 # diffing published against corrected sees the whole sentence verified.
 #
 # Numbering is the published note's and is APPEND-ONLY: an entry can already have been
@@ -197,9 +240,10 @@ entries <- tribble(
   5, "quantity", "pipeline", "brief",
   "The sample size of the Lucid welfare replication",
   "published, online appendix section 2.1.3",
-  "Sample: [[1,811]] Lucid respondents. [Online appendix, section 2.1.3]",
+  "Sample: [[1,811]] Lucid respondents.",
   str_glue("Sample: [[{n_fmt(welfare_ns$n[welfare_ns$survey == 'lucid'])}]] Lucid respondents."),
   str_glue(
+    "The sentence is in section 2.1.3 of the online appendix. ",
     "{n_fmt(fitted_n(hiscox, 'survey', 'lucid'))} is the Lucid sample of the Hiscox ",
     "free-trade replication, reported in section 2.4.2 of the same appendix. The welfare ",
     "data hold {n_fmt(welfare_ns$rows[welfare_ns$survey == 'lucid'])} Lucid rows, of which ",
@@ -210,16 +254,73 @@ entries <- tribble(
   6, "quantity", "pipeline", "brief",
   "The sample size of the original Kam and Simas study",
   "published, online appendix section 2.3.1",
-  "Sample: [[761]] respondents gathered from a Knowledge Networks national probability sample. [Online appendix, section 2.3.1]",
+  "Sample: [[761]] respondents gathered from a Knowledge Networks national probability sample.",
   str_glue("Sample: [[{n_fmt(fitted_n(kamsimas, 'model', 'kam_base'))}]] respondents gathered from a Knowledge Networks national probability sample."),
   str_glue(
+    "The sentence is in section 2.3.1 of the online appendix. ",
     "Appendix Table 2 reports N = {n_fmt(fitted_n(kamsimas, 'model', 'kam_base'))} for all ",
     "three models fitted to this sample, and {n_fmt(fitted_n(kamsimas, 'model', 'kam_base'))} ",
     "is what the deposited data give. The manifest reports the analysed sample rather than ",
     "the source study's throughout: its entry for the 1984 General Social Survey gives ",
     "{n_fmt(welfare_ns$n[welfare_ns$survey == 'GSS84'])}, where the deposited file holds ",
     "{n_fmt(welfare_ns$rows[welfare_ns$survey == 'GSS84'])} respondents for that survey."),
-  "manifest_ks_original_n"
+  "manifest_ks_original_n",
+
+  7, "float", "pipeline", "full",
+  "The standard errors and p-values of appendix Table 1 are one draw from an unseeded bootstrap",
+  "published, online appendix Table 1",
+  str_glue(
+    "Table 1's Bootstrapped SE and p-value columns are [[one draw from a ",
+    "{n_fmt(100)}-resample bootstrap for which the deposited code sets no seed]]. Neither ",
+    "column is reproducible: running the deposited procedure again moves it, and moves the ",
+    "count of significant differences the appendix states along with it."),
+  str_glue(
+    "[[This edition prints a {n_fmt(counts$n_resamples)}-resample bootstrap at a declared ",
+    "seed]]. All {n_a1_rows} distances are unchanged and reproduce the published column ",
+    "exactly; {word(n_a1_se_differ)} of the {n_a1_rows} standard errors and ",
+    "{word(n_a1_p_differ)} of the {n_a1_rows} p-values differ from it at the three decimals ",
+    "the table prints."),
+  str_glue(
+    "The sampling error of a bootstrap standard deviation is about `SE / sqrt(2B)`. At the ",
+    "deposit's `B` = {n_fmt(100)} that is roughly 0.0035 on a standard error near 0.05, ",
+    "three times the last digit the table prints, which is why ",
+    "`appendix_table_1_bootstrap_stability.R` recovers the published count of ",
+    "{page('appendix_lucid_closer_significant')} significant differences on only ",
+    "{sprintf('%.1f', 100 * headline$share_archive_equals_14)} per cent of 200 seeds, ",
+    "ranging {headline$archive_min} to {headline$archive_max}. At ",
+    "`B` = {n_fmt(counts$n_resamples)} it falls to {sprintf('%.5f', a1_mc_sd)}, about a ",
+    "{word(round(a1_mc_share))}th of that last digit, and the printed column stops being a ",
+    "property of the seed. Nothing here moves a distance, a sign, or the size of any ",
+    "difference, which is what the appendix's argument rests on. What it does settle is ",
+    "the two counts corrected in entries 1 and 2: at this precision they no longer turn on ",
+    "which of the two p-value expressions is used, because extraversion falls short of 0.05 ",
+    "under both."),
+  a1_claim_ids,
+
+  # THE FIRST ENTRY THAT IS NOT ABOUT THE DEPOSIT, and the first whose source is the
+  # remastered edition rather than this pipeline. It corrects no quantity and cites no
+  # ground-truth row, because the defect is a space the appendix page does not set and
+  # nothing in the deposited data bears on it. Decision 6 of the remaster protocol is
+  # what admits it: no error is too small, or a remastered edition does not mean
+  # anything. Found by reading the rendered pages side by side, which is the only pass
+  # in this programme that reaches typography at all.
+  8, "typography", "remaster", "brief",
+  "A missing space in the healthcare rumor study manifest",
+  "published, online appendix section 2.5.1",
+  "[[Control:(No]] introduction before asking the rumor belief question.)",
+  "[[Control: (No]] introduction before asking the rumor belief question.)",
+  str_glue(
+    "The item is in section 2.5.1 of the online appendix. The published page sets no ",
+    "space between the bold `Control:` and the parenthesis after it, where the parallel ",
+    "item in section 2.4.1 sets one and so does every other labelled condition in the ",
+    "manifest. It is the page's own spacing and not an extraction artifact: read off the ",
+    "rendered PDF at 300 dpi, the bold run ends and the roman run begins at the same ",
+    "horizontal position, against a gap of one space width in section 2.4.1. No ",
+    "comparison of text can see it, because a space is not a token."),
+  # EMPTY AND NOT NA: write_csv puts the literal string "NA" in the file, and the
+  # remaster's Python reader takes the cell as text without a missing-value
+  # convention, so the spine would carry a claim id called NA.
+  ""
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids), as.character))
 
@@ -237,11 +338,11 @@ emit <- function(n) {
 }
 ```
 
-This note lists `r word(nrow(entries))` corrections to "Validating the demographic, political, psychological, and experimental results obtained from a new source of online survey respondents," published in *Research and Politics* 6(1), doi [10.1177/2053168018822174](https://doi.org/10.1177/2053168018822174). **None of them changes a conclusion of the paper.** Two are counts of statistically significant differences that follow from the hypothesis test the appendix says it used rather than the one its code performs, one reverses the direction of a descriptive comparison, one is a count off by one, and two are sample sizes in the appendix study manifest. The paper's finding, that Lucid respondents track US national benchmarks well and can serve as a drop-in replacement for Mechanical Turk, is unaffected, as is its one negative result on the healthcare rumor corrections.
+This note lists `r word(nrow(entries))` corrections to "Validating the demographic, political, psychological, and experimental results obtained from a new source of online survey respondents," published in *Research and Politics* 6(1), doi [10.1177/2053168018822174](https://doi.org/10.1177/2053168018822174). **None of them changes a conclusion of the paper.** Two are counts of statistically significant differences in the online appendix, one reverses the direction of a descriptive comparison, one is a count off by one, two are sample sizes in the appendix study manifest, one is the bootstrap behind appendix Table 1, which the deposited code leaves unseeded and runs too few times to settle the third decimal it prints, and one is a missing space in the appendix study manifest. The paper's finding, that Lucid respondents track US national benchmarks well and can serve as a drop-in replacement for Mechanical Turk, is unaffected, as is its one negative result on the healthcare rumor corrections.
 
-Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/DDWWJW](https://doi.org/10.7910/DVN/DDWWJW)) at the time this document is rendered, including the numbers that were not wrong. Bold marks the corrections. The code and output supporting each correction are at [github.com/active-maintenance-aec/coppock_mcclellan_2019](https://github.com/active-maintenance-aec/coppock_mcclellan_2019).
+Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/DDWWJW](https://doi.org/10.7910/DVN/DDWWJW)) at the time this document is rendered, including the numbers that were not wrong. Bold marks the corrections. The code and output supporting each correction are at [github.com/active-maintenance-aec/coppock_mcclellan_2019](https://github.com/active-maintenance-aec/coppock_mcclellan_2019). Entry 8 is the exception to all three: it states no number, its evidence is the published PDF rather than the archive, and it was found by setting the appendix's pages beside the published ones rather than by running anything.
 
-The first two entries share a cause. Section 1 of the online appendix states that "we obtain two-tailed p-values under a normal approximation," and the deposited `12_DistanceTests.R` instead computes `pnorm(2 * (1 - abs(z)))`, which is not a p-value for any hypothesis. The two expressions differ in where they put the threshold: the deposit's calls a difference significant at the 0.05 level once `|z|` exceeds 1.82, where the two-tailed test needs 1.96. Of the 21 characteristics in appendix Table 1, extraversion is the only one whose verdict falls between the two, and the corrections below are what follows for the two sentences that count significant differences. The standard errors themselves come from an unseeded bootstrap and are not exactly reproducible, so both corrections are recomputed from the distance and the standard error appendix Table 1 prints, which do not move; the maintained rewrite's own run agrees with each.
+The first two entries share a cause, and the seventh is why they no longer rest on it. Section 1 of the online appendix states that "we obtain two-tailed p-values under a normal approximation," and the deposited `12_DistanceTests.R` instead computes `pnorm(2 * (1 - abs(z)))`, which is not a p-value for any hypothesis. The two expressions differ in where they put the threshold: the deposit's calls a difference significant at the 0.05 level once `|z|` exceeds 1.82, where the two-tailed test needs 1.96. Read off the standard errors appendix Table 1 prints, extraversion is the only one of the 21 characteristics whose verdict falls between them, and the corrections below are what follows for the two sentences that count significant differences. Those printed standard errors are themselves a single draw from an unseeded bootstrap, which is entry 7. Under the seeded `r n_fmt(counts$n_resamples)`-resample bootstrap this note now runs, extraversion clears neither threshold, so both corrections hold whichever expression is used, and both are also recomputed from the distance and the standard error the published table prints, which do not move.
 
 ```{r rendered-entries, results="asis"}
 walk(entries$entry, emit)

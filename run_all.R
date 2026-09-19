@@ -29,7 +29,9 @@ source(here::here("maintained", "figure_2_standardized_experiments.R"))
 source(here::here("maintained", "figures_3_4_5_heterogeneous_effects.R"))
 
 # Appendix tables ----
-# The distance tests bootstrap 100 times, a few seconds.
+# The distance tests bootstrap 125,000 times and take about 18 minutes. That is not the
+# deposit's 100: at 100 the third decimal appendix Table 1 prints is a property of the
+# seed rather than of the data, and the deposit sets no seed at all. See the script header.
 source(here::here("maintained", "appendix_table_1_distance_tests.R"))
 source(here::here("maintained", "appendix_table_2_kamsimas_probit.R"))
 

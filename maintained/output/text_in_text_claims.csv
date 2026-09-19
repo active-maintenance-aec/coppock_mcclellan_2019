@@ -21,7 +21,7 @@ Baseline characteristics,"Political knowledge, ANES panel",59.91 (1.22)
 Distance tests,Variables tested,21
 Distance tests,Lucid closer,18
 Distance tests,MTurk closer,3
-Distance tests,"Lucid significantly closer, archive p",14
+Distance tests,"Lucid significantly closer, archive p",13
 Distance tests,"MTurk significantly closer, archive p",1
 Distance tests,"Lucid significantly closer, two-tailed p",13
 Distance tests,"MTurk significantly closer, two-tailed p",1
@@ -29,7 +29,7 @@ Distance tests,Demographic variables tested,11
 Distance tests,"Demographic, Lucid closer",9
 Distance tests,"Demographic, significantly closer, archive p",6
 Distance tests,"Political, significantly closer, archive p",3
-Distance tests,"Traits, significantly closer, archive p",5
+Distance tests,"Traits, significantly closer, archive p",4
 Distance tests,"Traits, significantly closer, two-tailed p",4
 Healthcare rumors,"Death panel belief, Lucid control mean",-0.172
 Healthcare rumors,"Death panel belief, original control mean",-0.190

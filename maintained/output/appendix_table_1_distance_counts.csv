@@ -1,2 +1,2 @@
-n_variables,n_lucid_closer,n_mturk_closer,n_sig_closer_archive,n_sig_farther_archive,n_sig_closer_twotail,n_sig_farther_twotail
-21,18,3,14,1,13,1
+n_resamples,seed,n_variables,n_lucid_closer,n_mturk_closer,n_sig_closer_archive,n_sig_farther_archive,n_sig_closer_twotail,n_sig_farther_twotail
+125000,343,21,18,3,13,1,13,1

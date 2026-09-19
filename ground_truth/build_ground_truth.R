@@ -107,10 +107,16 @@ a1_distance <- paper_appendix_1 |>
     notes = "|MTurk - ANES 2012| - |Lucid - ANES 2012| in standardized units. Deterministic: no resampling enters the point estimate"
   )
 
-# The standard errors and the p-values computed from them come from 100 bootstrap
+# THE PUBLISHED standard errors and the p-values computed from them come from 100 bootstrap
 # resamples drawn without a seed, so a published value is compared against the sampling
 # distribution of the estimator rather than against one draw. The interval is the 95 per
 # cent range of the deposit's own 100-resample procedure over 200 independent runs.
+#
+# The interval describes the DEPOSIT's procedure and nothing else. value_rewrite beside it
+# is this repository's own run, which is seeded and draws far more resamples, so the two
+# columns are not two draws from one process: one is a draw and the other is close to the
+# quantity being drawn. That asymmetry is what the comparison is for, and it is why
+# tightening the interval to the rewrite's precision would be wrong.
 a1_se <- paper_appendix_1 |>
   left_join(distances, by = "variable") |>
   left_join(stability, by = "variable") |>
@@ -123,7 +129,7 @@ a1_se <- paper_appendix_1 |>
     value_rewrite = round(se, 3),
     digits = 3,
     in_interval = if_else(se_paper >= se_q025 & se_paper <= se_q975, 1, 0),
-    notes = str_glue("Bootstrap SE from 100 resamples. The deposit sets no seed; over 200 runs of its procedure the SE falls in [{sprintf('%.3f', se_q025)}, {sprintf('%.3f', se_q975)}]")
+    notes = str_glue("The published SE is one draw from 100 resamples and the deposit sets no seed; over 200 runs of its procedure the SE falls in [{sprintf('%.3f', se_q025)}, {sprintf('%.3f', se_q975)}]. The rewrite's column is seeded and settled: see errata entry 7")
   )
 
 a1_p <- paper_appendix_1 |>

@@ -141,17 +141,17 @@ published paper, and the eleven scripts that run clean cannot be said to
 reproduce anything. Reading the numbers back out means capturing them
 from the session rather than from files.
 
-30 of the 199 published claims the deposited scripts can be checked
+32 of the 199 published claims the deposited scripts can be checked
 against fail to reproduce. 25 of them are standard errors in appendix
-Table 2, and none is a coefficient. 5 of the remaining 5 are places
+Table 2, and none is a coefficient. 5 of the remaining 7 are places
 where the paper disagrees with itself, and the last is a bootstrap
 standard error the deposit’s unseeded procedure cannot pin down. See the
 errata below.
 
 ## Does the maintained rewrite reproduce the paper?
 
-Yes. 194 of the 199 verifiable ground truth claims match the published
-values to reported precision. 5 of the 5 that do not are places where
+Yes. 192 of the 199 verifiable ground truth claims match the published
+values to reported precision. 5 of the 7 that do not are places where
 the article disagrees with its own appendix rather than with the code: a
 sample size the appendix appears to have copied from a different
 experiment, a sample size the appendix’s prose and its own table state
@@ -367,15 +367,16 @@ describes. Neither is a coding slip that the maintained rewrite silently
 corrects: both are reported in both forms, so the published number stays
 reproducible and the intended one is available beside it.
 
-Six sentences in the article and its appendix state something the
-deposited data do not support. They are collected in
-`coppock_mcclellan_2019_errata.pdf` at the root of this repository,
-built by `errata.qmd`, which recomputes every number in every corrected
-sentence from the deposit each time it is rendered. None of the six
-changes a conclusion. What follows here is the analysis behind them,
-numbered as the note numbers them, plus two further findings that could
-not go in an errata because the deposit does not settle what the
-corrected sentence should say.
+Seven sentences in the article and its appendix state something the
+deposited data do not support, and one further entry corrects the
+appendix page itself, where the deposit has nothing to say. All eight
+are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this
+repository, built by `errata.qmd`, which recomputes every number in
+every corrected sentence from the deposit each time it is rendered. None
+of the eight changes a conclusion. What follows here is the analysis
+behind them, numbered as the note numbers them, plus two further
+findings that could not go in an errata because the deposit does not
+settle what the corrected sentence should say.
 
 ## The appendix Table 1 p-values
 
@@ -398,27 +399,27 @@ description of it.
 
 | Variable           | Published | Archive expression | Two-tailed |
 |:-------------------|----------:|-------------------:|-----------:|
-| Female             |     0.000 |              0.000 |      0.003 |
+| Female             |     0.000 |              0.000 |      0.004 |
 | Education          |     0.000 |              0.000 |      0.000 |
 | Age                |     0.000 |              0.000 |      0.000 |
-| Mean income        |     0.000 |              0.000 |      0.006 |
-| White              |     0.873 |              0.883 |      0.686 |
+| Mean income        |     0.000 |              0.000 |      0.003 |
+| White              |     0.873 |              0.870 |      0.662 |
 | Black              |     0.000 |              0.000 |      0.000 |
-| Hispanic           |     0.357 |              0.382 |      0.250 |
-| Northeast          |     0.179 |              0.110 |      0.107 |
-| Midwest            |     0.409 |              0.373 |      0.245 |
-| South              |     0.010 |              0.009 |      0.029 |
-| West               |     0.948 |              0.945 |      0.842 |
-| Voter registration |     0.157 |              0.186 |      0.148 |
-| Voter turnout      |     0.000 |              0.000 |      0.003 |
-| Party ID           |     0.010 |              0.016 |      0.038 |
+| Hispanic           |     0.357 |              0.383 |      0.251 |
+| Northeast          |     0.179 |              0.131 |      0.118 |
+| Midwest            |     0.409 |              0.398 |      0.259 |
+| South              |     0.010 |              0.003 |      0.018 |
+| West               |     0.948 |              0.948 |      0.850 |
+| Voter registration |     0.157 |              0.177 |      0.143 |
+| Voter turnout      |     0.000 |              0.000 |      0.004 |
+| Party ID           |     0.010 |              0.011 |      0.032 |
 | Ideology           |     0.000 |              0.000 |      0.000 |
 | Political Interest |     0.000 |              0.000 |      0.000 |
-| Extraverted        |     0.034 |              0.037 |      0.059 |
-| Agreeable          |     0.001 |              0.000 |      0.003 |
+| Extraverted        |     0.034 |              0.057 |      0.074 |
+| Agreeable          |     0.001 |              0.000 |      0.006 |
 | Conscientious      |     0.000 |              0.000 |      0.000 |
 | Stable             |     0.000 |              0.000 |      0.000 |
-| Open               |     0.005 |              0.002 |      0.013 |
+| Open               |     0.005 |              0.002 |      0.016 |
 
 Appendix Table 1 p-values under the archive’s expression and under the
 two-tailed test the appendix describes. Bootstrap standard errors are
@@ -426,12 +427,22 @@ stochastic, so the reproduced column will not agree digit for digit with
 the published one; see the stability section.
 
 What turns on it: the appendix reports that Lucid is significantly
-closer to the ANES than MTurk on 14 of the 21 characteristics, and the
-two-tailed test gives 13. The variable that changes is extraversion,
-whose bootstrap `z` sits between 1.82 and 1.96. In the article, the
-sentence “Formal hypothesis tests demonstrate that Lucid is
-significantly closer to the ANES 2012 than MTurk on all five traits”
-becomes four of five. These are entries 1 and 2 of the note.
+closer to the ANES than MTurk on 14 of the 21 characteristics. Read off
+the standard errors the published table prints, the two-tailed test
+gives 13: extraversion is the only one of the 21 whose verdict falls
+between the two thresholds, its published `z` of 1.92 sitting between
+1.82 and 1.96. In the article, the sentence “Formal hypothesis tests
+demonstrate that Lucid is significantly closer to the ANES 2012 than
+MTurk on all five traits” becomes four of five. These are entries 1 and
+2 of the note.
+
+The published count is 14 and this repository’s own bootstrap now
+returns 13 under the archive’s expression as well as 13 under the
+two-tailed test, so the two corrections no longer depend on which
+expression is read. The reason the two numbers used to agree is that the
+maintained run then drew the deposit’s 100 resamples: at that `B` the
+count is itself a coin toss, reaching 14 on 39.5 per cent of 200 seeds.
+That is entry 7, and the next section is the measurement behind it.
 
 ## The appendix Table 2 standard errors
 
@@ -606,69 +617,69 @@ quantity, the cell is blank and the match column is empty.
 | Appendix Table 1 | Distance, Conscientious | 0.420 | 0.42 | 1 | 0.42 | 1 |
 | Appendix Table 1 | Distance, Stable | 0.248 | 0.248 | 1 | 0.248 | 1 |
 | Appendix Table 1 | Distance, Open | 0.157 | 0.157 | 1 | 0.157 | 1 |
-| Appendix Table 1 | Bootstrap SE, Female | 0.049 | 0.053 | 1 | 0.053 | 1 |
-| Appendix Table 1 | Bootstrap SE, Education | 0.041 | 0.04 | 1 | 0.04 | 1 |
-| Appendix Table 1 | Bootstrap SE, Age | 0.032 | 0.033 | 1 | 0.033 | 1 |
-| Appendix Table 1 | Bootstrap SE, Mean income | 0.033 | 0.036 | 1 | 0.036 | 1 |
-| Appendix Table 1 | Bootstrap SE, White | 0.041 | 0.044 | 1 | 0.044 | 1 |
-| Appendix Table 1 | Bootstrap SE, Black | 0.033 | 0.032 | 1 | 0.032 | 1 |
+| Appendix Table 1 | Bootstrap SE, Female | 0.049 | 0.055 | 1 | 0.055 | 1 |
+| Appendix Table 1 | Bootstrap SE, Education | 0.041 | 0.042 | 1 | 0.042 | 1 |
+| Appendix Table 1 | Bootstrap SE, Age | 0.032 | 0.032 | 1 | 0.032 | 1 |
+| Appendix Table 1 | Bootstrap SE, Mean income | 0.033 | 0.033 | 1 | 0.033 | 1 |
+| Appendix Table 1 | Bootstrap SE, White | 0.041 | 0.041 | 1 | 0.041 | 1 |
+| Appendix Table 1 | Bootstrap SE, Black | 0.033 | 0.03 | 1 | 0.03 | 1 |
 | Appendix Table 1 | Bootstrap SE, Hispanic | 0.035 | 0.036 | 1 | 0.036 | 1 |
-| Appendix Table 1 | Bootstrap SE, Northeast | 0.054 | 0.049 | 1 | 0.049 | 1 |
-| Appendix Table 1 | Bootstrap SE, Midwest | 0.046 | 0.044 | 1 | 0.044 | 1 |
-| Appendix Table 1 | Bootstrap SE, South | 0.064 | 0.063 | 1 | 0.063 | 1 |
-| Appendix Table 1 | Bootstrap SE, West | 0.039 | 0.037 | 1 | 0.037 | 1 |
+| Appendix Table 1 | Bootstrap SE, Northeast | 0.054 | 0.051 | 1 | 0.051 | 1 |
+| Appendix Table 1 | Bootstrap SE, Midwest | 0.046 | 0.046 | 1 | 0.046 | 1 |
+| Appendix Table 1 | Bootstrap SE, South | 0.064 | 0.058 | 1 | 0.058 | 1 |
+| Appendix Table 1 | Bootstrap SE, West | 0.039 | 0.039 | 1 | 0.039 | 1 |
 | Appendix Table 1 | Bootstrap SE, Voter registration | 0.050 | 0.052 | 1 | 0.052 | 1 |
-| Appendix Table 1 | Bootstrap SE, Voter turnout | 0.044 | 0.042 | 1 | 0.042 | 1 |
-| Appendix Table 1 | Bootstrap SE, Party ID | 0.055 | 0.057 | 1 | 0.057 | 1 |
-| Appendix Table 1 | Bootstrap SE, Ideology | 0.069 | 0.065 | 1 | 0.065 | 1 |
-| Appendix Table 1 | Bootstrap SE, Political Interest | 0.082 | 0.075 | 0 | 0.075 | 0 |
-| Appendix Table 1 | Bootstrap SE, Extraverted | 0.052 | 0.053 | 1 | 0.053 | 1 |
-| Appendix Table 1 | Bootstrap SE, Agreeable | 0.077 | 0.069 | 1 | 0.069 | 1 |
-| Appendix Table 1 | Bootstrap SE, Conscientious | 0.065 | 0.065 | 1 | 0.065 | 1 |
-| Appendix Table 1 | Bootstrap SE, Stable | 0.054 | 0.051 | 1 | 0.051 | 1 |
-| Appendix Table 1 | Bootstrap SE, Open | 0.069 | 0.064 | 1 | 0.064 | 1 |
+| Appendix Table 1 | Bootstrap SE, Voter turnout | 0.044 | 0.044 | 1 | 0.044 | 1 |
+| Appendix Table 1 | Bootstrap SE, Party ID | 0.055 | 0.055 | 1 | 0.055 | 1 |
+| Appendix Table 1 | Bootstrap SE, Ideology | 0.069 | 0.066 | 1 | 0.066 | 1 |
+| Appendix Table 1 | Bootstrap SE, Political Interest | 0.082 | 0.073 | 0 | 0.073 | 0 |
+| Appendix Table 1 | Bootstrap SE, Extraverted | 0.052 | 0.056 | 1 | 0.056 | 1 |
+| Appendix Table 1 | Bootstrap SE, Agreeable | 0.077 | 0.074 | 1 | 0.074 | 1 |
+| Appendix Table 1 | Bootstrap SE, Conscientious | 0.065 | 0.066 | 1 | 0.066 | 1 |
+| Appendix Table 1 | Bootstrap SE, Stable | 0.054 | 0.054 | 1 | 0.054 | 1 |
+| Appendix Table 1 | Bootstrap SE, Open | 0.069 | 0.065 | 1 | 0.065 | 1 |
 | Appendix Table 1 | p-value, Female | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Education | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Age | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Mean income | 0.000 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, White | 0.873 | 0.883 | 1 | 0.883 | 1 |
+| Appendix Table 1 | p-value, White | 0.873 | 0.87 | 1 | 0.87 | 1 |
 | Appendix Table 1 | p-value, Black | 0.000 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Hispanic | 0.357 | 0.382 | 1 | 0.382 | 1 |
-| Appendix Table 1 | p-value, Northeast | 0.179 | 0.11 | 1 | 0.11 | 1 |
-| Appendix Table 1 | p-value, Midwest | 0.409 | 0.373 | 1 | 0.373 | 1 |
-| Appendix Table 1 | p-value, South | 0.010 | 0.009 | 1 | 0.009 | 1 |
-| Appendix Table 1 | p-value, West | 0.948 | 0.945 | 1 | 0.945 | 1 |
-| Appendix Table 1 | p-value, Voter registration | 0.157 | 0.186 | 1 | 0.186 | 1 |
+| Appendix Table 1 | p-value, Hispanic | 0.357 | 0.383 | 1 | 0.383 | 1 |
+| Appendix Table 1 | p-value, Northeast | 0.179 | 0.131 | 1 | 0.131 | 1 |
+| Appendix Table 1 | p-value, Midwest | 0.409 | 0.398 | 1 | 0.398 | 1 |
+| Appendix Table 1 | p-value, South | 0.010 | 0.003 | 1 | 0.003 | 1 |
+| Appendix Table 1 | p-value, West | 0.948 | 0.948 | 1 | 0.948 | 1 |
+| Appendix Table 1 | p-value, Voter registration | 0.157 | 0.177 | 1 | 0.177 | 1 |
 | Appendix Table 1 | p-value, Voter turnout | 0.000 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Party ID | 0.010 | 0.016 | 1 | 0.016 | 1 |
+| Appendix Table 1 | p-value, Party ID | 0.010 | 0.011 | 1 | 0.011 | 1 |
 | Appendix Table 1 | p-value, Ideology | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Political Interest | 0.000 | 0 | 1 | 0 | 1 |
-| Appendix Table 1 | p-value, Extraverted | 0.034 | 0.037 | 1 | 0.037 | 1 |
+| Appendix Table 1 | p-value, Extraverted | 0.034 | 0.057 | 1 | 0.057 | 1 |
 | Appendix Table 1 | p-value, Agreeable | 0.001 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Conscientious | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Stable | 0.000 | 0 | 1 | 0 | 1 |
 | Appendix Table 1 | p-value, Open | 0.005 | 0.002 | 1 | 0.002 | 1 |
-| Appendix Table 1 | Two-tailed p-value, Female |  |  |  | 0.003 |  |
+| Appendix Table 1 | Two-tailed p-value, Female |  |  |  | 0.004 |  |
 | Appendix Table 1 | Two-tailed p-value, Education |  |  |  | 0 |  |
 | Appendix Table 1 | Two-tailed p-value, Age |  |  |  | 0 |  |
-| Appendix Table 1 | Two-tailed p-value, Mean income |  |  |  | 0.006 |  |
-| Appendix Table 1 | Two-tailed p-value, White |  |  |  | 0.686 |  |
+| Appendix Table 1 | Two-tailed p-value, Mean income |  |  |  | 0.003 |  |
+| Appendix Table 1 | Two-tailed p-value, White |  |  |  | 0.662 |  |
 | Appendix Table 1 | Two-tailed p-value, Black |  |  |  | 0 |  |
-| Appendix Table 1 | Two-tailed p-value, Hispanic |  |  |  | 0.25 |  |
-| Appendix Table 1 | Two-tailed p-value, Northeast |  |  |  | 0.107 |  |
-| Appendix Table 1 | Two-tailed p-value, Midwest |  |  |  | 0.245 |  |
-| Appendix Table 1 | Two-tailed p-value, South |  |  |  | 0.029 |  |
-| Appendix Table 1 | Two-tailed p-value, West |  |  |  | 0.842 |  |
-| Appendix Table 1 | Two-tailed p-value, Voter registration |  |  |  | 0.148 |  |
-| Appendix Table 1 | Two-tailed p-value, Voter turnout |  |  |  | 0.003 |  |
-| Appendix Table 1 | Two-tailed p-value, Party ID |  |  |  | 0.038 |  |
+| Appendix Table 1 | Two-tailed p-value, Hispanic |  |  |  | 0.251 |  |
+| Appendix Table 1 | Two-tailed p-value, Northeast |  |  |  | 0.118 |  |
+| Appendix Table 1 | Two-tailed p-value, Midwest |  |  |  | 0.259 |  |
+| Appendix Table 1 | Two-tailed p-value, South |  |  |  | 0.018 |  |
+| Appendix Table 1 | Two-tailed p-value, West |  |  |  | 0.85 |  |
+| Appendix Table 1 | Two-tailed p-value, Voter registration |  |  |  | 0.143 |  |
+| Appendix Table 1 | Two-tailed p-value, Voter turnout |  |  |  | 0.004 |  |
+| Appendix Table 1 | Two-tailed p-value, Party ID |  |  |  | 0.032 |  |
 | Appendix Table 1 | Two-tailed p-value, Ideology |  |  |  | 0 |  |
 | Appendix Table 1 | Two-tailed p-value, Political Interest |  |  |  | 0 |  |
-| Appendix Table 1 | Two-tailed p-value, Extraverted |  |  |  | 0.059 |  |
-| Appendix Table 1 | Two-tailed p-value, Agreeable |  |  |  | 0.003 |  |
+| Appendix Table 1 | Two-tailed p-value, Extraverted |  |  |  | 0.074 |  |
+| Appendix Table 1 | Two-tailed p-value, Agreeable |  |  |  | 0.006 |  |
 | Appendix Table 1 | Two-tailed p-value, Conscientious |  |  |  | 0 |  |
 | Appendix Table 1 | Two-tailed p-value, Stable |  |  |  | 0 |  |
-| Appendix Table 1 | Two-tailed p-value, Open |  |  |  | 0.013 |  |
+| Appendix Table 1 | Two-tailed p-value, Open |  |  |  | 0.016 |  |
 | Appendix Table 2 | Coefficient, lucid_base, mortalityfirst | 0.898 | 0.898 | 1 | 0.898 | 1 |
 | Appendix Table 2 | Coefficient, lucid_ctrl, mortalityfirst | 0.898 | 0.898 | 1 | 0.898 | 1 |
 | Appendix Table 2 | Coefficient, lucid_int, mortalityfirst | 1.155 | 1.155 | 1 | 1.155 | 1 |
@@ -795,7 +806,7 @@ quantity, the cell is blank and the match column is empty.
 | Text, Distance tests | Variables tested | 21 | 21 | 1 | 21 | 1 |
 | Text, Distance tests | Lucid closer | 18 | 18 | 1 | 18 | 1 |
 | Text, Distance tests | MTurk closer | 3 | 3 | 1 | 3 | 1 |
-| Text, Distance tests | Lucid significantly closer, archive p | 14 | 14 | 1 | 14 | 1 |
+| Text, Distance tests | Lucid significantly closer, archive p | 14 | 13 | 0 | 13 | 0 |
 | Text, Distance tests | MTurk significantly closer, archive p | 1 | 1 | 1 | 1 | 1 |
 | Text, Distance tests | Lucid significantly closer, two-tailed p |  | 13 |  | 13 |  |
 | Text, Distance tests | MTurk significantly closer, two-tailed p |  | 1 |  | 1 |  |
@@ -803,7 +814,7 @@ quantity, the cell is blank and the match column is empty.
 | Text, Distance tests | Demographic, Lucid closer | 9 | 9 | 1 | 9 | 1 |
 | Text, Distance tests | Demographic, significantly closer, archive p | 5 | 6 | 0 | 6 | 0 |
 | Text, Distance tests | Political, significantly closer, archive p | 3 | 3 | 1 | 3 | 1 |
-| Text, Distance tests | Traits, significantly closer, archive p | 5 | 5 | 1 | 5 | 1 |
+| Text, Distance tests | Traits, significantly closer, archive p | 5 | 4 | 0 | 4 | 0 |
 | Text, Distance tests | Traits, significantly closer, two-tailed p |  | 4 |  | 4 |  |
 | Text, Healthcare rumors | Death panel belief, Lucid control mean | -0.17 | -0.172 | 1 | -0.172 | 1 |
 | Text, Healthcare rumors | Death panel belief, original control mean | -0.19 | -0.19 | 1 | -0.19 | 1 |
@@ -849,8 +860,8 @@ Ground truth: published value against the deposited scripts and against
 the maintained rewrite.
 
 Of the 259 recorded claims, 199 can be compared against a published
-value. 169 of those match what the deposited scripts produce and 30 do
-not; 194 match the maintained rewrite and 5 do not.
+value. 167 of those match what the deposited scripts produce and 32 do
+not; 192 match the maintained rewrite and 7 do not.
 
 # Maintained rewrite
 
@@ -966,7 +977,7 @@ two are joined there, which is what the table below shows.
 | Distance tests | Variables tested | 21 | 21 |
 | Distance tests | Lucid closer | 18 | 18 |
 | Distance tests | MTurk closer | 3 | 3 |
-| Distance tests | Lucid significantly closer, archive p | 14 | 14 |
+| Distance tests | Lucid significantly closer, archive p | 13 | 14 |
 | Distance tests | MTurk significantly closer, archive p | 1 | 1 |
 | Distance tests | Lucid significantly closer, two-tailed p | 13 |  |
 | Distance tests | MTurk significantly closer, two-tailed p | 1 |  |
@@ -974,7 +985,7 @@ two are joined there, which is what the table below shows.
 | Distance tests | Demographic, Lucid closer | 9 | 9 |
 | Distance tests | Demographic, significantly closer, archive p | 6 | 5 |
 | Distance tests | Political, significantly closer, archive p | 3 | 3 |
-| Distance tests | Traits, significantly closer, archive p | 5 | 5 |
+| Distance tests | Traits, significantly closer, archive p | 4 | 5 |
 | Distance tests | Traits, significantly closer, two-tailed p | 4 |  |
 | Healthcare rumors | Death panel belief, Lucid control mean | -0.172 | -0.17 |
 | Healthcare rumors | Death panel belief, original control mean | -0.19 | -0.19 |
@@ -1083,12 +1094,12 @@ writing nothing at all.
 |:----------|:-----------------------|
 | R version | 4.6.0                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-08-10             |
+| Date run  | 2026-09-19             |
 
 | Package      | Version |
 |:-------------|:--------|
 | tidyverse    | 2.0.0   |
-| estimatr     | 1.0.6   |
+| estimatr     | 2.0.0   |
 | broom        | 1.0.13  |
 | scales       | 1.4.0   |
 | matrixStats  | 1.5.0   |
