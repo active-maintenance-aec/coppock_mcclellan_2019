@@ -1094,12 +1094,12 @@ writing nothing at all.
 |:----------|:-----------------------|
 | R version | 4.6.0                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-09-19             |
+| Date run  | 2026-09-27             |
 
 | Package      | Version |
 |:-------------|:--------|
 | tidyverse    | 2.0.0   |
-| estimatr     | 2.0.0   |
+| estimatr     | 2.0.1   |
 | broom        | 1.0.13  |
 | scales       | 1.4.0   |
 | matrixStats  | 1.5.0   |
