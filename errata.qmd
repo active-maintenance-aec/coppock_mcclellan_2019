@@ -133,6 +133,7 @@ words <- c("zero", "one", "two", "three", "four", "five", "six", "seven", "eight
            "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
            "sixteen", "seventeen", "eighteen", "nineteen", "twenty")
 word <- function(n) words[[n + 1]]
+num <- function(x) format(x, scientific = FALSE, trim = TRUE)
 
 # One decimal on the percentage point scale throughout, and thousands separators on a
 # sample size, matching the appendix's own typography.
@@ -171,8 +172,18 @@ p_fmt <- function(x) sprintf("%.3f", x)
 # own. Entry 2's own number matches the deposit, which is the point: the article agrees with
 # its own code and both depart from the test the appendix describes. Every id listed here is
 # checked against the ground truth by build_ground_truth.R.
+#
+# corrected_values runs parallel to claim_ids, one value per id in the same order, carrying
+# the corrected quantity as a number rather than as a sentence, on the claim's scale. Each
+# value comes from the same expression that glues the sentence, so the two cannot be written
+# apart, and the gate below re-checks that each one is still inside the span it belongs to.
+# An entry of a class that changes no quantity, and a note, carries NA.
+# Entries 1 and 2 are unresolved: each names appendix_two_tailed_method, a method row whose
+# value is a 0/1 flag with no number in the corrected sentence, and entry 1's other id is a
+# 'holds' flag; they carry NA until the claim scale is settled and are listed in values_unresolved.
+values_unresolved <- c(1, 2)
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
   1, "quantity", "pipeline", "full",
   "Lucid is not significantly closer than MTurk on all five personality traits",
@@ -191,6 +202,7 @@ entries <- tribble(
     "{p_fmt(dist_row('extraversion')$p_twotail)}. The other four traits clear 0.05 by a ",
     "wide margin under either test."),
   "traits_all_five_significantly_closer;appendix_two_tailed_method",
+  NA_character_,
 
   2, "quantity", "pipeline", "full",
   "The number of significant differences in the online appendix",
@@ -204,6 +216,7 @@ entries <- tribble(
     "unaffected: MTurk is closer in {counts$n_mturk_closer} instances and significant in ",
     "{word(counts$n_sig_farther_twotail)}, voter turnout, under both tests."),
   "appendix_lucid_closer_significant;appendix_two_tailed_method",
+  NA_character_,
 
   3, "description", "pipeline", "full",
   "The MTurk sample under-represents southerners",
@@ -223,6 +236,7 @@ entries <- tribble(
     "it reports the distance between the two samples rather than the direction of either, ",
     "and its South row is right."),
   "mturk_overrepresents_southerners",
+  NA_character_,
 
   4, "quantity", "pipeline", "full",
   "Six demographic differences are significant, not five",
@@ -236,6 +250,7 @@ entries <- tribble(
     "same under the two-tailed test corrected in the first two entries, so it does not turn ",
     "on which p-value is used."),
   "demographic_significantly_closer",
+  num(demographic_significant),
 
   5, "quantity", "pipeline", "brief",
   "The sample size of the Lucid welfare replication",
@@ -250,6 +265,7 @@ entries <- tribble(
     "{n_fmt(welfare_ns$n[welfare_ns$survey == 'lucid'])} have a usable outcome, and the ",
     "manifest reports the analysed sample in every other section."),
   "manifest_welfare_lucid_n",
+  num(welfare_ns$n[welfare_ns$survey == 'lucid']),
 
   6, "quantity", "pipeline", "brief",
   "The sample size of the original Kam and Simas study",
@@ -265,6 +281,7 @@ entries <- tribble(
     "{n_fmt(welfare_ns$n[welfare_ns$survey == 'GSS84'])}, where the deposited file holds ",
     "{n_fmt(welfare_ns$rows[welfare_ns$survey == 'GSS84'])} respondents for that survey."),
   "manifest_ks_original_n",
+  num(fitted_n(kamsimas, 'model', 'kam_base')),
 
   7, "float", "pipeline", "full",
   "The standard errors and p-values of appendix Table 1 are one draw from an unseeded bootstrap",
@@ -296,6 +313,7 @@ entries <- tribble(
     "which of the two p-value expressions is used, because extraversion falls short of 0.05 ",
     "under both."),
   a1_claim_ids,
+  NA_character_,
 
   # THE FIRST ENTRY THAT IS NOT ABOUT THE DEPOSIT, and the first whose source is the
   # remastered edition rather than this pipeline. It corrects no quantity and cites no
@@ -321,6 +339,7 @@ entries <- tribble(
   # remaster's Python reader takes the cell as text without a missing-value
   # convention, so the spine would carry a claim id called NA.
   "",
+  NA_character_,
 
   # A DROPPED WORD, SUPPLIED. Decision 13 of the remaster protocol allows it
   # where the replacement is recoverable from the document rather than invented
@@ -350,11 +369,61 @@ entries <- tribble(
         "\"suggest\". \"Imply\" is the one supplied here and the choice is ",
         "recorded rather than presented as a reading of the page: nothing in ",
         "the paragraph turns on which of the three it is."),
-  ""
+  "",
+  NA_character_
 ) |>
-  mutate(across(c(title, published, corrected, note, claim_ids), as.character))
+  mutate(across(c(title, published, corrected, note, claim_ids, corrected_values), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
+
+# Gate: corrected_values agrees with the sentence it was glued into ----
+# The column and the sentence are written from one expression, so they begin in agreement
+# and this gate exists for the edit that separates them: a value moved from one marked span
+# to another, a span reworded to carry a second number, a claim id appended without its
+# value. Each value has to be inside the span it belongs to, matched by position where the
+# counts line up, and inside SOME span where an entry marks a label as well as a number and
+# its spans outnumber its values. The spelled form is tolerated ("four" for 4), and so is a
+# thousands separator.
+marked_spans <- function(x) str_match_all(x, "\\[\\[(.*?)\\]\\]")[[1]][, 2]
+gate_words <- c("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
+in_span <- function(v, s) {
+  s <- str_remove_all(s, ",")
+  spelled <- if (str_detect(v, "^[0-9]+$") && as.integer(v) < length(gate_words)) gate_words[as.integer(v) + 1] else v
+  str_detect(s, fixed(v)) || str_detect(s, fixed(spelled))
+}
+
+quantified <- entries |>
+  filter(!is.na(corrected_values)) |>
+  mutate(ids = str_split(claim_ids, ";"), values = str_split(corrected_values, ";"),
+         spans = map(corrected, marked_spans))
+
+stopifnot(all(lengths(quantified$ids) == lengths(quantified$values)))
+
+value_placed <- pmap_lgl(quantified, function(...) {
+  e <- list(...)
+  if (length(e$values) == length(e$spans)) {
+    all(map2_lgl(e$values, e$spans, in_span))
+  } else {
+    all(map_lgl(e$values, \(v) any(map_lgl(e$spans, \(s) in_span(v, s)))))
+  }
+})
+
+if (!all(value_placed)) {
+  print(quantified |> filter(!value_placed) |> select(entry, title, corrected_values, corrected))
+  stop("An entry's corrected_values are not in the spans of its corrected sentence.")
+}
+
+# An entry that changes a quantity has to say which one, and an entry that changes none, or
+# a note, may not carry a value. The class is the declaration and this is where it binds.
+# Empty claim_ids is stored as "" and counts as missing.
+no_claim <- is.na(entries$claim_ids) | entries$claim_ids == ""
+stopifnot(
+  all(!is.na(entries$corrected_values[entries$class == "quantity" & entries$form != "note" & !no_claim &
+                                        !entries$entry %in% values_unresolved])),
+  all(is.na(entries$corrected_values[entries$class != "quantity" | entries$form == "note"])),
+  all(is.na(entries$corrected_values) | !no_claim)
+)
+
 
 # The spine's markup, resolved for this document. Another renderer resolves it differently.
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
