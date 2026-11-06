@@ -178,10 +178,7 @@ p_fmt <- function(x) sprintf("%.3f", x)
 # value comes from the same expression that glues the sentence, so the two cannot be written
 # apart, and the gate below re-checks that each one is still inside the span it belongs to.
 # An entry of a class that changes no quantity, and a note, carries NA.
-# Entries 1 and 2 are unresolved: each names appendix_two_tailed_method, a method row whose
-# value is a 0/1 flag with no number in the corrected sentence, and entry 1's other id is a
-# 'holds' flag; they carry NA until the claim scale is settled and are listed in values_unresolved.
-values_unresolved <- c(1, 2)
+values_unresolved <- integer(0)
 entries <- tribble(
   ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
@@ -202,7 +199,7 @@ entries <- tribble(
     "{p_fmt(dist_row('extraversion')$p_twotail)}. The other four traits clear 0.05 by a ",
     "wide margin under either test."),
   "traits_all_five_significantly_closer;appendix_two_tailed_method",
-  NA_character_,
+  str_c(as.integer(traits_significant == 5), ";NA"),
 
   2, "quantity", "pipeline", "full",
   "The number of significant differences in the online appendix",
@@ -216,7 +213,7 @@ entries <- tribble(
     "unaffected: MTurk is closer in {counts$n_mturk_closer} instances and significant in ",
     "{word(counts$n_sig_farther_twotail)}, voter turnout, under both tests."),
   "appendix_lucid_closer_significant;appendix_two_tailed_method",
-  NA_character_,
+  str_c(counts$n_sig_closer_twotail, ";NA"),
 
   3, "description", "pipeline", "full",
   "The MTurk sample under-represents southerners",
@@ -376,6 +373,18 @@ entries <- tribble(
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
 
+# values_in_spans is FALSE where the claim's scale is not the sentence's, under PROCEDURES'
+# rule that corrected_values is always on the claim's scale. A method row or other id with
+# no number on any scale stores NA in its position. Such an entry's note must say why.
+off_claim_scale <- c(1, 2)
+entries <- entries |>
+  mutate(values_in_spans = case_when(
+    is.na(corrected_values) ~ NA,
+    entry %in% off_claim_scale ~ FALSE,
+    .default = TRUE
+  ))
+stopifnot(all(str_length(entries$note[!replace_na(entries$values_in_spans, TRUE)]) > 0))
+
 # Gate: corrected_values agrees with the sentence it was glued into ----
 # The column and the sentence are written from one expression, so they begin in agreement
 # and this gate exists for the edit that separates them: a value moved from one marked span
@@ -393,7 +402,7 @@ in_span <- function(v, s) {
 }
 
 quantified <- entries |>
-  filter(!is.na(corrected_values)) |>
+  filter(!is.na(corrected_values), values_in_spans) |>
   mutate(ids = str_split(claim_ids, ";"), values = str_split(corrected_values, ";"),
          spans = map(corrected, marked_spans))
 
