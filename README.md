@@ -17,8 +17,7 @@
     errors](#the-appendix-table-2-standard-errors)
   - [Where the article disagrees with
     itself](#where-the-article-disagrees-with-itself)
-  - [Two findings the deposit does not
-    settle](#two-findings-the-deposit-does-not-settle)
+  - [Two findings carried as notes](#two-findings-carried-as-notes)
 - [Bootstrap stability](#bootstrap-stability)
   - [The sampler the archive was written
     under](#the-sampler-the-archive-was-written-under)
@@ -373,10 +372,11 @@ published pages themselves, where the deposit has nothing to say. All
 nine are collected in `coppock_mcclellan_2019_errata.pdf` at the root of
 this repository, built by `errata.qmd`, which recomputes every number in
 every corrected sentence from the deposit each time it is rendered. None
-of the nine changes a conclusion. What follows here is the analysis
-behind them, numbered as the note numbers them, plus two further
-findings that could not go in an errata because the deposit does not
-settle what the corrected sentence should say.
+of the nine changes a conclusion. The spine also carries three notes,
+entries 10 to 12, which quote a passage the edition reprints as
+published and correct nothing; the pdf sets them under “Carried, and not
+corrected.” What follows here is the analysis behind the corrections and
+the notes, numbered as the spine numbers them.
 
 ## The appendix Table 1 p-values
 
@@ -395,7 +395,10 @@ a difference significant at 0.05 once `|z|` exceeds 1.82, where the
 two-tailed test needs 1.96. The published p-value column reproduces
 exactly under the archive’s expression and not under the two-tailed one,
 so the published table is the archive’s expression, not the appendix’s
-description of it.
+description of it. The column itself is entry 10, a note that corrects
+nothing: its twenty-one cells are the same cells entry 7 already
+changes, so a second correction to them would set two values in one
+cell.
 
 | Variable           | Published | Archive expression | Two-tailed |
 |:-------------------|----------:|-------------------:|-----------:|
@@ -488,7 +491,7 @@ where appendix Table 2 reports 752 for the same models, and section
 2.5.1 describes the original Berinsky sample as MTurk where the article
 describes it as Survey Sampling International.
 
-## Two findings the deposit does not settle
+## Two findings carried as notes
 
 The article says the Lucid sample corresponds “more closely to the 2012
 ANES baseline for voter registration and voter turnout,” and says on the
@@ -500,8 +503,9 @@ gives appendix Table 1 its −0.124; the political table’s weighted mean
 puts the same benchmark at 0.756, which makes Lucid the closer sample.
 The registration comparison is unaffected and favours Lucid under both.
 Choosing between two deposited benchmarks is an analytical decision,
-which the rewrite does not make, so this is recorded rather than
-corrected.
+which the rewrite does not make. The finding is entry 11, a note that
+corrects nothing, and the choice between the two benchmarks is the
+reason it carries no corrected sentence.
 
 The heterogeneity section places the welfare replication’s conditional
 effects “among both the Lucid sample and respondents in the 2016 GSS,”
@@ -511,7 +515,9 @@ the 2014 GSS as the baseline. The deposited
 `standardizedExperimentsHeterogeneousEffects.RData` is a pre-computed
 table whose comparison sample is labelled “Original” with no year and
 which no deposited script builds, so which survey Figure 3’s original
-panel draws on cannot be established from the deposit.
+panel draws on cannot be established from the deposit. The finding is
+entry 12, a note that corrects nothing, and the unverifiable year is the
+reason it carries no corrected token.
 
 # Bootstrap stability
 
@@ -1092,21 +1098,21 @@ writing nothing at all.
 
 | Item      | Value                  |
 |:----------|:-----------------------|
-| R version | 4.6.0                  |
+| R version | 4.6.1                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-09-27             |
+| Date run  | 2026-11-08             |
 
-| Package      | Version |
-|:-------------|:--------|
-| tidyverse    | 2.0.0   |
-| estimatr     | 2.0.1   |
-| broom        | 1.0.13  |
-| scales       | 1.4.0   |
-| matrixStats  | 1.5.0   |
-| rsample      | 1.3.2   |
-| sandwich     | 3.1.1   |
-| modelsummary | 2.6.0   |
-| ggplot2      | 4.0.3   |
-| here         | 1.0.2   |
+| Package      | Version    |
+|:-------------|:-----------|
+| tidyverse    | 2.0.0      |
+| estimatr     | 2.0.1.9000 |
+| broom        | 1.0.13     |
+| scales       | 1.4.0      |
+| matrixStats  | 1.5.0      |
+| rsample      | 1.3.2      |
+| sandwich     | 3.1.1      |
+| modelsummary | 2.6.0      |
+| ggplot2      | 4.0.3      |
+| here         | 1.0.2      |
 
 Package versions used for the run behind this report.

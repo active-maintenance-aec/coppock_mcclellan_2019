@@ -317,12 +317,16 @@ published_a1 <- published_claims |>
   pivot_wider(names_from = quantity, values_from = value) |>
   mutate(z = distance / se, p_twotail = 2 * pnorm(-abs(z)))
 page_a1_twotail_closer <- sum(published_a1$distance > 0 & published_a1$p_twotail < 0.05)
-n_errata <- nrow(spine)
+# Notes quote a passage and correct nothing, so every count of corrections is made on the
+# spine with them filtered out.
+corrections <- spine |> filter(form != "note")
+n_errata <- nrow(corrections)
+n_notes <- sum(spine$form == "note")
 # The spine's `source` column says which channel found an entry, so the split between the
 # entries the deposit settles and the ones it cannot is read off the spine rather than
 # counted by hand here. Entry 8 is a space the appendix page does not set: no run of the
 # archive bears on it and it cites no ground-truth row.
-n_errata_deposit <- sum(spine$source == "pipeline")
+n_errata_deposit <- sum(corrections$source == "pipeline")
 # stringr::word() is a different function, so the spelling helper is named for what it does.
 spell_errata <- function(n) c("one", "two", "three", "four", "five", "six", "seven",
                               "eight", "nine", "ten")[n]
@@ -336,7 +340,7 @@ errata_page_clause <- if (n_errata_page == 1) {
 }
 ```
 
-`r str_to_sentence(spell_errata(n_errata_deposit))` sentences in the article and its appendix state something the deposited data do not support, and `r errata_page_clause`, where the deposit has nothing to say. All `r spell_errata(n_errata)` are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the `r spell_errata(n_errata)` changes a conclusion. What follows here is the analysis behind them, numbered as the note numbers them, plus two further findings that could not go in an errata because the deposit does not settle what the corrected sentence should say.
+`r str_to_sentence(spell_errata(n_errata_deposit))` sentences in the article and its appendix state something the deposited data do not support, and `r errata_page_clause`, where the deposit has nothing to say. All `r spell_errata(n_errata)` are collected in `coppock_mcclellan_2019_errata.pdf` at the root of this repository, built by `errata.qmd`, which recomputes every number in every corrected sentence from the deposit each time it is rendered. None of the `r spell_errata(n_errata)` changes a conclusion. The spine also carries `r spell_errata(n_notes)` notes, entries 10 to 12, which quote a passage the edition reprints as published and correct nothing; the pdf sets them under "Carried, and not corrected." What follows here is the analysis behind the corrections and the notes, numbered as the spine numbers them.
 
 ## The appendix Table 1 p-values
 
@@ -346,7 +350,7 @@ Section 1 of the online appendix says the standard errors come from a nonparamet
 p = pnorm(q = 2 * (1 - abs(lucid_is_closer / se)), lower.tail = TRUE)
 ```
 
-which is not a p-value for any hypothesis. A two-tailed normal-approximation p-value is `2 * pnorm(-abs(z))`. The two expressions agree in spirit and differ in threshold: the archive's calls a difference significant at 0.05 once `|z|` exceeds 1.82, where the two-tailed test needs 1.96. The published p-value column reproduces exactly under the archive's expression and not under the two-tailed one, so the published table is the archive's expression, not the appendix's description of it.
+which is not a p-value for any hypothesis. A two-tailed normal-approximation p-value is `2 * pnorm(-abs(z))`. The two expressions agree in spirit and differ in threshold: the archive's calls a difference significant at 0.05 once `|z|` exceeds 1.82, where the two-tailed test needs 1.96. The published p-value column reproduces exactly under the archive's expression and not under the two-tailed one, so the published table is the archive's expression, not the appendix's description of it. The column itself is entry 10, a note that corrects nothing: its twenty-one cells are the same cells entry 7 already changes, so a second correction to them would set two values in one cell.
 
 ```{r errata_p_table}
 gt |>
@@ -390,11 +394,11 @@ The article says that of the 11 demographic variables, "the Lucid mean is closer
 
 Appendix section 2.1.3 gives the Lucid welfare replication a sample of 1,811, which is the Lucid sample size of the Hiscox experiment reported in section 2.4.2. The welfare data have 3,294 respondents. Appendix section 2.3.1 gives the original Kam and Simas study 761 respondents where appendix Table 2 reports 752 for the same models, and section 2.5.1 describes the original Berinsky sample as MTurk where the article describes it as Survey Sampling International.
 
-## Two findings the deposit does not settle
+## Two findings carried as notes
 
-The article says the Lucid sample corresponds "more closely to the 2012 ANES baseline for voter registration and voter turnout," and says on the same page that "MTurk is significantly closer for voter turnout." Both statements are supported by a deposited file, and the two files disagree. The standardized file the distance tests read puts the ANES 2012 turnout benchmark at 0.702, which makes MTurk the closer sample and gives appendix Table 1 its −0.124; the political table's weighted mean puts the same benchmark at 0.756, which makes Lucid the closer sample. The registration comparison is unaffected and favours Lucid under both. Choosing between two deposited benchmarks is an analytical decision, which the rewrite does not make, so this is recorded rather than corrected.
+The article says the Lucid sample corresponds "more closely to the 2012 ANES baseline for voter registration and voter turnout," and says on the same page that "MTurk is significantly closer for voter turnout." Both statements are supported by a deposited file, and the two files disagree. The standardized file the distance tests read puts the ANES 2012 turnout benchmark at 0.702, which makes MTurk the closer sample and gives appendix Table 1 its −0.124; the political table's weighted mean puts the same benchmark at 0.756, which makes Lucid the closer sample. The registration comparison is unaffected and favours Lucid under both. Choosing between two deposited benchmarks is an analytical decision, which the rewrite does not make. The finding is entry 11, a note that corrects nothing, and the choice between the two benchmarks is the reason it carries no corrected sentence.
 
-The heterogeneity section places the welfare replication's conditional effects "among both the Lucid sample and respondents in the 2016 GSS," twice. The deposited welfare data hold the 1984 and 2014 General Social Surveys and no other, and the article's own Experiment 1 section names the 2014 GSS as the baseline. The deposited `standardizedExperimentsHeterogeneousEffects.RData` is a pre-computed table whose comparison sample is labelled "Original" with no year and which no deposited script builds, so which survey Figure 3's original panel draws on cannot be established from the deposit.
+The heterogeneity section places the welfare replication's conditional effects "among both the Lucid sample and respondents in the 2016 GSS," twice. The deposited welfare data hold the 1984 and 2014 General Social Surveys and no other, and the article's own Experiment 1 section names the 2014 GSS as the baseline. The deposited `standardizedExperimentsHeterogeneousEffects.RData` is a pre-computed table whose comparison sample is labelled "Original" with no year and which no deposited script builds, so which survey Figure 3's original panel draws on cannot be established from the deposit. The finding is entry 12, a note that corrects nothing, and the unverifiable year is the reason it carries no corrected token.
 
 # Bootstrap stability
 
