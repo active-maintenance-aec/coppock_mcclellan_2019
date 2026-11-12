@@ -17,6 +17,12 @@
   ],
   "related_identifiers": [
     {
+      "identifier": "https://github.com/active-maintenance-aec/coppock_mcclellan_2019",
+      "relation": "isSupplementTo",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
       "identifier": "10.1177/2053168018822174",
       "relation": "isSupplementTo",
       "scheme": "doi"
