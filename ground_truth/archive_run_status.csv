@@ -1,0 +1,25 @@
+pass,script,role,exit_status,outcome,stopped_at
+as_shipped,01_DemographicsTableAnalysis.R,analysis,0,clean,NA
+as_shipped,02_PoliticalTableAnalysis.R,analysis,0,clean,NA
+as_shipped,03_PsychologicalTableAnalysis.R,analysis,0,clean,NA
+as_shipped,04_WelfareReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+as_shipped,05_AsianDiseaseReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+as_shipped,06_KamSimasReplicationAnalysis.R,analysis,1,error,Error in if (is.na(s)) { : the condition has length > 1 Calls: source ... .stargazer.wrap -> .get.object.names -> .inside.bracket Execution halted
+as_shipped,07_HiscoxReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+as_shipped,08_HealthRumorsReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+as_shipped,09_SurveyBehaviorTableAnalysis.R,analysis,0,clean,NA
+as_shipped,10_StandardizedPlots.R,analysis,0,clean,NA
+as_shipped,11_StandardizedPlotsHeterogeneousEffects.R,analysis,0,clean,NA
+as_shipped,12_DistanceTests.R,analysis,0,clean,NA
+stripped,01_DemographicsTableAnalysis.R,analysis,0,clean,NA
+stripped,02_PoliticalTableAnalysis.R,analysis,0,clean,NA
+stripped,03_PsychologicalTableAnalysis.R,analysis,0,clean,NA
+stripped,04_WelfareReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+stripped,05_AsianDiseaseReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+stripped,06_KamSimasReplicationAnalysis.R,analysis,1,error,Error in if (is.na(s)) { : the condition has length > 1 Calls: source ... .stargazer.wrap -> .get.object.names -> .inside.bracket Execution halted
+stripped,07_HiscoxReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+stripped,08_HealthRumorsReplicationAnalysis.R,analysis,1,error,"Error: `starprep()` was removed in estimatr 2.0. It prepared fits for stargazer, which is no longer maintained. Use modelsummary, which reads `tidy()` and `glance()` and so works on every estimator in this package: modelsummary::modelsummary(list(fit1, fit2)) Execution halted"
+stripped,09_SurveyBehaviorTableAnalysis.R,analysis,0,clean,NA
+stripped,10_StandardizedPlots.R,analysis,0,clean,NA
+stripped,11_StandardizedPlotsHeterogeneousEffects.R,analysis,0,clean,NA
+stripped,12_DistanceTests.R,analysis,0,clean,NA

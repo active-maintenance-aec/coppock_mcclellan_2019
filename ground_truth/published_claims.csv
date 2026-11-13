@@ -1,256 +1,256 @@
-claim_id,location,claim_type,value_paper,needs_block
-a1_distance_age,Appendix Table 1,pipeline,0.708,TRUE
-a1_distance_agreeableness,Appendix Table 1,pipeline,0.203,TRUE
-a1_distance_conscientiousness,Appendix Table 1,pipeline,0.420,TRUE
-a1_distance_education,Appendix Table 1,pipeline,0.285,TRUE
-a1_distance_emotionalstability,Appendix Table 1,pipeline,0.248,TRUE
-a1_distance_extraversion,Appendix Table 1,pipeline,0.100,TRUE
-a1_distance_female,Appendix Table 1,pipeline,0.159,TRUE
-a1_distance_ideology,Appendix Table 1,pipeline,0.465,TRUE
-a1_distance_income,Appendix Table 1,pipeline,0.099,TRUE
-a1_distance_interest,Appendix Table 1,pipeline,0.540,TRUE
-a1_distance_opennesstoexperiences,Appendix Table 1,pipeline,0.157,TRUE
-a1_distance_party7,Appendix Table 1,pipeline,0.117,TRUE
-a1_distance_race_black,Appendix Table 1,pipeline,0.152,TRUE
-a1_distance_race_hispanic,Appendix Table 1,pipeline,-0.042,TRUE
-a1_distance_race_white,Appendix Table 1,pipeline,0.018,TRUE
-a1_distance_region_midwest,Appendix Table 1,pipeline,0.052,TRUE
-a1_distance_region_northeast,Appendix Table 1,pipeline,0.079,TRUE
-a1_distance_region_south,Appendix Table 1,pipeline,0.137,TRUE
-a1_distance_region_west,Appendix Table 1,pipeline,-0.007,TRUE
-a1_distance_register,Appendix Table 1,pipeline,0.076,TRUE
-a1_distance_vote,Appendix Table 1,pipeline,-0.124,TRUE
-a1_p_age,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_agreeableness,Appendix Table 1,pipeline,0.001,TRUE
-a1_p_conscientiousness,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_education,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_emotionalstability,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_extraversion,Appendix Table 1,pipeline,0.034,TRUE
-a1_p_female,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_ideology,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_income,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_interest,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_opennesstoexperiences,Appendix Table 1,pipeline,0.005,TRUE
-a1_p_party7,Appendix Table 1,pipeline,0.010,TRUE
-a1_p_race_black,Appendix Table 1,pipeline,0.000,TRUE
-a1_p_race_hispanic,Appendix Table 1,pipeline,0.357,TRUE
-a1_p_race_white,Appendix Table 1,pipeline,0.873,TRUE
-a1_p_region_midwest,Appendix Table 1,pipeline,0.409,TRUE
-a1_p_region_northeast,Appendix Table 1,pipeline,0.179,TRUE
-a1_p_region_south,Appendix Table 1,pipeline,0.010,TRUE
-a1_p_region_west,Appendix Table 1,pipeline,0.948,TRUE
-a1_p_register,Appendix Table 1,pipeline,0.157,TRUE
-a1_p_vote,Appendix Table 1,pipeline,0.000,TRUE
-a1_se_age,Appendix Table 1,pipeline,0.032,TRUE
-a1_se_agreeableness,Appendix Table 1,pipeline,0.077,TRUE
-a1_se_conscientiousness,Appendix Table 1,pipeline,0.065,TRUE
-a1_se_education,Appendix Table 1,pipeline,0.041,TRUE
-a1_se_emotionalstability,Appendix Table 1,pipeline,0.054,TRUE
-a1_se_extraversion,Appendix Table 1,pipeline,0.052,TRUE
-a1_se_female,Appendix Table 1,pipeline,0.049,TRUE
-a1_se_ideology,Appendix Table 1,pipeline,0.069,TRUE
-a1_se_income,Appendix Table 1,pipeline,0.033,TRUE
-a1_se_interest,Appendix Table 1,pipeline,0.082,TRUE
-a1_se_opennesstoexperiences,Appendix Table 1,pipeline,0.069,TRUE
-a1_se_party7,Appendix Table 1,pipeline,0.055,TRUE
-a1_se_race_black,Appendix Table 1,pipeline,0.033,TRUE
-a1_se_race_hispanic,Appendix Table 1,pipeline,0.035,TRUE
-a1_se_race_white,Appendix Table 1,pipeline,0.041,TRUE
-a1_se_region_midwest,Appendix Table 1,pipeline,0.046,TRUE
-a1_se_region_northeast,Appendix Table 1,pipeline,0.054,TRUE
-a1_se_region_south,Appendix Table 1,pipeline,0.064,TRUE
-a1_se_region_west,Appendix Table 1,pipeline,0.039,TRUE
-a1_se_register,Appendix Table 1,pipeline,0.050,TRUE
-a1_se_vote,Appendix Table 1,pipeline,0.044,TRUE
-a2_aic_kam_base,Appendix Table 2,pipeline,912.392,TRUE
-a2_aic_kam_ctrl,Appendix Table 2,pipeline,917.727,TRUE
-a2_aic_kam_int,Appendix Table 2,pipeline,914.391,TRUE
-a2_aic_lucid_base,Appendix Table 2,pipeline,2060.424,TRUE
-a2_aic_lucid_ctrl,Appendix Table 2,pipeline,2047.524,TRUE
-a2_aic_lucid_int,Appendix Table 2,pipeline,2060.713,TRUE
-a2_aic_mturk_base,Appendix Table 2,pipeline,902.092,TRUE
-a2_aic_mturk_ctrl,Appendix Table 2,pipeline,911.755,TRUE
-a2_aic_mturk_int,Appendix Table 2,pipeline,903.646,TRUE
-a2_coef_kam_base_int,Appendix Table 2,pipeline,-0.705,TRUE
-a2_coef_kam_base_mf,Appendix Table 2,pipeline,1.068,TRUE
-a2_coef_kam_base_ra,Appendix Table 2,pipeline,0.520,TRUE
-a2_coef_kam_ctrl_int,Appendix Table 2,pipeline,-0.814,TRUE
-a2_coef_kam_ctrl_mf,Appendix Table 2,pipeline,1.091,TRUE
-a2_coef_kam_ctrl_ra,Appendix Table 2,pipeline,0.587,TRUE
-a2_coef_kam_int_int,Appendix Table 2,pipeline,-0.700,TRUE
-a2_coef_kam_int_mf,Appendix Table 2,pipeline,1.059,TRUE
-a2_coef_kam_int_ra,Appendix Table 2,pipeline,0.506,TRUE
-a2_coef_kam_int_raxmf,Appendix Table 2,pipeline,0.022,TRUE
-a2_coef_lucid_base_int,Appendix Table 2,pipeline,-0.634,TRUE
-a2_coef_lucid_base_mf,Appendix Table 2,pipeline,0.898,TRUE
-a2_coef_lucid_base_ra,Appendix Table 2,pipeline,0.253,TRUE
-a2_coef_lucid_ctrl_int,Appendix Table 2,pipeline,-1.040,TRUE
-a2_coef_lucid_ctrl_mf,Appendix Table 2,pipeline,0.898,TRUE
-a2_coef_lucid_ctrl_ra,Appendix Table 2,pipeline,0.516,TRUE
-a2_coef_lucid_int_int,Appendix Table 2,pipeline,-0.767,TRUE
-a2_coef_lucid_int_mf,Appendix Table 2,pipeline,1.155,TRUE
-a2_coef_lucid_int_ra,Appendix Table 2,pipeline,0.522,TRUE
-a2_coef_lucid_int_raxmf,Appendix Table 2,pipeline,-0.523,TRUE
-a2_coef_mturk_base_int,Appendix Table 2,pipeline,-1.128,TRUE
-a2_coef_mturk_base_mf,Appendix Table 2,pipeline,1.182,TRUE
-a2_coef_mturk_base_ra,Appendix Table 2,pipeline,0.906,TRUE
-a2_coef_mturk_ctrl_int,Appendix Table 2,pipeline,-1.193,TRUE
-a2_coef_mturk_ctrl_mf,Appendix Table 2,pipeline,1.184,TRUE
-a2_coef_mturk_ctrl_ra,Appendix Table 2,pipeline,0.953,TRUE
-a2_coef_mturk_int_int,Appendix Table 2,pipeline,-1.225,TRUE
-a2_coef_mturk_int_mf,Appendix Table 2,pipeline,1.370,TRUE
-a2_coef_mturk_int_ra,Appendix Table 2,pipeline,1.090,TRUE
-a2_coef_mturk_int_raxmf,Appendix Table 2,pipeline,-0.368,TRUE
-a2_loglik_kam_base,Appendix Table 2,pipeline,-453.196,TRUE
-a2_loglik_kam_ctrl,Appendix Table 2,pipeline,-450.863,TRUE
-a2_loglik_kam_int,Appendix Table 2,pipeline,-453.195,TRUE
-a2_loglik_lucid_base,Appendix Table 2,pipeline,-1027.212,TRUE
-a2_loglik_lucid_ctrl,Appendix Table 2,pipeline,-1015.762,TRUE
-a2_loglik_lucid_int,Appendix Table 2,pipeline,-1026.356,TRUE
-a2_loglik_mturk_base,Appendix Table 2,pipeline,-448.046,TRUE
-a2_loglik_mturk_ctrl,Appendix Table 2,pipeline,-447.878,TRUE
-a2_loglik_mturk_int,Appendix Table 2,pipeline,-447.823,TRUE
-a2_nobs_kam_base,Appendix Table 2,pipeline,752,TRUE
-a2_nobs_kam_ctrl,Appendix Table 2,pipeline,752,TRUE
-a2_nobs_kam_int,Appendix Table 2,pipeline,752,TRUE
-a2_nobs_lucid_base,Appendix Table 2,pipeline,1629,TRUE
-a2_nobs_lucid_ctrl,Appendix Table 2,pipeline,1629,TRUE
-a2_nobs_lucid_int,Appendix Table 2,pipeline,1629,TRUE
-a2_nobs_mturk_base,Appendix Table 2,pipeline,766,TRUE
-a2_nobs_mturk_ctrl,Appendix Table 2,pipeline,766,TRUE
-a2_nobs_mturk_int,Appendix Table 2,pipeline,766,TRUE
-a2_se_kam_base_int,Appendix Table 2,pipeline,0.154,TRUE
-a2_se_kam_base_mf,Appendix Table 2,pipeline,0.098,TRUE
-a2_se_kam_base_ra,Appendix Table 2,pipeline,0.303,TRUE
-a2_se_kam_ctrl_int,Appendix Table 2,pipeline,0.275,TRUE
-a2_se_kam_ctrl_mf,Appendix Table 2,pipeline,0.100,TRUE
-a2_se_kam_ctrl_ra,Appendix Table 2,pipeline,0.325,TRUE
-a2_se_kam_int_int,Appendix Table 2,pipeline,0.229,TRUE
-a2_se_kam_int_mf,Appendix Table 2,pipeline,0.294,TRUE
-a2_se_kam_int_ra,Appendix Table 2,pipeline,0.485,TRUE
-a2_se_kam_int_raxmf,Appendix Table 2,pipeline,0.621,TRUE
-a2_se_lucid_base_int,Appendix Table 2,pipeline,0.106,TRUE
-a2_se_lucid_base_mf,Appendix Table 2,pipeline,0.065,TRUE
-a2_se_lucid_base_ra,Appendix Table 2,pipeline,0.196,TRUE
-a2_se_lucid_ctrl_int,Appendix Table 2,pipeline,0.176,TRUE
-a2_se_lucid_ctrl_mf,Appendix Table 2,pipeline,0.065,TRUE
-a2_se_lucid_ctrl_ra,Appendix Table 2,pipeline,0.205,TRUE
-a2_se_lucid_int_int,Appendix Table 2,pipeline,0.141,TRUE
-a2_se_lucid_int_mf,Appendix Table 2,pipeline,0.203,TRUE
-a2_se_lucid_int_ra,Appendix Table 2,pipeline,0.269,TRUE
-a2_se_lucid_int_raxmf,Appendix Table 2,pipeline,0.393,TRUE
-a2_se_mturk_base_int,Appendix Table 2,pipeline,0.163,TRUE
-a2_se_mturk_base_mf,Appendix Table 2,pipeline,0.097,TRUE
-a2_se_mturk_base_ra,Appendix Table 2,pipeline,0.283,TRUE
-a2_se_mturk_ctrl_int,Appendix Table 2,pipeline,0.281,TRUE
-a2_se_mturk_ctrl_mf,Appendix Table 2,pipeline,0.098,TRUE
-a2_se_mturk_ctrl_ra,Appendix Table 2,pipeline,0.293,TRUE
-a2_se_mturk_int_int,Appendix Table 2,pipeline,0.229,TRUE
-a2_se_mturk_int_mf,Appendix Table 2,pipeline,0.310,TRUE
-a2_se_mturk_int_ra,Appendix Table 2,pipeline,0.412,TRUE
-a2_se_mturk_int_raxmf,Appendix Table 2,pipeline,0.569,TRUE
-appendix_lucid_closer,Appendix 1,pipeline,18,TRUE
-appendix_lucid_closer_significant,Appendix 1,pipeline,14,TRUE
-appendix_mturk_closer,Appendix 1,pipeline,3,TRUE
-appendix_mturk_closer_significant,Appendix 1,pipeline,1,TRUE
-appendix_opportunities,Appendix 1,pipeline,21,TRUE
-compensation_mean,"Our sample, p.4",pipeline,5.01,TRUE
-compensation_mean_trimmed,"Our sample, p.4",pipeline,1.16,TRUE
-demographic_lucid_closer,"Baseline characteristics, p.6",pipeline,9,TRUE
-demographic_significantly_closer,"Baseline characteristics, p.6",pipeline,5,TRUE
-demographic_variables_tested,"Baseline characteristics, p.6",pipeline,11,TRUE
-education_anes,"Baseline characteristics, p.5",pipeline,13.5,TRUE
-education_lucid,"Baseline characteristics, p.5",pipeline,14.2,TRUE
-female_lucid,"Baseline characteristics, p.5",pipeline,52,TRUE
-female_mturk,"Baseline characteristics, p.5",pipeline,60,TRUE
-interest_lucid_minus_mturk,"Baseline characteristics, p.6",pipeline,1.2,TRUE
-manifest_ad_lucid_n,Appendix 2.2.2,pipeline,1813,TRUE
-manifest_ad_original_n,Appendix 2.2.1,pipeline,307,TRUE
-manifest_hiscox_gfk_n,Appendix 2.4.3,pipeline,2084,TRUE
-manifest_hiscox_lucid_n,Appendix 2.4.2,pipeline,1811,TRUE
-manifest_hiscox_mturk_n,Appendix 2.4.4,pipeline,2972,TRUE
-manifest_hiscox_original_n,Appendix 2.4.1,pipeline,1578,TRUE
-manifest_ks_lucid_n,Appendix 2.3.2,pipeline,1629,TRUE
-manifest_ks_mturk_n,Appendix 2.3.3,pipeline,766,TRUE
-manifest_ks_original_n,Appendix 2.3.1,pipeline,761,TRUE
-manifest_rumors_lucid_n,Appendix 2.5.2,pipeline,3503,TRUE
-manifest_rumors_original_n,Appendix 2.5.1,pipeline,1593,TRUE
-manifest_welfare_gss14_n,Appendix 2.1.2,pipeline,2457,TRUE
-manifest_welfare_gss84_n,Appendix 2.1.1,pipeline,943,TRUE
-manifest_welfare_lucid_n,Appendix 2.1.3,pipeline,1811,TRUE
-manifest_welfare_mturk_n,Appendix 2.1.4,pipeline,494,TRUE
-party7_anes2012,"Baseline characteristics, p.6",pipeline,3.7,TRUE
-party7_lucid,"Baseline characteristics, p.6",pipeline,3.7,TRUE
-party7_mturk,"Baseline characteristics, p.6",pipeline,3.5,TRUE
-rumor_lucid_control_mean,"Experiment 5, p.9",pipeline,-0.17,TRUE
-rumor_original_control_mean,"Experiment 5, p.9",pipeline,-0.19,TRUE
-sample_lucid_n,"Our sample, p.4",pipeline,3504,TRUE
-share_surveys_at_home,"Our sample, p.4",pipeline,94,TRUE
-share_under_one_survey_a_day,"Our sample, p.4",pipeline,98,TRUE
-surveys_per_month_mean,"Our sample, p.4",pipeline,4.28,TRUE
-surveys_per_month_trimmed,"Our sample, p.4",pipeline,2.43,TRUE
-appendix_two_tailed_method,Appendix 1,descriptive,,TRUE
-berinsky_no_mturk_estimate,"Experiments, p.6",descriptive,,TRUE
-berinsky_only_democratic_correction,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
-education_lucid_closer_than_mturk,"Baseline characteristics, p.5",descriptive,,TRUE
-heterogeneity_four_of_five,"Treatment effect heterogeneity, p.9",descriptive,4,TRUE
-hiscox_no_heterogeneity,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
-income_lucid_between_anes_and_mturk,"Baseline characteristics, p.5",descriptive,,TRUE
-interest_mturk_least_lucid_most,"Baseline characteristics, p.6",descriptive,,TRUE
-kamsimas_no_conditioning,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
-knowledge_mturk_above_anes_lucid_similar,"Baseline characteristics, p.6",descriptive,,TRUE
-lucid_closer_on_four_demographics,"Baseline characteristics, p.5",descriptive,,TRUE
-lucid_closer_registration_and_turnout,"Baseline characteristics, p.6",descriptive,,TRUE
-lucid_tracks_benchmarks_on_traits,"Baseline characteristics, p.6",descriptive,,TRUE
-majority_paid_dollars_or_points,"Our sample, p.4",descriptive,,TRUE
-most_cases_matched_sign_and_significance,"Discussion, p.12",descriptive,,TRUE
-mturk_least_favors_senior_drugs,"Baseline characteristics, p.6",descriptive,,TRUE
-mturk_more_liberal,"Baseline characteristics, p.6",descriptive,,TRUE
-mturk_overrepresents_southerners,"Baseline characteristics, p.5",descriptive,,TRUE
-one_substantively_different_result,"Discussion, p.12",descriptive,,TRUE
-policy_lucid_more_conservative,"Baseline characteristics, p.6",descriptive,,TRUE
-sig_closer_party_ideology_interest,"Baseline characteristics, p.6",descriptive,,TRUE
-traits_all_five_significantly_closer,"Baseline characteristics, p.6",descriptive,,TRUE
-welfare_cates_indistinguishable,"Treatment effect heterogeneity, p.9",descriptive,,TRUE
-white_overrepresented_less_on_lucid,"Baseline characteristics, p.5",descriptive,,TRUE
-zero_cases_significant_opposite_sign,"Discussion, p.12",descriptive,0,TRUE
-appendix_hiscox_factorial,Appendix 2.4.1,definitional,2,FALSE
-appendix_rumor_factorial,Appendix 2.5.1,definitional,2,FALSE
-big_five_traits,"Baseline characteristics, p.6",definitional,5,FALSE
-compensation_trim_threshold,"Our sample, p.4",definitional,20.00,FALSE
-figure_1_standardization,"Baseline characteristics, p.5",definitional,,TRUE
-hc2_ci_level,"Experiments, p.6",definitional,95,TRUE
-hiscox_expert_levels,"Experiment 4, p.8",definitional,2,TRUE
-hiscox_valence_levels,"Experiment 4, p.8",definitional,4,TRUE
-interest_scale_points,"Baseline characteristics, p.6",definitional,5,FALSE
-lucid_2015_unique_respondents,"Our sample, p.4",definitional,30,FALSE
-lucid_cost_per_response,"Our sample, p.4",definitional,1,FALSE
-lucid_daily_respondents,"Our sample, p.4",definitional,375000,FALSE
-lucid_demographic_refresh_months,"Our sample, p.4",definitional,3,FALSE
-lucid_double_optin_share,"Our sample, p.4",definitional,95,FALSE
-lucid_survey_minutes,"Our sample, p.4",definitional,10,FALSE
-questionnaire_income_threshold,Appendix questionnaire,definitional,200000,FALSE
-questionnaire_minutes,Appendix questionnaire,definitional,15,FALSE
-questionnaire_tipi_points,Appendix questionnaire,definitional,7,FALSE
-rumor_scale_endpoints,"Experiment 5, p.9",definitional,1,FALSE
-theory_heterogeneity_kinds,"Fit for purpose, p.3",definitional,3,FALSE
-theory_two_by_two,"Fit for purpose, p.3",definitional,2,FALSE
-discussion_five_experiments,"Discussion, p.12",structural,5,FALSE
-intro_five_experiments,"Fit for purpose, p.3",structural,5,TRUE
-manifest_hiscox_gfk_wave2_n,Appendix 2.4.3,structural,1838,FALSE
-manifest_hiscox_mturk_wave2_n,Appendix 2.4.4,structural,2307,FALSE
-questionnaire_items,Appendix questionnaire,structural,92,FALSE
-rumor_intervening_years,"Experiment 5, p.9",structural,6,FALSE
-sample_month,"Our sample, p.4",structural,,FALSE
-table1_all_humans_cases,"Fit for purpose, p.3",structural,2,FALSE
-table1_english_speaking_cases,"Fit for purpose, p.3",structural,3,FALSE
-table1_title_five_studies,Table 1,structural,5,FALSE
-welfare_gss_year,"Treatment effect heterogeneity, p.9",structural,2016,TRUE
-appendix_risk_battery_items,Appendix 2.3,transcribed,7,FALSE
-asian_disease_deaths,"Experiment 2, p.6",transcribed,600,FALSE
-asian_disease_die,"Experiment 2, p.6",transcribed,400,FALSE
-asian_disease_saved,"Experiment 2, p.6",transcribed,200,FALSE
-asian_disease_thirds,"Experiment 2, p.6",transcribed,3,FALSE
-female_census,"Baseline characteristics, p.5",transcribed,50.8,FALSE
-flores_coppock_bilinguals,"Our sample, p.4",transcribed,2866,FALSE
-intro_mturk_pool_size,"Introduction, p.2",transcribed,7300,FALSE
+claim_id,location,claim_type,claim,value_paper,digits,comparison,expect,needs_block,notes
+a1_distance_age,Appendix Table 1,pipeline,"Distance, Age",0.708,3,==,NA,TRUE,NA
+a1_distance_agreeableness,Appendix Table 1,pipeline,"Distance, Agreeable",0.203,3,==,NA,TRUE,NA
+a1_distance_conscientiousness,Appendix Table 1,pipeline,"Distance, Conscientious",0.420,3,==,NA,TRUE,NA
+a1_distance_education,Appendix Table 1,pipeline,"Distance, Education",0.285,3,==,NA,TRUE,NA
+a1_distance_emotionalstability,Appendix Table 1,pipeline,"Distance, Stable",0.248,3,==,NA,TRUE,NA
+a1_distance_extraversion,Appendix Table 1,pipeline,"Distance, Extraverted",0.100,3,==,NA,TRUE,NA
+a1_distance_female,Appendix Table 1,pipeline,"Distance, Female",0.159,3,==,NA,TRUE,NA
+a1_distance_ideology,Appendix Table 1,pipeline,"Distance, Ideology",0.465,3,==,NA,TRUE,NA
+a1_distance_income,Appendix Table 1,pipeline,"Distance, Mean income",0.099,3,==,NA,TRUE,NA
+a1_distance_interest,Appendix Table 1,pipeline,"Distance, Political Interest",0.540,3,==,NA,TRUE,NA
+a1_distance_opennesstoexperiences,Appendix Table 1,pipeline,"Distance, Open",0.157,3,==,NA,TRUE,NA
+a1_distance_party7,Appendix Table 1,pipeline,"Distance, Party ID",0.117,3,==,NA,TRUE,NA
+a1_distance_race_black,Appendix Table 1,pipeline,"Distance, Black",0.152,3,==,NA,TRUE,NA
+a1_distance_race_hispanic,Appendix Table 1,pipeline,"Distance, Hispanic",-0.042,3,==,NA,TRUE,NA
+a1_distance_race_white,Appendix Table 1,pipeline,"Distance, White",0.018,3,==,NA,TRUE,NA
+a1_distance_region_midwest,Appendix Table 1,pipeline,"Distance, Midwest",0.052,3,==,NA,TRUE,NA
+a1_distance_region_northeast,Appendix Table 1,pipeline,"Distance, Northeast",0.079,3,==,NA,TRUE,NA
+a1_distance_region_south,Appendix Table 1,pipeline,"Distance, South",0.137,3,==,NA,TRUE,NA
+a1_distance_region_west,Appendix Table 1,pipeline,"Distance, West",-0.007,3,==,NA,TRUE,NA
+a1_distance_register,Appendix Table 1,pipeline,"Distance, Voter registration",0.076,3,==,NA,TRUE,NA
+a1_distance_vote,Appendix Table 1,pipeline,"Distance, Voter turnout",-0.124,3,==,NA,TRUE,NA
+a1_p_age,Appendix Table 1,pipeline,"p-value, Age",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_agreeableness,Appendix Table 1,pipeline,"p-value, Agreeable",0.001,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_conscientiousness,Appendix Table 1,pipeline,"p-value, Conscientious",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_education,Appendix Table 1,pipeline,"p-value, Education",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_emotionalstability,Appendix Table 1,pipeline,"p-value, Stable",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_extraversion,Appendix Table 1,pipeline,"p-value, Extraverted",0.034,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_female,Appendix Table 1,pipeline,"p-value, Female",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_ideology,Appendix Table 1,pipeline,"p-value, Ideology",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_income,Appendix Table 1,pipeline,"p-value, Mean income",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_interest,Appendix Table 1,pipeline,"p-value, Political Interest",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_opennesstoexperiences,Appendix Table 1,pipeline,"p-value, Open",0.005,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_party7,Appendix Table 1,pipeline,"p-value, Party ID",0.010,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_race_black,Appendix Table 1,pipeline,"p-value, Black",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_race_hispanic,Appendix Table 1,pipeline,"p-value, Hispanic",0.357,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_race_white,Appendix Table 1,pipeline,"p-value, White",0.873,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_region_midwest,Appendix Table 1,pipeline,"p-value, Midwest",0.409,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_region_northeast,Appendix Table 1,pipeline,"p-value, Northeast",0.179,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_region_south,Appendix Table 1,pipeline,"p-value, South",0.010,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_region_west,Appendix Table 1,pipeline,"p-value, West",0.948,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_register,Appendix Table 1,pipeline,"p-value, Voter registration",0.157,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_p_vote,Appendix Table 1,pipeline,"p-value, Voter turnout",0.000,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_age,Appendix Table 1,pipeline,"Bootstrap SE, Age",0.032,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_agreeableness,Appendix Table 1,pipeline,"Bootstrap SE, Agreeable",0.077,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_conscientiousness,Appendix Table 1,pipeline,"Bootstrap SE, Conscientious",0.065,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_education,Appendix Table 1,pipeline,"Bootstrap SE, Education",0.041,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_emotionalstability,Appendix Table 1,pipeline,"Bootstrap SE, Stable",0.054,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_extraversion,Appendix Table 1,pipeline,"Bootstrap SE, Extraverted",0.052,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_female,Appendix Table 1,pipeline,"Bootstrap SE, Female",0.049,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_ideology,Appendix Table 1,pipeline,"Bootstrap SE, Ideology",0.069,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_income,Appendix Table 1,pipeline,"Bootstrap SE, Mean income",0.033,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_interest,Appendix Table 1,pipeline,"Bootstrap SE, Political Interest",0.082,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_opennesstoexperiences,Appendix Table 1,pipeline,"Bootstrap SE, Open",0.069,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_party7,Appendix Table 1,pipeline,"Bootstrap SE, Party ID",0.055,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_race_black,Appendix Table 1,pipeline,"Bootstrap SE, Black",0.033,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_race_hispanic,Appendix Table 1,pipeline,"Bootstrap SE, Hispanic",0.035,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_race_white,Appendix Table 1,pipeline,"Bootstrap SE, White",0.041,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_region_midwest,Appendix Table 1,pipeline,"Bootstrap SE, Midwest",0.046,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_region_northeast,Appendix Table 1,pipeline,"Bootstrap SE, Northeast",0.054,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_region_south,Appendix Table 1,pipeline,"Bootstrap SE, South",0.064,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_region_west,Appendix Table 1,pipeline,"Bootstrap SE, West",0.039,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_register,Appendix Table 1,pipeline,"Bootstrap SE, Voter registration",0.050,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a1_se_vote,Appendix Table 1,pipeline,"Bootstrap SE, Voter turnout",0.044,3,==,range,TRUE,One draw of an unseeded 100-resample bootstrap; scored against its resampling range in build_ground_truth.R
+a2_aic_kam_base,Appendix Table 2,pipeline,"AIC, kam_base",912.392,3,==,NA,TRUE,NA
+a2_aic_kam_ctrl,Appendix Table 2,pipeline,"AIC, kam_ctrl",917.727,3,==,NA,TRUE,NA
+a2_aic_kam_int,Appendix Table 2,pipeline,"AIC, kam_int",914.391,3,==,NA,TRUE,NA
+a2_aic_lucid_base,Appendix Table 2,pipeline,"AIC, lucid_base",2060.424,3,==,NA,TRUE,NA
+a2_aic_lucid_ctrl,Appendix Table 2,pipeline,"AIC, lucid_ctrl",2047.524,3,==,NA,TRUE,NA
+a2_aic_lucid_int,Appendix Table 2,pipeline,"AIC, lucid_int",2060.713,3,==,NA,TRUE,NA
+a2_aic_mturk_base,Appendix Table 2,pipeline,"AIC, mturk_base",902.092,3,==,NA,TRUE,NA
+a2_aic_mturk_ctrl,Appendix Table 2,pipeline,"AIC, mturk_ctrl",911.755,3,==,NA,TRUE,NA
+a2_aic_mturk_int,Appendix Table 2,pipeline,"AIC, mturk_int",903.646,3,==,NA,TRUE,NA
+a2_coef_kam_base_int,Appendix Table 2,pipeline,"Coefficient, kam_base, (Intercept)",-0.705,3,==,NA,TRUE,NA
+a2_coef_kam_base_mf,Appendix Table 2,pipeline,"Coefficient, kam_base, mortalityfirst",1.068,3,==,NA,TRUE,NA
+a2_coef_kam_base_ra,Appendix Table 2,pipeline,"Coefficient, kam_base, ramean",0.520,3,==,NA,TRUE,NA
+a2_coef_kam_ctrl_int,Appendix Table 2,pipeline,"Coefficient, kam_ctrl, (Intercept)",-0.814,3,==,NA,TRUE,NA
+a2_coef_kam_ctrl_mf,Appendix Table 2,pipeline,"Coefficient, kam_ctrl, mortalityfirst",1.091,3,==,NA,TRUE,NA
+a2_coef_kam_ctrl_ra,Appendix Table 2,pipeline,"Coefficient, kam_ctrl, ramean",0.587,3,==,NA,TRUE,NA
+a2_coef_kam_int_int,Appendix Table 2,pipeline,"Coefficient, kam_int, (Intercept)",-0.700,3,==,NA,TRUE,NA
+a2_coef_kam_int_mf,Appendix Table 2,pipeline,"Coefficient, kam_int, mortalityfirst",1.059,3,==,NA,TRUE,NA
+a2_coef_kam_int_ra,Appendix Table 2,pipeline,"Coefficient, kam_int, ramean",0.506,3,==,NA,TRUE,NA
+a2_coef_kam_int_raxmf,Appendix Table 2,pipeline,"Coefficient, kam_int, mortalityfirst:ramean",0.022,3,==,NA,TRUE,NA
+a2_coef_lucid_base_int,Appendix Table 2,pipeline,"Coefficient, lucid_base, (Intercept)",-0.634,3,==,NA,TRUE,NA
+a2_coef_lucid_base_mf,Appendix Table 2,pipeline,"Coefficient, lucid_base, mortalityfirst",0.898,3,==,NA,TRUE,NA
+a2_coef_lucid_base_ra,Appendix Table 2,pipeline,"Coefficient, lucid_base, ramean",0.253,3,==,NA,TRUE,NA
+a2_coef_lucid_ctrl_int,Appendix Table 2,pipeline,"Coefficient, lucid_ctrl, (Intercept)",-1.040,3,==,NA,TRUE,NA
+a2_coef_lucid_ctrl_mf,Appendix Table 2,pipeline,"Coefficient, lucid_ctrl, mortalityfirst",0.898,3,==,NA,TRUE,NA
+a2_coef_lucid_ctrl_ra,Appendix Table 2,pipeline,"Coefficient, lucid_ctrl, ramean",0.516,3,==,NA,TRUE,NA
+a2_coef_lucid_int_int,Appendix Table 2,pipeline,"Coefficient, lucid_int, (Intercept)",-0.767,3,==,NA,TRUE,NA
+a2_coef_lucid_int_mf,Appendix Table 2,pipeline,"Coefficient, lucid_int, mortalityfirst",1.155,3,==,NA,TRUE,NA
+a2_coef_lucid_int_ra,Appendix Table 2,pipeline,"Coefficient, lucid_int, ramean",0.522,3,==,NA,TRUE,NA
+a2_coef_lucid_int_raxmf,Appendix Table 2,pipeline,"Coefficient, lucid_int, mortalityfirst:ramean",-0.523,3,==,NA,TRUE,NA
+a2_coef_mturk_base_int,Appendix Table 2,pipeline,"Coefficient, mturk_base, (Intercept)",-1.128,3,==,NA,TRUE,NA
+a2_coef_mturk_base_mf,Appendix Table 2,pipeline,"Coefficient, mturk_base, mortalityfirst",1.182,3,==,NA,TRUE,NA
+a2_coef_mturk_base_ra,Appendix Table 2,pipeline,"Coefficient, mturk_base, ramean",0.906,3,==,NA,TRUE,NA
+a2_coef_mturk_ctrl_int,Appendix Table 2,pipeline,"Coefficient, mturk_ctrl, (Intercept)",-1.193,3,==,NA,TRUE,NA
+a2_coef_mturk_ctrl_mf,Appendix Table 2,pipeline,"Coefficient, mturk_ctrl, mortalityfirst",1.184,3,==,NA,TRUE,NA
+a2_coef_mturk_ctrl_ra,Appendix Table 2,pipeline,"Coefficient, mturk_ctrl, ramean",0.953,3,==,NA,TRUE,NA
+a2_coef_mturk_int_int,Appendix Table 2,pipeline,"Coefficient, mturk_int, (Intercept)",-1.225,3,==,NA,TRUE,NA
+a2_coef_mturk_int_mf,Appendix Table 2,pipeline,"Coefficient, mturk_int, mortalityfirst",1.370,3,==,NA,TRUE,NA
+a2_coef_mturk_int_ra,Appendix Table 2,pipeline,"Coefficient, mturk_int, ramean",1.090,3,==,NA,TRUE,NA
+a2_coef_mturk_int_raxmf,Appendix Table 2,pipeline,"Coefficient, mturk_int, mortalityfirst:ramean",-0.368,3,==,NA,TRUE,NA
+a2_loglik_kam_base,Appendix Table 2,pipeline,"Log likelihood, kam_base",-453.196,3,==,NA,TRUE,NA
+a2_loglik_kam_ctrl,Appendix Table 2,pipeline,"Log likelihood, kam_ctrl",-450.863,3,==,NA,TRUE,NA
+a2_loglik_kam_int,Appendix Table 2,pipeline,"Log likelihood, kam_int",-453.195,3,==,NA,TRUE,NA
+a2_loglik_lucid_base,Appendix Table 2,pipeline,"Log likelihood, lucid_base",-1027.212,3,==,NA,TRUE,NA
+a2_loglik_lucid_ctrl,Appendix Table 2,pipeline,"Log likelihood, lucid_ctrl",-1015.762,3,==,NA,TRUE,NA
+a2_loglik_lucid_int,Appendix Table 2,pipeline,"Log likelihood, lucid_int",-1026.356,3,==,NA,TRUE,NA
+a2_loglik_mturk_base,Appendix Table 2,pipeline,"Log likelihood, mturk_base",-448.046,3,==,NA,TRUE,NA
+a2_loglik_mturk_ctrl,Appendix Table 2,pipeline,"Log likelihood, mturk_ctrl",-447.878,3,==,NA,TRUE,NA
+a2_loglik_mturk_int,Appendix Table 2,pipeline,"Log likelihood, mturk_int",-447.823,3,==,NA,TRUE,NA
+a2_nobs_kam_base,Appendix Table 2,pipeline,"N, kam_base",752,0,==,NA,TRUE,NA
+a2_nobs_kam_ctrl,Appendix Table 2,pipeline,"N, kam_ctrl",752,0,==,NA,TRUE,NA
+a2_nobs_kam_int,Appendix Table 2,pipeline,"N, kam_int",752,0,==,NA,TRUE,NA
+a2_nobs_lucid_base,Appendix Table 2,pipeline,"N, lucid_base",1629,0,==,NA,TRUE,NA
+a2_nobs_lucid_ctrl,Appendix Table 2,pipeline,"N, lucid_ctrl",1629,0,==,NA,TRUE,NA
+a2_nobs_lucid_int,Appendix Table 2,pipeline,"N, lucid_int",1629,0,==,NA,TRUE,NA
+a2_nobs_mturk_base,Appendix Table 2,pipeline,"N, mturk_base",766,0,==,NA,TRUE,NA
+a2_nobs_mturk_ctrl,Appendix Table 2,pipeline,"N, mturk_ctrl",766,0,==,NA,TRUE,NA
+a2_nobs_mturk_int,Appendix Table 2,pipeline,"N, mturk_int",766,0,==,NA,TRUE,NA
+a2_se_kam_base_int,Appendix Table 2,pipeline,"SE, kam_base, (Intercept)",0.154,3,==,NA,TRUE,NA
+a2_se_kam_base_mf,Appendix Table 2,pipeline,"SE, kam_base, mortalityfirst",0.098,3,==,NA,TRUE,NA
+a2_se_kam_base_ra,Appendix Table 2,pipeline,"SE, kam_base, ramean",0.303,3,==,NA,TRUE,NA
+a2_se_kam_ctrl_int,Appendix Table 2,pipeline,"SE, kam_ctrl, (Intercept)",0.275,3,==,NA,TRUE,NA
+a2_se_kam_ctrl_mf,Appendix Table 2,pipeline,"SE, kam_ctrl, mortalityfirst",0.100,3,==,NA,TRUE,NA
+a2_se_kam_ctrl_ra,Appendix Table 2,pipeline,"SE, kam_ctrl, ramean",0.325,3,==,NA,TRUE,NA
+a2_se_kam_int_int,Appendix Table 2,pipeline,"SE, kam_int, (Intercept)",0.229,3,==,NA,TRUE,NA
+a2_se_kam_int_mf,Appendix Table 2,pipeline,"SE, kam_int, mortalityfirst",0.294,3,==,NA,TRUE,NA
+a2_se_kam_int_ra,Appendix Table 2,pipeline,"SE, kam_int, ramean",0.485,3,==,NA,TRUE,NA
+a2_se_kam_int_raxmf,Appendix Table 2,pipeline,"SE, kam_int, mortalityfirst:ramean",0.621,3,==,NA,TRUE,NA
+a2_se_lucid_base_int,Appendix Table 2,pipeline,"SE, lucid_base, (Intercept)",0.106,3,==,NA,TRUE,NA
+a2_se_lucid_base_mf,Appendix Table 2,pipeline,"SE, lucid_base, mortalityfirst",0.065,3,==,NA,TRUE,NA
+a2_se_lucid_base_ra,Appendix Table 2,pipeline,"SE, lucid_base, ramean",0.196,3,==,NA,TRUE,NA
+a2_se_lucid_ctrl_int,Appendix Table 2,pipeline,"SE, lucid_ctrl, (Intercept)",0.176,3,==,NA,TRUE,NA
+a2_se_lucid_ctrl_mf,Appendix Table 2,pipeline,"SE, lucid_ctrl, mortalityfirst",0.065,3,==,NA,TRUE,NA
+a2_se_lucid_ctrl_ra,Appendix Table 2,pipeline,"SE, lucid_ctrl, ramean",0.205,3,==,NA,TRUE,NA
+a2_se_lucid_int_int,Appendix Table 2,pipeline,"SE, lucid_int, (Intercept)",0.141,3,==,NA,TRUE,NA
+a2_se_lucid_int_mf,Appendix Table 2,pipeline,"SE, lucid_int, mortalityfirst",0.203,3,==,NA,TRUE,NA
+a2_se_lucid_int_ra,Appendix Table 2,pipeline,"SE, lucid_int, ramean",0.269,3,==,NA,TRUE,NA
+a2_se_lucid_int_raxmf,Appendix Table 2,pipeline,"SE, lucid_int, mortalityfirst:ramean",0.393,3,==,NA,TRUE,NA
+a2_se_mturk_base_int,Appendix Table 2,pipeline,"SE, mturk_base, (Intercept)",0.163,3,==,NA,TRUE,NA
+a2_se_mturk_base_mf,Appendix Table 2,pipeline,"SE, mturk_base, mortalityfirst",0.097,3,==,NA,TRUE,NA
+a2_se_mturk_base_ra,Appendix Table 2,pipeline,"SE, mturk_base, ramean",0.283,3,==,NA,TRUE,NA
+a2_se_mturk_ctrl_int,Appendix Table 2,pipeline,"SE, mturk_ctrl, (Intercept)",0.281,3,==,NA,TRUE,NA
+a2_se_mturk_ctrl_mf,Appendix Table 2,pipeline,"SE, mturk_ctrl, mortalityfirst",0.098,3,==,NA,TRUE,NA
+a2_se_mturk_ctrl_ra,Appendix Table 2,pipeline,"SE, mturk_ctrl, ramean",0.293,3,==,NA,TRUE,NA
+a2_se_mturk_int_int,Appendix Table 2,pipeline,"SE, mturk_int, (Intercept)",0.229,3,==,NA,TRUE,NA
+a2_se_mturk_int_mf,Appendix Table 2,pipeline,"SE, mturk_int, mortalityfirst",0.310,3,==,NA,TRUE,NA
+a2_se_mturk_int_ra,Appendix Table 2,pipeline,"SE, mturk_int, ramean",0.412,3,==,NA,TRUE,NA
+a2_se_mturk_int_raxmf,Appendix Table 2,pipeline,"SE, mturk_int, mortalityfirst:ramean",0.569,3,==,NA,TRUE,NA
+appendix_lucid_closer,Appendix 1,pipeline,Lucid closer,18,0,==,NA,TRUE,NA
+appendix_lucid_closer_significant,Appendix 1,pipeline,"Lucid significantly closer, archive p",14,0,==,NA,TRUE,NA
+appendix_mturk_closer,Appendix 1,pipeline,MTurk closer,3,0,==,NA,TRUE,NA
+appendix_mturk_closer_significant,Appendix 1,pipeline,"MTurk significantly closer, archive p",1,0,==,NA,TRUE,NA
+appendix_opportunities,Appendix 1,pipeline,Variables tested,21,0,==,NA,TRUE,NA
+compensation_mean,"Our sample, p.4",pipeline,"Expected compensation, mean dollars",5.01,2,==,NA,TRUE,NA
+compensation_mean_trimmed,"Our sample, p.4",pipeline,"Expected compensation, mean dollars, trimmed",1.16,2,==,NA,TRUE,NA
+demographic_lucid_closer,"Baseline characteristics, p.6",pipeline,"Demographic, Lucid closer",9,0,==,NA,TRUE,NA
+demographic_significantly_closer,"Baseline characteristics, p.6",pipeline,"Demographic, significantly closer, archive p",5,0,==,NA,TRUE,NA
+demographic_variables_tested,"Baseline characteristics, p.6",pipeline,Demographic variables tested,11,0,==,NA,TRUE,NA
+education_anes,"Baseline characteristics, p.5",pipeline,"Years of education, ANES",13.5,1,approx,NA,TRUE,NA
+education_lucid,"Baseline characteristics, p.5",pipeline,"Years of education, Lucid",14.2,1,==,NA,TRUE,NA
+female_lucid,"Baseline characteristics, p.5",pipeline,"Percent female, Lucid",52,0,==,NA,TRUE,NA
+female_mturk,"Baseline characteristics, p.5",pipeline,"Percent female, MTurk",60,0,==,NA,TRUE,NA
+interest_lucid_minus_mturk,"Baseline characteristics, p.6",pipeline,"Political interest, Lucid minus MTurk",1.2,1,approx,NA,TRUE,NA
+manifest_ad_lucid_n,Appendix 2.2.2,pipeline,"Asian Disease, Lucid N",1813,0,==,NA,TRUE,NA
+manifest_ad_original_n,Appendix 2.2.1,pipeline,"Asian Disease, original N",307,0,==,NA,TRUE,NA
+manifest_hiscox_gfk_n,Appendix 2.4.3,pipeline,"Hiscox, GfK N",2084,0,==,NA,TRUE,NA
+manifest_hiscox_lucid_n,Appendix 2.4.2,pipeline,"Hiscox, Lucid N",1811,0,==,NA,TRUE,NA
+manifest_hiscox_mturk_n,Appendix 2.4.4,pipeline,"Hiscox, MTurk N",2972,0,==,NA,TRUE,NA
+manifest_hiscox_original_n,Appendix 2.4.1,pipeline,"Hiscox, original N",1578,0,==,NA,TRUE,NA
+manifest_ks_lucid_n,Appendix 2.3.2,pipeline,"Kam and Simas, Lucid N",1629,0,==,NA,TRUE,NA
+manifest_ks_mturk_n,Appendix 2.3.3,pipeline,"Kam and Simas, MTurk N",766,0,==,NA,TRUE,NA
+manifest_ks_original_n,Appendix 2.3.1,pipeline,"Kam and Simas, original N",761,0,==,NA,TRUE,NA
+manifest_rumors_lucid_n,Appendix 2.5.2,pipeline,"Healthcare rumors, Lucid N",3503,0,==,NA,TRUE,NA
+manifest_rumors_original_n,Appendix 2.5.1,pipeline,"Healthcare rumors, original N",1593,0,==,NA,TRUE,NA
+manifest_welfare_gss14_n,Appendix 2.1.2,pipeline,"Welfare, GSS 2014 N",2457,0,==,NA,TRUE,NA
+manifest_welfare_gss84_n,Appendix 2.1.1,pipeline,"Welfare, GSS 1984 N",943,0,==,NA,TRUE,NA
+manifest_welfare_lucid_n,Appendix 2.1.3,pipeline,"Welfare, Lucid N",1811,0,==,NA,TRUE,NA
+manifest_welfare_mturk_n,Appendix 2.1.4,pipeline,"Welfare, MTurk N",494,0,==,NA,TRUE,NA
+party7_anes2012,"Baseline characteristics, p.6",pipeline,"Party ID, ANES 2012",3.7,1,==,NA,TRUE,NA
+party7_lucid,"Baseline characteristics, p.6",pipeline,"Party ID, Lucid",3.7,1,==,NA,TRUE,NA
+party7_mturk,"Baseline characteristics, p.6",pipeline,"Party ID, MTurk",3.5,1,==,NA,TRUE,NA
+rumor_lucid_control_mean,"Experiment 5, p.9",pipeline,"Death panel belief, Lucid control mean",-0.17,2,==,NA,TRUE,NA
+rumor_original_control_mean,"Experiment 5, p.9",pipeline,"Death panel belief, original control mean",-0.19,2,==,NA,TRUE,NA
+sample_lucid_n,"Our sample, p.4",pipeline,Lucid sample N,3504,0,==,NA,TRUE,NA
+share_surveys_at_home,"Our sample, p.4",pipeline,Percent taking surveys at home,94,0,==,NA,TRUE,NA
+share_under_one_survey_a_day,"Our sample, p.4",pipeline,Percent taking fewer than one survey per day,98,0,==,NA,TRUE,NA
+surveys_per_month_mean,"Our sample, p.4",pipeline,"Surveys per month, mean",4.28,2,==,NA,TRUE,NA
+surveys_per_month_trimmed,"Our sample, p.4",pipeline,"Surveys per month among those, mean",2.43,2,==,NA,TRUE,NA
+appendix_two_tailed_method,Appendix 1,descriptive,The appendix p-values are two-tailed under a normal approximation,NA,0,NA,NA,TRUE,NA
+berinsky_no_mturk_estimate,"Experiments, p.6",descriptive,The Berinsky facet of Figure 2 has no MTurk estimate,NA,0,NA,NA,TRUE,NA
+berinsky_only_democratic_correction,"Treatment effect heterogeneity, p.9",descriptive,Only the Democratic correction among Democrats differs between samples,NA,0,NA,NA,TRUE,NA
+education_lucid_closer_than_mturk,"Baseline characteristics, p.5",descriptive,Lucid education is closer to the ANES than MTurk education,NA,0,NA,NA,TRUE,NA
+heterogeneity_four_of_five,"Treatment effect heterogeneity, p.9",descriptive,Experiments assessed for treatment effect heterogeneity,4,0,==,NA,TRUE,NA
+hiscox_no_heterogeneity,"Treatment effect heterogeneity, p.9",descriptive,No heterogeneous effects in the Hiscox experiment in either sample,NA,0,NA,NA,TRUE,NA
+income_lucid_between_anes_and_mturk,"Baseline characteristics, p.5",descriptive,Lucid mean and median income lie between the ANES and MTurk,NA,0,NA,NA,TRUE,NA
+interest_mturk_least_lucid_most,"Baseline characteristics, p.6",descriptive,MTurk has the least political interest and Lucid the most,NA,0,NA,NA,TRUE,NA
+kamsimas_no_conditioning,"Treatment effect heterogeneity, p.9",descriptive,Risk assessment does not condition the Kam and Simas effect in either sample,NA,0,NA,NA,TRUE,NA
+knowledge_mturk_above_anes_lucid_similar,"Baseline characteristics, p.6",descriptive,MTurk scores above the ANES panel on knowledge and Lucid nearly identically,NA,0,NA,NA,TRUE,NA
+lucid_closer_on_four_demographics,"Baseline characteristics, p.5",descriptive,"Lucid is closer to the ANES 2012 on gender, education, age, and income",NA,0,NA,NA,TRUE,NA
+lucid_closer_registration_and_turnout,"Baseline characteristics, p.6",descriptive,Lucid is closer to the ANES 2012 on registration and turnout,NA,0,NA,NA,TRUE,NA
+lucid_tracks_benchmarks_on_traits,"Baseline characteristics, p.6",descriptive,"Lucid tracks the benchmarks on all five traits, outperforming MTurk on conscientiousness and stability",NA,0,NA,NA,TRUE,NA
+majority_paid_dollars_or_points,"Our sample, p.4",descriptive,A majority are compensated in dollars or points,NA,0,NA,NA,TRUE,NA
+most_cases_matched_sign_and_significance,"Discussion, p.12",descriptive,In most cases the Lucid estimates match the original in sign and significance,NA,0,NA,NA,TRUE,NA
+mturk_least_favors_senior_drugs,"Baseline characteristics, p.6",descriptive,MTurk respondents least favor drug benefits for seniors and are youngest,NA,0,NA,NA,TRUE,NA
+mturk_more_liberal,"Baseline characteristics, p.6",descriptive,MTurk respondents are more liberal than Lucid and the ANES,NA,0,NA,NA,TRUE,NA
+mturk_overrepresents_southerners,"Baseline characteristics, p.5",descriptive,MTurk overrepresents southerners,NA,0,NA,NA,TRUE,NA
+one_substantively_different_result,"Discussion, p.12",descriptive,One experiment gives a substantively different result on Lucid,NA,0,NA,NA,TRUE,NA
+policy_lucid_more_conservative,"Baseline characteristics, p.6",descriptive,Lucid polls slightly more conservatively than MTurk on policy,NA,0,NA,NA,TRUE,NA
+sig_closer_party_ideology_interest,"Baseline characteristics, p.6",descriptive,"Lucid is significantly closer on party, ideology, and interest, MTurk on turnout",NA,0,NA,NA,TRUE,NA
+traits_all_five_significantly_closer,"Baseline characteristics, p.6",descriptive,Lucid is significantly closer than MTurk on all five traits,NA,0,NA,NA,TRUE,NA
+welfare_cates_indistinguishable,"Treatment effect heterogeneity, p.9",descriptive,Welfare CATEs by race are statistically indistinguishable in both samples,NA,0,NA,NA,TRUE,NA
+white_overrepresented_less_on_lucid,"Baseline characteristics, p.5",descriptive,"Both samples overrepresent whites, Lucid by less",NA,0,NA,NA,TRUE,NA
+zero_cases_significant_opposite_sign,"Discussion, p.12",descriptive,Lucid estimates significant with the opposite sign from the original,0,0,==,NA,TRUE,NA
+appendix_hiscox_factorial,Appendix 2.4.1,definitional,Factors in the Hiscox replication design,2,0,==,NA,FALSE,NA
+appendix_rumor_factorial,Appendix 2.5.1,definitional,Factors in the healthcare rumor replication design,2,0,==,NA,FALSE,NA
+big_five_traits,"Baseline characteristics, p.6",definitional,Personality traits measured,5,0,==,NA,FALSE,NA
+compensation_trim_threshold,"Our sample, p.4",definitional,"Trim threshold on expected compensation, dollars",20.00,2,==,NA,FALSE,NA
+figure_1_standardization,"Baseline characteristics, p.5",definitional,ANES 2012 standardized to mean zero,NA,3,NA,NA,TRUE,NA
+hc2_ci_level,"Experiments, p.6",definitional,Confidence level,95,0,==,NA,TRUE,NA
+hiscox_expert_levels,"Experiment 4, p.8",definitional,Levels of the expert factor,2,0,==,NA,TRUE,NA
+hiscox_valence_levels,"Experiment 4, p.8",definitional,Levels of the valence factor,4,0,==,NA,TRUE,NA
+interest_scale_points,"Baseline characteristics, p.6",definitional,Points on the political interest scale,5,0,==,NA,FALSE,NA
+lucid_2015_unique_respondents,"Our sample, p.4",definitional,"Unique respondents Lucid managed in 2015, millions",30,0,==,NA,FALSE,Printed as 30 million
+lucid_cost_per_response,"Our sample, p.4",definitional,"Cost per completed response as of 2018, dollars",1,0,approx,NA,FALSE,NA
+lucid_daily_respondents,"Our sample, p.4",definitional,Unique respondents passing through the exchange each day,375000,0,approx,NA,FALSE,NA
+lucid_demographic_refresh_months,"Our sample, p.4",definitional,Months between demographic profile updates,3,0,==,NA,FALSE,NA
+lucid_double_optin_share,"Our sample, p.4",definitional,Percent of subjects recruited by double opt-in,95,0,approx,NA,FALSE,NA
+lucid_survey_minutes,"Our sample, p.4",definitional,"Survey length, minutes",10,0,==,NA,FALSE,NA
+questionnaire_income_threshold,Appendix questionnaire,definitional,"Income threshold in the tax items, dollars",200000,0,==,NA,FALSE,NA
+questionnaire_minutes,Appendix questionnaire,definitional,"Stated questionnaire length, minutes",15,0,approx,NA,FALSE,NA
+questionnaire_tipi_points,Appendix questionnaire,definitional,Points on the TIPI items,7,0,==,NA,FALSE,NA
+rumor_scale_endpoints,"Experiment 5, p.9",definitional,"Endpoint of the rumor belief scale, which runs from -1 to 1",1,0,==,NA,FALSE,NA
+theory_heterogeneity_kinds,"Fit for purpose, p.3",definitional,Kinds of heterogeneity distinguished,3,0,==,NA,FALSE,NA
+theory_two_by_two,"Fit for purpose, p.3",definitional,Dimension of the factorial design used as an example,2,0,==,NA,FALSE,NA
+discussion_five_experiments,"Discussion, p.12",structural,"Experiments replicated, Discussion",5,0,==,NA,FALSE,NA
+intro_five_experiments,"Fit for purpose, p.3",structural,Experiments replicated,5,0,==,NA,TRUE,NA
+manifest_hiscox_gfk_wave2_n,Appendix 2.4.3,structural,"Hiscox, GfK wave 2 N",1838,0,==,NA,FALSE,NA
+manifest_hiscox_mturk_wave2_n,Appendix 2.4.4,structural,"Hiscox, MTurk wave 2 N",2307,0,==,NA,FALSE,NA
+questionnaire_items,Appendix questionnaire,structural,Items in the questionnaire,92,0,==,NA,FALSE,NA
+rumor_intervening_years,"Experiment 5, p.9",structural,Years between the original rumor study and the replication,6,0,==,NA,FALSE,NA
+sample_month,"Our sample, p.4",structural,"Month the Lucid sample was collected, March 2016",NA,NA,NA,NA,FALSE,NA
+table1_all_humans_cases,"Fit for purpose, p.3",structural,Experiments whose theory applies to all adult humans,2,0,==,NA,FALSE,NA
+table1_english_speaking_cases,"Fit for purpose, p.3",structural,Experiments whose theory applies to adult English-speaking Americans,3,0,==,NA,FALSE,NA
+table1_title_five_studies,Table 1,structural,Experimental studies in Table 1,5,0,==,NA,FALSE,NA
+welfare_gss_year,"Treatment effect heterogeneity, p.9",structural,GSS baseline year,2016,0,==,derived,TRUE,"The block prints the most recent GSS the deposited welfare data hold, which tests the year the sentence names"
+appendix_risk_battery_items,Appendix 2.3,transcribed,Items in the risk acceptance battery,7,0,==,NA,FALSE,NA
+asian_disease_deaths,"Experiment 2, p.6",transcribed,Deaths the Asian Disease scenario expects,600,0,==,NA,FALSE,NA
+asian_disease_die,"Experiment 2, p.6",transcribed,"Deaths under Program A, mortality frame",400,0,==,NA,FALSE,NA
+asian_disease_saved,"Experiment 2, p.6",transcribed,"Lives saved under Program A, survival frame",200,0,==,NA,FALSE,NA
+asian_disease_thirds,"Experiment 2, p.6",transcribed,Denominator of the Program B probabilities,3,0,==,NA,FALSE,NA
+female_census,"Baseline characteristics, p.5",transcribed,Census percent female,50.8,1,==,NA,FALSE,NA
+flores_coppock_bilinguals,"Our sample, p.4",transcribed,Bilingual subjects Flores and Coppock (2018) obtained on Lucid,2866,0,==,NA,FALSE,NA
+intro_mturk_pool_size,"Introduction, p.2",transcribed,"Active MTurk pool for a given lab, Stewart et al. (2015)",7300,0,approx,NA,FALSE,NA

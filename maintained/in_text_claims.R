@@ -1,16 +1,17 @@
 # coppock_mcclellan_2019/maintained/in_text_claims.R
-# Output: printed to the console; no file
-# Depends on: helpers.R, output/table_1_demographics.csv, output/table_2_political.csv,
-#   output/table_3_psychological.csv, output/table_4_welfare_ns.csv,
-#   output/table_5_asian_disease.csv, output/table_6_kamsimas.csv,
-#   output/table_7_hiscox.csv, output/table_8_health_rumors.csv,
-#   output/table_9_survey_behavior.csv, output/text_in_text_claims.csv,
-#   output/appendix_table_1_distance_tests.csv,
+# Output: printed CLAIM lines and a CLAIM SUMMARY line; no files
+# Depends on: helpers.R, excheckr, output/table_1_demographics.csv,
+#   output/table_2_political.csv, output/table_3_psychological.csv,
+#   output/table_4_welfare_ns.csv, output/table_5_asian_disease.csv,
+#   output/table_6_kamsimas.csv, output/table_7_hiscox.csv,
+#   output/table_8_health_rumors.csv, output/table_9_survey_behavior.csv,
+#   output/text_in_text_claims.csv, output/appendix_table_1_distance_tests.csv,
 #   output/appendix_table_1_distance_counts.csv,
 #   output/appendix_table_2_kamsimas_probit.csv, output/figure_1_standardized_demos.csv,
 #   output/figure_2_standardized_experiments.csv,
 #   output/figure_3_cate_welfare_ad_ks.csv, output/figure_4_cate_hiscox.csv,
-#   output/figure_5_cate_berinsky.csv, ground_truth/published_claims.csv
+#   output/figure_5_cate_berinsky.csv, ground_truth/published_claims.csv,
+#   errata_entries.csv
 # Description: Every quantity the article and its online appendix state, beside the
 #   sentence that states it, in the order a reader meets them.
 #
@@ -23,24 +24,32 @@
 #   refits: estimation happens once, in the analysis scripts, and only derivation happens
 #   here.
 #
-#   It does read ground_truth/published_claims.csv, which is the extraction rather than
-#   the comparison. A block cannot print a value at the article's own precision without
-#   the string the article printed, and quoting that string beside the computed number is
-#   what makes the output readable without the article open.
+#   It reads two files outside maintained/output/. ground_truth/published_claims.csv is
+#   the extraction rather than the comparison: it says what the article prints and at
+#   what precision. errata_entries.csv is the errata spine, which errata.qmd writes: it
+#   says which printed numbers a published correction replaces, and with what.
 #
-#   Every claim prints one line, CLAIM <id> = <value> || <label>. That printed id is the
-#   only link between a block and the claim it covers and it is load bearing: the gate
-#   reads this file as a program and matches on what it printed. The "# covers:" comments
-#   are for a reader and nothing reads them, because a comment is a second copy of the
-#   link that can go stale independently of the code beside it. cat() is used because a
-#   labelled line per claim is what makes the output scannable beside the sentences; it is
-#   permitted here and in no other file in this repository.
+#   Every claim prints one line, CLAIM <id> = <value> || [verdict] <label>, through
+#   excheckr::claim(). That printed id is the only link between a block and the claim it
+#   covers and it is load bearing: the gate reads this file as a program and matches on
+#   what it printed. The "# covers:" comments are for a reader and nothing reads them,
+#   because a comment is a second copy of the link that can go stale independently of the
+#   code beside it.
 #
-#   A claim about shape, sign or count has no printed number, so it prints its own truth
-#   value: 1 when the estimates support the sentence and 0 when they do not. The evidence
-#   is in the label.
+#   The verdict is derived from the extraction and the errata spine, never typed here.
+#   [match] means the article's number and this one agree; [corrected] means a quantity
+#   erratum names the claim, the two disagree, and this value equals the corrected one.
+#   [range] is declared at the call site for the bootstrap standard errors and p-values
+#   of appendix Table 1, which are one draw of an unseeded bootstrap and are scored
+#   against their resampling range in build_ground_truth.R. [derived] is declared where
+#   the block computes something other than the article's own token in order to test it.
+#   [shape] is a claim about shape, sign or count with no printed number, which prints
+#   its own truth value: 1 when the estimates support the sentence and 0 when they do
+#   not, with the evidence in the label. [hedged] is a descriptive claim whose number
+#   does not agree. MISMATCH, STALE, DRIFT and MISSING fail the run.
 
 source(here::here("maintained", "helpers.R"))
+library(excheckr)
 
 options(width = 200)
 
@@ -65,42 +74,41 @@ fig3 <- out("figure_3_cate_welfare_ad_ks.csv")
 fig4 <- out("figure_4_cate_hiscox.csv")
 fig5 <- out("figure_5_cate_berinsky.csv")
 
+# Every column is read as character: value_paper carries "0.100" and corrected_values
+# carries "0", and a reader left to guess would destroy the precision both depend on.
 published_claims <- read_csv(
   here::here("ground_truth", "published_claims.csv"),
   col_types = cols(.default = col_character())
 )
 
-# Reporting ----
-# The article's own precision governs how a value is printed, and the article's own string
-# is the only place that precision is recorded: 3.70 and 3.7 are the same double.
+errata <- read_csv(here::here("errata_entries.csv"),
+                   col_types = cols(.default = col_character()))
 
-page <- function(id) {
-  value <- published_claims$value_paper[published_claims$claim_id == id]
-  stopifnot(length(value) == 1)
-  value
-}
+# Entries 1 and 2 each name appendix_two_tailed_method beside the count they correct, with
+# NA in its corrected_values position, because a statement of method has no number on any
+# scale. excheckr takes exactly one corrected value for each claim a quantity erratum
+# names, so the positions holding NA are dropped before the spine is registered. Every
+# claim id and value that remains is passed through unchanged.
+errata_values <- errata |>
+  mutate(
+    ids = str_split(claim_ids, ";"),
+    values = str_split(corrected_values, ";"),
+    valued = map(values, \(v) v != "NA"),
+    claim_ids = if_else(is.na(corrected_values), claim_ids,
+                        map2_chr(ids, valued, \(i, k) str_c(i[k], collapse = ";"))),
+    corrected_values = if_else(is.na(corrected_values), corrected_values,
+                               map2_chr(values, valued, \(v, k) str_c(v[k], collapse = ";")))
+  ) |>
+  select(-ids, -values, -valued)
 
-report <- function(id, value, gloss, digits = NULL) {
-  stopifnot(length(value) == 1)
-  target <- page(id)
-  if (is.null(digits)) {
-    stopifnot(!is.na(target))
-    digits <- if (str_detect(target, fixed("."))) {
-      nchar(str_remove(target, "^[^.]*[.]"))
-    } else {
-      0L
-    }
-  }
-  text <- if (is.na(value)) "NA" else sprintf(str_c("%.", digits, "f"), value)
-  if (str_detect(text, "^-0[.]?0*$")) text <- str_remove(text, "^-")
-  cat("CLAIM ", id, " = ", text, " || ", gloss,
-      if (is.na(target)) "" else str_c(" [article: ", target, "]"), "\n", sep = "")
-}
+# format = "id" is the CLAIM <id> = <value> || [verdict] <label> line
+# build_ground_truth.R parses, and it must stay exactly that.
+claim_start(published = published_claims, errata = errata_values, format = "id")
 
 # A claim about shape, sign or count prints 1 or 0 for whether the estimates support it.
 verdict <- function(id, holds, gloss) {
   stopifnot(length(holds) == 1, is.logical(holds), !is.na(holds))
-  report(id, as.numeric(holds), gloss, digits = 0)
+  claim(id, as.numeric(holds), gloss, digits = 0)
 }
 
 # Accessors ----
@@ -159,33 +167,33 @@ intervals_overlap <- function(lower, upper) max(lower) <= min(upper)
 # "In our empirical section, we replicate five survey experiments that were originally
 #  conducted on other samples."
 # covers: intro_five_experiments
-report("intro_five_experiments", n_distinct(fig2$facet),
-       "experiments summarised in Figure 2")
+claim("intro_five_experiments", n_distinct(fig2$facet),
+      "experiments summarised in Figure 2")
 
 # Our sample ----
 
 # "As we only have a single sample of 3504 subjects obtained in March of 2016, we cannot
 #  empirically assess the extent of overtime variation."
 # covers: sample_lucid_n
-report("sample_lucid_n", cell(demos, "n", "lucid"), "Lucid respondents")
+claim("sample_lucid_n", cell(demos, "n", "lucid"), "Lucid respondents")
 
 # "Respondents report taking an average of 4.28 surveys per month. However, 98% of
 #  respondents report taking fewer than one survey per day; the average number of surveys
 #  per month among these respondents is 2.43."
 # covers: surveys_per_month_mean, share_under_one_survey_a_day, surveys_per_month_trimmed
-report("surveys_per_month_mean", cell(behavior, "numsurvey", "lucid"),
-       "mean surveys per month, Lucid")
-report("share_under_one_survey_a_day",
-       text_value("Percent taking fewer than one survey per day"),
-       "per cent reporting fewer than one survey a day")
-report("surveys_per_month_trimmed", cell(behavior, "numsurvey_trim", "lucid"),
-       "mean surveys per month among those taking fewer than one a day")
+claim("surveys_per_month_mean", cell(behavior, "numsurvey", "lucid"),
+      "mean surveys per month, Lucid")
+claim("share_under_one_survey_a_day",
+      text_value("Percent taking fewer than one survey per day"),
+      "per cent reporting fewer than one survey a day")
+claim("surveys_per_month_trimmed", cell(behavior, "numsurvey_trim", "lucid"),
+      "mean surveys per month among those taking fewer than one a day")
 
 # "The vast majority of subjects (94%) take surveys at home, and the majority are
 #  compensated directly in dollars or in some form of points program."
 # covers: share_surveys_at_home, majority_paid_dollars_or_points
-report("share_surveys_at_home", cell(behavior, "surveylocation_home", "lucid"),
-       "per cent taking surveys at home")
+claim("share_surveys_at_home", cell(behavior, "surveylocation_home", "lucid"),
+      "per cent taking surveys at home")
 
 paid_dollars_or_points <- cell(behavior, "surveycomptype_dollars", "lucid") +
   cell(behavior, "surveycomptype_points", "lucid")
@@ -198,10 +206,10 @@ verdict("majority_paid_dollars_or_points", paid_dollars_or_points > 50,
 #  US$5.01, but if we trim off responses that are implausible (greater than US$20.00), we
 #  obtain the more reasonable figure of US$1.16."
 # covers: compensation_mean, compensation_mean_trimmed
-report("compensation_mean", cell(behavior, "surveycompamount", "lucid"),
-       "mean expected compensation in dollars")
-report("compensation_mean_trimmed", cell(behavior, "surveycompamount_trim", "lucid"),
-       "mean expected compensation in dollars, trimmed at 20 dollars")
+claim("compensation_mean", cell(behavior, "surveycompamount", "lucid"),
+      "mean expected compensation in dollars")
+claim("compensation_mean_trimmed", cell(behavior, "surveycompamount_trim", "lucid"),
+      "mean expected compensation in dollars, trimmed at 20 dollars")
 
 # Baseline characteristics ----
 
@@ -209,9 +217,9 @@ report("compensation_mean_trimmed", cell(behavior, "surveycompamount_trim", "luc
 #  National Election Study (ANES), where we standardize by the ANES 2012 mean and standard
 #  deviation."
 # covers: figure_1_standardization
-report("figure_1_standardization", max(abs(fig1$mean[fig1$survey == "anes2012"])),
-       "largest standardized ANES 2012 mean in Figure 1, zero if the ANES 2012 is the standardizing sample",
-       digits = 3)
+claim("figure_1_standardization", max(abs(fig1$mean[fig1$survey == "anes2012"])),
+      "largest standardized ANES 2012 mean in Figure 1, zero if the ANES 2012 is the standardizing sample",
+      digits = 3)
 
 # "In terms of gender, education, age, and income, the Lucid sample comes closer to the
 #  ANES 2012 benchmarks than the MTurk sample does."
@@ -227,16 +235,16 @@ verdict("lucid_closer_on_four_demographics",
 # "The Lucid sample was 52% female - much closer to the Census value of 50.8% than the 60%
 #  female sample collect on MTurk."
 # covers: female_lucid, female_mturk
-report("female_lucid", cell(demos, "female", "lucid"), "per cent female, Lucid")
-report("female_mturk", cell(demos, "female", "mturk"), "per cent female, MTurk")
+claim("female_lucid", cell(demos, "female", "lucid"), "per cent female, Lucid")
+claim("female_mturk", cell(demos, "female", "mturk"), "per cent female, MTurk")
 
 # "The mean number of years of education on Lucid (14.2) is higher than the approximately
 #  13.5 years recorded by the ANES survey, but is closer than MTurk sample estimates."
 # covers: education_lucid, education_anes, education_lucid_closer_than_mturk
-report("education_lucid", cell(demos, "education", "lucid"),
-       "mean years of education, Lucid")
-report("education_anes", cell(demos, "education", "anes"),
-       "mean years of education, ANES")
+claim("education_lucid", cell(demos, "education", "lucid"),
+      "mean years of education, Lucid")
+claim("education_anes", cell(demos, "education", "anes"),
+      "mean years of education, ANES")
 verdict("education_lucid_closer_than_mturk",
         dist_row("education")$lucid_is_closer > 0,
         str_glue("Lucid sits {sprintf('%.3f', dist_row('education')$lucid_is_closer)} ",
@@ -286,13 +294,13 @@ demographic_vars <- c("female", "education", "age", "income", "race_white", "rac
                       "region_south", "region_west")
 demographic_rows <- filter(distances, variable %in% demographic_vars)
 
-report("demographic_variables_tested", nrow(demographic_rows),
-       "demographic variables measured on both Lucid and MTurk")
-report("demographic_lucid_closer", sum(demographic_rows$lucid_is_closer > 0),
-       "demographic variables on which Lucid sits closer to the ANES 2012")
-report("demographic_significantly_closer",
-       sum(demographic_rows$lucid_is_closer > 0 & demographic_rows$p_archive < 0.05),
-       "of those that are significant at 0.05 under the p-value the appendix table prints")
+claim("demographic_variables_tested", nrow(demographic_rows),
+      "demographic variables measured on both Lucid and MTurk")
+claim("demographic_lucid_closer", sum(demographic_rows$lucid_is_closer > 0),
+      "demographic variables on which Lucid sits closer to the ANES 2012")
+claim("demographic_significantly_closer",
+      sum(demographic_rows$lucid_is_closer > 0 & demographic_rows$p_archive < 0.05),
+      "of those that are significant at 0.05 under the p-value the appendix table prints")
 
 # "Voter registration and turnout seem to vary somewhat across samples, with the Lucid
 #  sample corresponding more closely to the 2012 ANES baseline for voter registration and
@@ -309,10 +317,10 @@ verdict("lucid_closer_registration_and_turnout",
 #  of 3.7 is identical to that collected in the 2012 ANES, while the MTurk average is
 #  slightly lower at 3.5."
 # covers: party7_lucid, party7_anes2012, party7_mturk
-report("party7_lucid", cell(politics, "party7", "lucid"), "mean party identification, Lucid")
-report("party7_anes2012", cell(politics, "party7", "anes2012"),
-       "mean party identification, ANES 2012")
-report("party7_mturk", cell(politics, "party7", "mturk"), "mean party identification, MTurk")
+claim("party7_lucid", cell(politics, "party7", "lucid"), "mean party identification, Lucid")
+claim("party7_anes2012", cell(politics, "party7", "anes2012"),
+      "mean party identification, ANES 2012")
+claim("party7_mturk", cell(politics, "party7", "mturk"), "mean party identification, MTurk")
 
 # "We see important variation with regard to respondents' ideologies: respondents on MTurk
 #  are markedly more liberal than respondents found on Lucid or the ANES."
@@ -342,9 +350,9 @@ verdict("interest_mturk_least_lucid_most",
 # "The difference between Lucid and MTurk is large, about 1.2 points on the five-point
 #  political interest scale."
 # covers: interest_lucid_minus_mturk
-report("interest_lucid_minus_mturk",
-       cell(politics, "interest", "lucid") - cell(politics, "interest", "mturk"),
-       "Lucid minus MTurk mean political interest")
+claim("interest_lucid_minus_mturk",
+      cell(politics, "interest", "lucid") - cell(politics, "interest", "mturk"),
+      "Lucid minus MTurk mean political interest")
 
 # "MTurk respondents scored higher on political knowledge then did respondents on the ANES
 #  panel, while Lucid respondents scored nearly identically."
@@ -384,9 +392,9 @@ lucid_more_conservative <- imap_lgl(
   ~ .x * (cell(politics, .y, "lucid") - cell(politics, .y, "mturk")) > 0
 )
 
-report("policy_lucid_more_conservative", sum(lucid_more_conservative),
-       "of the four policy items with an unambiguous conservative direction on which Lucid polls more conservatively than MTurk",
-       digits = 0)
+claim("policy_lucid_more_conservative", sum(lucid_more_conservative),
+      "of the four policy items with an unambiguous conservative direction on which Lucid polls more conservatively than MTurk",
+      digits = 0)
 
 # "MTurk respondents are the least likely to favor prescription drug benefits for seniors,
 #  possibly because MTurk respondents are younger on average."
@@ -425,12 +433,18 @@ trait_vars <- c("extraversion", "agreeableness", "conscientiousness",
 trait_rows <- filter(distances, variable %in% trait_vars)
 traits_significant <- sum(trait_rows$lucid_is_closer > 0 & trait_rows$p_twotail < 0.05)
 
-verdict("traits_all_five_significantly_closer", traits_significant == length(trait_vars),
-        str_glue("{traits_significant} of the five traits are significantly closer under ",
-                 "the two-tailed test the appendix says it used; extraversion is not, at ",
-                 "z = {sprintf('%.2f', dist_row('extraversion')$z)} and p = ",
-                 "{sprintf('%.3f', dist_row('extraversion')$p_twotail)}. All five clear ",
-                 "0.05 under the p-value the published table actually carries"))
+# Errata entry 1 corrects this sentence and stores its corrected value, 0, on the claim's
+# truth-value scale. The sentence asserts that the statement holds, which is 1 on that
+# scale, and stating so here is what lets the claim score against the erratum: with no
+# published value at all, excheckr scores a claim shape before it consults the spine.
+claim("traits_all_five_significantly_closer",
+      as.numeric(traits_significant == length(trait_vars)),
+      str_glue("{traits_significant} of the five traits are significantly closer under ",
+               "the two-tailed test the appendix says it used; extraversion is not, at ",
+               "z = {sprintf('%.2f', dist_row('extraversion')$z)} and p = ",
+               "{sprintf('%.3f', dist_row('extraversion')$p_twotail)}. All five clear ",
+               "0.05 under the p-value the published table actually carries"),
+      published = "1", digits = 0)
 
 # Experiments ----
 
@@ -439,8 +453,8 @@ verdict("traits_all_five_significantly_closer", traits_significant == length(tra
 # covers: hc2_ci_level
 half_width_in_ses <- with(asian, (conf.high - estimate) / std.error)
 
-report("hc2_ci_level", 100 * (2 * pnorm(mean(half_width_in_ses)) - 1),
-       "confidence level implied by the half widths of the Asian Disease intervals, under a normal approximation")
+claim("hc2_ci_level", 100 * (2 * pnorm(mean(half_width_in_ses)) - 1),
+      "confidence level implied by the half widths of the Asian Disease intervals, under a normal approximation")
 
 # "The Berinsky facet does not include an MTurk estimate since it has not been previously
 #  replicated on an MTurk sample."
@@ -456,10 +470,10 @@ verdict("berinsky_no_mturk_estimate",
 # covers: hiscox_expert_levels, hiscox_valence_levels
 hiscox_terms <- unique(hiscox$term[hiscox$term != "(Intercept)"])
 
-report("hiscox_expert_levels", 1 + sum(str_detect(hiscox_terms, "expert$")),
-       "levels of the expert factor, the omitted level plus one indicator")
-report("hiscox_valence_levels", 1 + sum(str_detect(hiscox_terms, "valence")),
-       "levels of the valence factor, the omitted control plus three indicators")
+claim("hiscox_expert_levels", 1 + sum(str_detect(hiscox_terms, "expert$")),
+      "levels of the expert factor, the omitted level plus one indicator")
+claim("hiscox_valence_levels", 1 + sum(str_detect(hiscox_terms, "valence")),
+      "levels of the valence factor, the omitted control plus three indicators")
 
 # "On a -1 to 1 scale (with 0 indicating the respondent was "not sure"), average levels of
 #  belief were -0.17 on Lucid, compared with -0.19 in the original."
@@ -470,10 +484,10 @@ control_mean <- function(survey_id) {
   value
 }
 
-report("rumor_lucid_control_mean", control_mean("lucid"),
-       "mean death panel belief in the Lucid control group")
-report("rumor_original_control_mean", control_mean("ssi"),
-       "mean death panel belief in the original control group")
+claim("rumor_lucid_control_mean", control_mean("lucid"),
+      "mean death panel belief in the Lucid control group")
+claim("rumor_original_control_mean", control_mean("ssi"),
+      "mean death panel belief in the original control group")
 
 # Treatment effect heterogeneity ----
 
@@ -488,8 +502,8 @@ cate_experiments <- bind_rows(
   filter(str_starts(condition, "CATE")) |>
   distinct(experiment)
 
-report("heterogeneity_four_of_five", nrow(cate_experiments),
-       "experiments whose heterogeneity figures carry at least one conditional average treatment effect")
+claim("heterogeneity_four_of_five", nrow(cate_experiments),
+      "experiments whose heterogeneity figures carry at least one conditional average treatment effect")
 
 # "We assess whether the treatment effect of receiving the "assistance to the poor" versus
 #  "welfare" phrasing varies among white, black, and Latino respondents, among both the
@@ -501,8 +515,11 @@ gss_years <- welfare_ns$survey |>
   as.numeric()
 gss_years <- if_else(gss_years < 50, 2000 + gss_years, 1900 + gss_years)
 
-report("welfare_gss_year", max(gss_years),
-       "most recent General Social Survey in the deposited welfare data, the baseline the article's own Experiment 1 section names")
+# The deposit holds no 2016 survey, so the block prints the most recent year it does hold
+# and declares that it is testing the sentence's token rather than reproducing it.
+claim("welfare_gss_year", max(gss_years),
+      "most recent General Social Survey in the deposited welfare data, the baseline the article's own Experiment 1 section names",
+      expect = "derived")
 
 # "Both samples generally exhibit low treatment effect heterogeneity, with CATEs among
 #  white, black, and Latino respondents being statistically indistinguishable from one
@@ -573,9 +590,9 @@ verdict("most_cases_matched_sign_and_significance", sum(matched) > nrow(pairs) /
 # "In zero cases did we recover an estimate that was statistically significant and had the
 #  opposite sign from the original."
 # covers: zero_cases_significant_opposite_sign
-report("zero_cases_significant_opposite_sign",
-       sum(pairs$lucid_significant & !pairs$sign_agrees),
-       "Lucid estimates that are significant and carry the opposite sign from the original")
+claim("zero_cases_significant_opposite_sign",
+      sum(pairs$lucid_significant & !pairs$sign_agrees),
+      "Lucid estimates that are significant and carry the opposite sign from the original")
 
 # "Among our five experiments, we have one instance of the Lucid sample producing
 #  substantively different results compared to the original study."
@@ -584,12 +601,12 @@ mismatched_experiments <- pairs |>
   filter(!sign_agrees | lucid_significant != original_significant) |>
   distinct(facet)
 
-report("one_substantively_different_result", nrow(mismatched_experiments),
-       str_glue("experiments carrying at least one Lucid estimate that differs from the ",
-                "original in sign or significance, namely ",
-                "{str_c(mismatched_experiments$facet, collapse = ' and ')}; the article ",
-                "does not say what makes a result substantively different"),
-       digits = 0)
+claim("one_substantively_different_result", nrow(mismatched_experiments),
+      str_glue("experiments carrying at least one Lucid estimate that differs from the ",
+               "original in sign or significance, namely ",
+               "{str_c(mismatched_experiments$facet, collapse = ' and ')}; the article ",
+               "does not say what makes a result substantively different"),
+      digits = 0)
 
 # Appendix 1: formal tests of demographic differences ----
 
@@ -628,17 +645,17 @@ verdict("appendix_two_tailed_method", max_gap_twotail < max_gap_archive,
 #  one (voter turnout)."
 # covers: appendix_opportunities, appendix_lucid_closer, appendix_lucid_closer_significant,
 #         appendix_mturk_closer, appendix_mturk_closer_significant
-report("appendix_opportunities", nrow(distances), "characteristics tested")
-report("appendix_lucid_closer", sum(distances$lucid_is_closer > 0),
-       "characteristics on which Lucid sits closer to the ANES 2012")
-report("appendix_lucid_closer_significant",
-       sum(distances$lucid_is_closer > 0 & distances$p_archive < 0.05),
-       "of those that are significant under the p-value the published table carries")
-report("appendix_mturk_closer", sum(distances$lucid_is_closer < 0),
-       "characteristics on which MTurk sits closer")
-report("appendix_mturk_closer_significant",
-       sum(distances$lucid_is_closer < 0 & distances$p_archive < 0.05),
-       "of those that are significant under the p-value the published table carries")
+claim("appendix_opportunities", nrow(distances), "characteristics tested")
+claim("appendix_lucid_closer", sum(distances$lucid_is_closer > 0),
+      "characteristics on which Lucid sits closer to the ANES 2012")
+claim("appendix_lucid_closer_significant",
+      sum(distances$lucid_is_closer > 0 & distances$p_archive < 0.05),
+      "of those that are significant under the p-value the published table carries")
+claim("appendix_mturk_closer", sum(distances$lucid_is_closer < 0),
+      "characteristics on which MTurk sits closer")
+claim("appendix_mturk_closer_significant",
+      sum(distances$lucid_is_closer < 0 & distances$p_archive < 0.05),
+      "of those that are significant under the p-value the published table carries")
 
 # The distance script writes these five counts too. Recomputing them here from the table
 # of tests it also writes is the cheapest available check that the two files agree.
@@ -661,10 +678,15 @@ a1_cells <- distances |>
             p = p_archive) |>
   pivot_longer(c(distance, se, p), names_to = "quantity", values_to = "value")
 
+# The distances involve no resampling and are compared digit for digit. The standard
+# errors and the p-values computed from them are one draw of an unseeded 100-resample
+# bootstrap, so they are declared range here and scored against the spread of that
+# procedure in build_ground_truth.R.
 pwalk(a1_cells, function(variable, quantity, value) {
   label <- c(distance = "distance", se = "bootstrap standard error", p = "p-value")
-  report(str_c("a1_", quantity, "_", variable), value,
-         str_c("appendix Table 1, ", label[[quantity]], ", ", variable))
+  claim(str_c("a1_", quantity, "_", variable), value,
+        str_c("appendix Table 1, ", label[[quantity]], ", ", variable),
+        expect = if_else(quantity == "distance", "compare", "range"))
 })
 
 # Appendix Table 2 ----
@@ -682,8 +704,8 @@ a2_cells <- probit |>
   pivot_longer(c(coef, se), names_to = "quantity", values_to = "value")
 
 pwalk(a2_cells, function(model, term_id, quantity, value) {
-  report(str_c("a2_", quantity, "_", model, "_", term_id), value,
-         str_c("appendix Table 2, ", quantity, ", ", model, ", ", term_id))
+  claim(str_c("a2_", quantity, "_", model, "_", term_id), value,
+        str_c("appendix Table 2, ", quantity, ", ", model, ", ", term_id))
 })
 
 a2_fit <- probit |>
@@ -691,8 +713,8 @@ a2_fit <- probit |>
   pivot_longer(c(nobs, logLik, AIC), names_to = "quantity", values_to = "value")
 
 pwalk(a2_fit, function(model, quantity, value) {
-  report(str_c("a2_", str_to_lower(quantity), "_", model), value,
-         str_c("appendix Table 2, ", quantity, ", ", model))
+  claim(str_c("a2_", str_to_lower(quantity), "_", model), value,
+        str_c("appendix Table 2, ", quantity, ", ", model))
 })
 
 # Appendix 2: study manifest ----
@@ -720,5 +742,13 @@ manifest <- tribble(
 )
 
 pwalk(manifest, function(claim_id, value, gloss) {
-  report(claim_id, value, str_c("respondents in the fitted sample, ", gloss))
+  claim(claim_id, value, str_c("respondents in the fitted sample, ", gloss))
 })
+
+# Gates ----
+# assert_claims() stops on any MISMATCH, STALE, DRIFT or MISSING, on a quantity erratum
+# whose claim did not score corrected, and on any difference between the claims printed
+# here and those the extraction marks needs_block. claim_summary() then prints the verdict
+# counts, so the claims this file declines to assert are counted rather than merely allowed.
+assert_claims()
+invisible(claim_summary())

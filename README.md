@@ -31,7 +31,10 @@
 - [Rewrite verification](#rewrite-verification)
 - [R environment](#r-environment)
 
-**Archived at Zenodo:** [doi:10.5281/zenodo.24168377](https://doi.org/10.5281/zenodo.24168377). This DOI always resolves to the latest release of the maintained version.
+**Archived at Zenodo:**
+[doi:10.5281/zenodo.24168377](https://doi.org/10.5281/zenodo.24168377).
+This DOI always resolves to the latest release of the maintained
+version.
 
 *Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
 
@@ -775,88 +778,88 @@ quantity, the cell is blank and the match column is empty.
 | Appendix Table 2 | N, kam_int | 752 | 752 | 1 | 752 | 1 |
 | Appendix Table 2 | Log likelihood, kam_int | -453.195 | -453.195 | 1 | -453.195 | 1 |
 | Appendix Table 2 | AIC, kam_int | 914.391 | 914.391 | 1 | 914.391 | 1 |
-| Appendix study manifest | Welfare, GSS 1984 N | 943 | 943 | 1 | 943 | 1 |
-| Appendix study manifest | Welfare, GSS 2014 N | 2457 | 2457 | 1 | 2457 | 1 |
-| Appendix study manifest | Welfare, Lucid N | 1811 | 3294 | 0 | 3294 | 0 |
-| Appendix study manifest | Welfare, MTurk N | 494 | 494 | 1 | 494 | 1 |
-| Appendix study manifest | Asian Disease, original N | 307 | 307 | 1 | 307 | 1 |
-| Appendix study manifest | Asian Disease, Lucid N | 1813 | 1813 | 1 | 1813 | 1 |
-| Appendix study manifest | Kam and Simas, original N | 761 | 752 | 0 | 752 | 0 |
-| Appendix study manifest | Kam and Simas, Lucid N | 1629 | 1629 | 1 | 1629 | 1 |
-| Appendix study manifest | Kam and Simas, MTurk N | 766 | 766 | 1 | 766 | 1 |
-| Appendix study manifest | Hiscox, original N | 1578 | 1578 | 1 | 1578 | 1 |
-| Appendix study manifest | Hiscox, Lucid N | 1811 | 1811 | 1 | 1811 | 1 |
-| Appendix study manifest | Hiscox, GfK N | 2084 | 2084 | 1 | 2084 | 1 |
-| Appendix study manifest | Hiscox, MTurk N | 2972 | 2972 | 1 | 2972 | 1 |
-| Appendix study manifest | Healthcare rumors, original N | 1593 | 1593 | 1 | 1593 | 1 |
-| Appendix study manifest | Healthcare rumors, Lucid N | 3503 | 3503 | 1 | 3503 | 1 |
-| Appendix study manifest | Hiscox, GfK wave 2 N | 1838 |  |  |  |  |
-| Appendix study manifest | Hiscox, MTurk wave 2 N | 2307 |  |  |  |  |
-| Text, Our sample | Lucid sample N | 3504 | 3504 | 1 | 3504 | 1 |
-| Text, Our sample | Surveys per month, mean | 4.28 | 4.28 | 1 | 4.28 | 1 |
-| Text, Our sample | Percent taking fewer than one survey per day | 98 | 98.06 | 1 | 98.06 | 1 |
-| Text, Our sample | Surveys per month among those, mean | 2.43 | 2.43 | 1 | 2.43 | 1 |
-| Text, Our sample | Percent taking surveys at home | 94 | 93.51 | 1 | 93.51 | 1 |
-| Text, Our sample | Expected compensation, mean dollars | 5.01 | 5.01 | 1 | 5.01 | 1 |
-| Text, Our sample | Expected compensation, mean dollars, trimmed | 1.16 | 1.16 | 1 | 1.16 | 1 |
-| Text, Baseline characteristics | Percent female, Lucid | 52 | 52.15 | 1 | 52.15 | 1 |
-| Text, Baseline characteristics | Percent female, MTurk | 60 | 60.07 | 1 | 60.07 | 1 |
-| Text, Baseline characteristics | Years of education, Lucid | 14.2 | 14.16 | 1 | 14.16 | 1 |
-| Text, Baseline characteristics | Years of education, ANES | 13.5 | 13.5 | 1 | 13.5 | 1 |
+| Appendix 2.1.1 | Welfare, GSS 1984 N | 943 | 943 | 1 | 943 | 1 |
+| Appendix 2.1.2 | Welfare, GSS 2014 N | 2457 | 2457 | 1 | 2457 | 1 |
+| Appendix 2.1.3 | Welfare, Lucid N | 1811 | 3294 | 0 | 3294 | 0 |
+| Appendix 2.1.4 | Welfare, MTurk N | 494 | 494 | 1 | 494 | 1 |
+| Appendix 2.2.1 | Asian Disease, original N | 307 | 307 | 1 | 307 | 1 |
+| Appendix 2.2.2 | Asian Disease, Lucid N | 1813 | 1813 | 1 | 1813 | 1 |
+| Appendix 2.3.1 | Kam and Simas, original N | 761 | 752 | 0 | 752 | 0 |
+| Appendix 2.3.2 | Kam and Simas, Lucid N | 1629 | 1629 | 1 | 1629 | 1 |
+| Appendix 2.3.3 | Kam and Simas, MTurk N | 766 | 766 | 1 | 766 | 1 |
+| Appendix 2.4.1 | Hiscox, original N | 1578 | 1578 | 1 | 1578 | 1 |
+| Appendix 2.4.2 | Hiscox, Lucid N | 1811 | 1811 | 1 | 1811 | 1 |
+| Appendix 2.4.3 | Hiscox, GfK N | 2084 | 2084 | 1 | 2084 | 1 |
+| Appendix 2.4.4 | Hiscox, MTurk N | 2972 | 2972 | 1 | 2972 | 1 |
+| Appendix 2.5.1 | Healthcare rumors, original N | 1593 | 1593 | 1 | 1593 | 1 |
+| Appendix 2.5.2 | Healthcare rumors, Lucid N | 3503 | 3503 | 1 | 3503 | 1 |
+| Appendix 2.4.3 | Hiscox, GfK wave 2 N | 1838 |  |  |  |  |
+| Appendix 2.4.4 | Hiscox, MTurk wave 2 N | 2307 |  |  |  |  |
+| Our sample, p.4 | Lucid sample N | 3504 | 3504 | 1 | 3504 | 1 |
+| Our sample, p.4 | Surveys per month, mean | 4.28 | 4.28 | 1 | 4.28 | 1 |
+| Our sample, p.4 | Percent taking fewer than one survey per day | 98 | 98.06 | 1 | 98.06 | 1 |
+| Our sample, p.4 | Surveys per month among those, mean | 2.43 | 2.43 | 1 | 2.43 | 1 |
+| Our sample, p.4 | Percent taking surveys at home | 94 | 93.51 | 1 | 93.51 | 1 |
+| Our sample, p.4 | Expected compensation, mean dollars | 5.01 | 5.01 | 1 | 5.01 | 1 |
+| Our sample, p.4 | Expected compensation, mean dollars, trimmed | 1.16 | 1.16 | 1 | 1.16 | 1 |
+| Baseline characteristics, p.5 | Percent female, Lucid | 52 | 52.15 | 1 | 52.15 | 1 |
+| Baseline characteristics, p.5 | Percent female, MTurk | 60 | 60.07 | 1 | 60.07 | 1 |
+| Baseline characteristics, p.5 | Years of education, Lucid | 14.2 | 14.16 | 1 | 14.16 | 1 |
+| Baseline characteristics, p.5 | Years of education, ANES | 13.5 | 13.5 | 1 | 13.5 | 1 |
 | Text, Baseline characteristics | Years of education, MTurk |  | 14.88 |  | 14.88 |  |
-| Text, Baseline characteristics | Party ID, Lucid | 3.7 | 3.73 | 1 | 3.73 | 1 |
-| Text, Baseline characteristics | Party ID, ANES 2012 | 3.7 | 3.73 | 1 | 3.73 | 1 |
-| Text, Baseline characteristics | Party ID, MTurk | 3.5 | 3.49 | 1 | 3.49 | 1 |
-| Text, Baseline characteristics | Political interest, Lucid minus MTurk | 1.2 | 1.19 | 1 | 1.19 | 1 |
+| Baseline characteristics, p.6 | Party ID, Lucid | 3.7 | 3.73 | 1 | 3.73 | 1 |
+| Baseline characteristics, p.6 | Party ID, ANES 2012 | 3.7 | 3.73 | 1 | 3.73 | 1 |
+| Baseline characteristics, p.6 | Party ID, MTurk | 3.5 | 3.49 | 1 | 3.49 | 1 |
+| Baseline characteristics, p.6 | Political interest, Lucid minus MTurk | 1.2 | 1.19 | 1 | 1.19 | 1 |
 | Text, Baseline characteristics | Political knowledge, Lucid |  | 58.39 |  | 58.39 |  |
 | Text, Baseline characteristics | Political knowledge, MTurk |  | 70.51 |  | 70.51 |  |
 | Text, Baseline characteristics | Political knowledge, ANES panel |  | 59.91 |  | 59.91 |  |
-| Text, Distance tests | Variables tested | 21 | 21 | 1 | 21 | 1 |
-| Text, Distance tests | Lucid closer | 18 | 18 | 1 | 18 | 1 |
-| Text, Distance tests | MTurk closer | 3 | 3 | 1 | 3 | 1 |
-| Text, Distance tests | Lucid significantly closer, archive p | 14 | 13 | 0 | 13 | 0 |
-| Text, Distance tests | MTurk significantly closer, archive p | 1 | 1 | 1 | 1 | 1 |
+| Appendix 1 | Variables tested | 21 | 21 | 1 | 21 | 1 |
+| Appendix 1 | Lucid closer | 18 | 18 | 1 | 18 | 1 |
+| Appendix 1 | MTurk closer | 3 | 3 | 1 | 3 | 1 |
+| Appendix 1 | Lucid significantly closer, archive p | 14 | 13 | 0 | 13 | 0 |
+| Appendix 1 | MTurk significantly closer, archive p | 1 | 1 | 1 | 1 | 1 |
 | Text, Distance tests | Lucid significantly closer, two-tailed p |  | 13 |  | 13 |  |
 | Text, Distance tests | MTurk significantly closer, two-tailed p |  | 1 |  | 1 |  |
-| Text, Distance tests | Demographic variables tested | 11 | 11 | 1 | 11 | 1 |
-| Text, Distance tests | Demographic, Lucid closer | 9 | 9 | 1 | 9 | 1 |
-| Text, Distance tests | Demographic, significantly closer, archive p | 5 | 6 | 0 | 6 | 0 |
+| Baseline characteristics, p.6 | Demographic variables tested | 11 | 11 | 1 | 11 | 1 |
+| Baseline characteristics, p.6 | Demographic, Lucid closer | 9 | 9 | 1 | 9 | 1 |
+| Baseline characteristics, p.6 | Demographic, significantly closer, archive p | 5 | 6 | 0 | 6 | 0 |
 | Text, Distance tests | Political, significantly closer, archive p | 3 | 3 | 1 | 3 | 1 |
 | Text, Distance tests | Traits, significantly closer, archive p | 5 | 4 | 0 | 4 | 0 |
 | Text, Distance tests | Traits, significantly closer, two-tailed p |  | 4 |  | 4 |  |
-| Text, Healthcare rumors | Death panel belief, Lucid control mean | -0.17 | -0.172 | 1 | -0.172 | 1 |
-| Text, Healthcare rumors | Death panel belief, original control mean | -0.19 | -0.19 | 1 | -0.19 | 1 |
-| Text, Our sample, p.4 | share paid in dollars or points exceeds half |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.5 | gender, education, age and income all favour Lucid |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.5 | education distance favours Lucid |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.5 | mean and median income both sit between MTurk and the ANES 2012 face-to-face sample |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.5 | both samples sit above the benchmark white share and Lucid by less |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.5 | MTurk’s southern share sits below the benchmark, not above it |  | 0 |  | 0 |  |
-| Text, Baseline characteristics, p.6 | registration favours Lucid and turnout favours MTurk |  | 0 |  | 0 |  |
-| Text, Baseline characteristics, p.6 | MTurk sits furthest below the benchmark on the conservatism scale |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.6 | MTurk lowest and Lucid highest on political interest |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.6 | MTurk above the ANES panel and Lucid nearer to it than MTurk is |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.6 | three characteristics favour Lucid and turnout favours MTurk, all significant |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.6 | MTurk is lowest on support for senior drug benefits and youngest |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.6 | Lucid nearer the ANES 2012 than MTurk on conscientiousness and stability |  | 1 |  | 1 |  |
-| Text, Baseline characteristics, p.6 | under the two-tailed test the appendix describes, extraversion does not clear 0.05 |  | 0 |  | 0 |  |
-| Text, Experiments, p.6 | the Berinsky facet carries no MTurk estimate |  | 1 |  | 1 |  |
-| Text, Treatment effect heterogeneity, p.9 | the three race conditional effects overlap in both samples |  | 1 |  | 1 |  |
-| Text, Treatment effect heterogeneity, p.9 | the risk acceptance interaction spans zero in both samples |  | 1 |  | 1 |  |
-| Text, Treatment effect heterogeneity, p.9 | conditional effects overlap within every frame by sample cell |  | 1 |  | 1 |  |
-| Text, Treatment effect heterogeneity, p.9 | the Democratic correction among Democrats is the only conditional effect that differs between samples |  | 1 |  | 1 |  |
-| Text, Discussion, p.12 | more than half the Lucid estimates agree with the original on sign and significance |  | 1 |  | 1 |  |
-| Text, Appendix 1 | the published p-value column is the archive’s own expression, not the two-tailed test |  | 0 |  | 0 |  |
-| Text, Treatment effect heterogeneity, p.9 | experiments with at least one conditional average treatment effect | 4 | 4 | 1 | 4 | 1 |
-| Text, Baseline characteristics, p.6 | policy items with an unambiguous direction on which Lucid polls more conservatively |  | 2 |  | 2 |  |
-| Text, Discussion, p.12 | Lucid estimates that are significant with the opposite sign from the original | 0 | 0 | 1 | 0 | 1 |
-| Text, Discussion, p.12 | experiments with at least one sign or significance mismatch against the original |  | 2 |  | 2 |  |
-| Text, Fit for purpose | Experiments replicated | 5 | 5 | 1 | 5 | 1 |
-| Figure 1 | ANES 2012 standardized to mean zero |  | 4.74200754701305e-16 |  | 4.74200754701305e-16 |  |
-| Text, Experiments | Confidence level | 95 | 95.0598242256987 | 1 | 95.0598242256987 | 1 |
-| Text, Experiment 4 | Levels of the expert factor | 2 | 2 | 1 | 2 | 1 |
-| Text, Experiment 4 | Levels of the valence factor | 4 | 4 | 1 | 4 | 1 |
-| Text, Treatment effect heterogeneity | GSS baseline year | 2016 | 2014 | 0 | 2014 | 0 |
+| Experiment 5, p.9 | Death panel belief, Lucid control mean | -0.17 | -0.172 | 1 | -0.172 | 1 |
+| Experiment 5, p.9 | Death panel belief, original control mean | -0.19 | -0.19 | 1 | -0.19 | 1 |
+| Our sample, p.4 | share paid in dollars or points exceeds half |  | 1 |  | 1 |  |
+| Baseline characteristics, p.5 | gender, education, age and income all favour Lucid |  | 1 |  | 1 |  |
+| Baseline characteristics, p.5 | education distance favours Lucid |  | 1 |  | 1 |  |
+| Baseline characteristics, p.5 | mean and median income both sit between MTurk and the ANES 2012 face-to-face sample |  | 1 |  | 1 |  |
+| Baseline characteristics, p.5 | both samples sit above the benchmark white share and Lucid by less |  | 1 |  | 1 |  |
+| Baseline characteristics, p.5 | MTurk’s southern share sits below the benchmark, not above it |  | 0 |  | 0 |  |
+| Baseline characteristics, p.6 | registration favours Lucid and turnout favours MTurk |  | 0 |  | 0 |  |
+| Baseline characteristics, p.6 | MTurk sits furthest below the benchmark on the conservatism scale |  | 1 |  | 1 |  |
+| Baseline characteristics, p.6 | MTurk lowest and Lucid highest on political interest |  | 1 |  | 1 |  |
+| Baseline characteristics, p.6 | MTurk above the ANES panel and Lucid nearer to it than MTurk is |  | 1 |  | 1 |  |
+| Baseline characteristics, p.6 | three characteristics favour Lucid and turnout favours MTurk, all significant |  | 1 |  | 1 |  |
+| Baseline characteristics, p.6 | MTurk is lowest on support for senior drug benefits and youngest |  | 1 |  | 1 |  |
+| Baseline characteristics, p.6 | Lucid nearer the ANES 2012 than MTurk on conscientiousness and stability |  | 1 |  | 1 |  |
+| Baseline characteristics, p.6 | under the two-tailed test the appendix describes, extraversion does not clear 0.05 |  | 0 |  | 0 |  |
+| Experiments, p.6 | the Berinsky facet carries no MTurk estimate |  | 1 |  | 1 |  |
+| Treatment effect heterogeneity, p.9 | the three race conditional effects overlap in both samples |  | 1 |  | 1 |  |
+| Treatment effect heterogeneity, p.9 | the risk acceptance interaction spans zero in both samples |  | 1 |  | 1 |  |
+| Treatment effect heterogeneity, p.9 | conditional effects overlap within every frame by sample cell |  | 1 |  | 1 |  |
+| Treatment effect heterogeneity, p.9 | the Democratic correction among Democrats is the only conditional effect that differs between samples |  | 1 |  | 1 |  |
+| Discussion, p.12 | more than half the Lucid estimates agree with the original on sign and significance |  | 1 |  | 1 |  |
+| Appendix 1 | the published p-value column is the archive’s own expression, not the two-tailed test |  | 0 |  | 0 |  |
+| Treatment effect heterogeneity, p.9 | experiments with at least one conditional average treatment effect | 4 | 4 | 1 | 4 | 1 |
+| Baseline characteristics, p.6 | policy items with an unambiguous direction on which Lucid polls more conservatively |  | 2 |  | 2 |  |
+| Discussion, p.12 | Lucid estimates that are significant with the opposite sign from the original | 0 | 0 | 1 | 0 | 1 |
+| Discussion, p.12 | experiments with at least one sign or significance mismatch against the original |  | 2 |  | 2 |  |
+| Fit for purpose, p.3 | Experiments replicated | 5 | 5 | 1 | 5 | 1 |
+| Baseline characteristics, p.5 | ANES 2012 standardized to mean zero |  | 4.74200754701305e-16 |  | 4.74200754701305e-16 |  |
+| Experiments, p.6 | Confidence level | 95 | 95.0598242256987 | 1 | 95.0598242256987 | 1 |
+| Experiment 4, p.8 | Levels of the expert factor | 2 | 2 | 1 | 2 | 1 |
+| Experiment 4, p.8 | Levels of the valence factor | 4 | 4 | 1 | 4 | 1 |
+| Treatment effect heterogeneity, p.9 | GSS baseline year | 2016 | 2014 | 0 | 2014 | 0 |
 | Figure 1 | All plotted estimates and confidence bounds |  |  |  |  |  |
 | Figure 2 | All plotted estimates and confidence bounds |  |  |  |  |  |
 | Figure 3 | All plotted estimates and confidence bounds |  |  |  |  |  |
@@ -963,40 +966,40 @@ two are joined there, which is what the table below shows.
 
 | Section | Claim | Pipeline | Article |
 |:---|:---|:---|:---|
-| Our sample | Lucid sample N | 3504 | 3504 |
-| Our sample | Surveys per month, mean | 4.28 | 4.28 |
-| Our sample | Percent taking fewer than one survey per day | 98.06 | 98 |
-| Our sample | Surveys per month among those, mean | 2.43 | 2.43 |
-| Our sample | Percent taking surveys at home | 93.51 | 94 |
-| Our sample | Expected compensation, mean dollars | 5.01 | 5.01 |
-| Our sample | Expected compensation, mean dollars, trimmed | 1.16 | 1.16 |
-| Baseline characteristics | Percent female, Lucid | 52.15 | 52 |
-| Baseline characteristics | Percent female, MTurk | 60.07 | 60 |
-| Baseline characteristics | Years of education, Lucid | 14.16 | 14.2 |
-| Baseline characteristics | Years of education, ANES | 13.5 | 13.5 |
+| Our sample, p.4 | Lucid sample N | 3504 | 3504 |
+| Our sample, p.4 | Surveys per month, mean | 4.28 | 4.28 |
+| Our sample, p.4 | Percent taking fewer than one survey per day | 98.06 | 98 |
+| Our sample, p.4 | Surveys per month among those, mean | 2.43 | 2.43 |
+| Our sample, p.4 | Percent taking surveys at home | 93.51 | 94 |
+| Our sample, p.4 | Expected compensation, mean dollars | 5.01 | 5.01 |
+| Our sample, p.4 | Expected compensation, mean dollars, trimmed | 1.16 | 1.16 |
+| Baseline characteristics, p.5 | Percent female, Lucid | 52.15 | 52 |
+| Baseline characteristics, p.5 | Percent female, MTurk | 60.07 | 60 |
+| Baseline characteristics, p.5 | Years of education, Lucid | 14.16 | 14.2 |
+| Baseline characteristics, p.5 | Years of education, ANES | 13.5 | 13.5 |
 | Baseline characteristics | Years of education, MTurk | 14.88 |  |
-| Baseline characteristics | Party ID, Lucid | 3.73 | 3.7 |
-| Baseline characteristics | Party ID, ANES 2012 | 3.73 | 3.7 |
-| Baseline characteristics | Party ID, MTurk | 3.49 | 3.5 |
-| Baseline characteristics | Political interest, Lucid minus MTurk | 1.19 | 1.2 |
+| Baseline characteristics, p.6 | Party ID, Lucid | 3.73 | 3.7 |
+| Baseline characteristics, p.6 | Party ID, ANES 2012 | 3.73 | 3.7 |
+| Baseline characteristics, p.6 | Party ID, MTurk | 3.49 | 3.5 |
+| Baseline characteristics, p.6 | Political interest, Lucid minus MTurk | 1.19 | 1.2 |
 | Baseline characteristics | Political knowledge, Lucid | 58.39 |  |
 | Baseline characteristics | Political knowledge, MTurk | 70.51 |  |
 | Baseline characteristics | Political knowledge, ANES panel | 59.91 |  |
-| Distance tests | Variables tested | 21 | 21 |
-| Distance tests | Lucid closer | 18 | 18 |
-| Distance tests | MTurk closer | 3 | 3 |
-| Distance tests | Lucid significantly closer, archive p | 13 | 14 |
-| Distance tests | MTurk significantly closer, archive p | 1 | 1 |
+| Appendix 1 | Variables tested | 21 | 21 |
+| Appendix 1 | Lucid closer | 18 | 18 |
+| Appendix 1 | MTurk closer | 3 | 3 |
+| Appendix 1 | Lucid significantly closer, archive p | 13 | 14 |
+| Appendix 1 | MTurk significantly closer, archive p | 1 | 1 |
 | Distance tests | Lucid significantly closer, two-tailed p | 13 |  |
 | Distance tests | MTurk significantly closer, two-tailed p | 1 |  |
-| Distance tests | Demographic variables tested | 11 | 11 |
-| Distance tests | Demographic, Lucid closer | 9 | 9 |
-| Distance tests | Demographic, significantly closer, archive p | 6 | 5 |
+| Baseline characteristics, p.6 | Demographic variables tested | 11 | 11 |
+| Baseline characteristics, p.6 | Demographic, Lucid closer | 9 | 9 |
+| Baseline characteristics, p.6 | Demographic, significantly closer, archive p | 6 | 5 |
 | Distance tests | Political, significantly closer, archive p | 3 | 3 |
 | Distance tests | Traits, significantly closer, archive p | 4 | 5 |
 | Distance tests | Traits, significantly closer, two-tailed p | 4 |  |
-| Healthcare rumors | Death panel belief, Lucid control mean | -0.172 | -0.17 |
-| Healthcare rumors | Death panel belief, original control mean | -0.19 | -0.19 |
+| Experiment 5, p.9 | Death panel belief, Lucid control mean | -0.172 | -0.17 |
+| Experiment 5, p.9 | Death panel belief, original control mean | -0.19 | -0.19 |
 | Our sample, p.4 | share paid in dollars or points exceeds half | 1 |  |
 | Baseline characteristics, p.5 | gender, education, age and income all favour Lucid | 1 |  |
 | Baseline characteristics, p.5 | education distance favours Lucid | 1 |  |
@@ -1022,11 +1025,11 @@ two are joined there, which is what the table below shows.
 | Baseline characteristics, p.6 | policy items with an unambiguous direction on which Lucid polls more conservatively | 2 |  |
 | Discussion, p.12 | Lucid estimates that are significant with the opposite sign from the original | 0 | 0 |
 | Discussion, p.12 | experiments with at least one sign or significance mismatch against the original | 2 |  |
-| Fit for purpose | Experiments replicated | 5 | 5 |
-| Experiments | Confidence level | 95.0598242256987 | 95 |
-| Experiment 4 | Levels of the expert factor | 2 | 2 |
-| Experiment 4 | Levels of the valence factor | 4 | 4 |
-| Treatment effect heterogeneity | GSS baseline year | 2014 | 2016 |
+| Fit for purpose, p.3 | Experiments replicated | 5 | 5 |
+| Experiments, p.6 | Confidence level | 95.0598242256987 | 95 |
+| Experiment 4, p.8 | Levels of the expert factor | 2 | 2 |
+| Experiment 4, p.8 | Levels of the valence factor | 4 | 4 |
+| Treatment effect heterogeneity, p.9 | GSS baseline year | 2014 | 2016 |
 
 In-text claims. A blank article column marks a quantity the pipeline
 produces to support a comparative claim the article states in words
@@ -1100,21 +1103,21 @@ writing nothing at all.
 
 | Item      | Value                  |
 |:----------|:-----------------------|
-| R version | 4.6.1                  |
+| R version | 4.6.2                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-11-08             |
+| Date run  | 2026-11-13             |
 
-| Package      | Version    |
-|:-------------|:-----------|
-| tidyverse    | 2.0.0      |
-| estimatr     | 2.0.1.9000 |
-| broom        | 1.0.13     |
-| scales       | 1.4.0      |
-| matrixStats  | 1.5.0      |
-| rsample      | 1.3.2      |
-| sandwich     | 3.1.1      |
-| modelsummary | 2.6.0      |
-| ggplot2      | 4.0.3      |
-| here         | 1.0.2      |
+| Package      | Version |
+|:-------------|:--------|
+| tidyverse    | 2.0.0   |
+| estimatr     | 2.0.1   |
+| broom        | 1.0.13  |
+| scales       | 1.4.0   |
+| matrixStats  | 1.5.0   |
+| rsample      | 1.3.2   |
+| sandwich     | 3.1.3   |
+| modelsummary | 2.6.0   |
+| ggplot2      | 4.0.3   |
+| here         | 1.0.2   |
 
 Package versions used for the run behind this report.

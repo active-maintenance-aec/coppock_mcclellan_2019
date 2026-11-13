@@ -606,5 +606,7 @@ stopifnot(
   all(entries$form %in% c("full", "brief", "note")),
   all(entries$source %in% c("pipeline", "reading", "reference_audit", "publisher_record", "authors_archive", "proof"))
 )
-write_csv(select(entries, -any_of("values_in_spans")), here("errata_entries.csv"))
+# values_in_spans is the placement gate's verdict for each entry, written as the last
+# column so a reader can see it without rerunning the gate.
+write_csv(relocate(entries, values_in_spans, .after = last_col()), here("errata_entries.csv"))
 ```

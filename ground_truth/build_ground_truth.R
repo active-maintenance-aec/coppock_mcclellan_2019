@@ -1,6 +1,8 @@
 # coppock_mcclellan_2019/ground_truth/build_ground_truth.R
-# Output: ground_truth/coppock_mcclellan_2019_ground_truth.csv
-# Depends on: maintained/output/ (run run_all.R first)
+# Output: ground_truth/coppock_mcclellan_2019_ground_truth.csv,
+#   ground_truth/float_coverage.csv
+# Depends on: maintained/output/ (run run_all.R first), ground_truth/published_claims.csv,
+#   errata_entries.csv
 # Description: Assemble the ground truth table.
 #
 #   Every value in value_paper was read off the published article or the published online
@@ -613,8 +615,9 @@ claims_output <- capture.output(
   source(here::here("maintained", "in_text_claims.R"), local = new.env())
 )
 
+# The claims file also prints CLAIM SUMMARY lines, which carry no " = " after one token.
 printed_claims <- tibble(line = claims_output) |>
-  filter(str_starts(line, "CLAIM ")) |>
+  filter(str_detect(line, "^CLAIM [^ ]+ = ")) |>
   transmute(
     claim_id = str_match(line, "^CLAIM ([^ ]+) = ")[, 2],
     value_in_text = str_match(line, "^CLAIM [^ ]+ = (.*?) \\|\\| ")[, 2]
@@ -718,39 +721,177 @@ if (nrow(printed_gaps) > 0) {
 }
 
 gt <- gt |>
-  mutate(value_paper = value_paper_printed) |>
-  select(paper_id, claim_id, table_figure, claim, value_script, value_paper, match,
-         value_rewrite, match_rewrite, holds, defect_locus, notes)
+  mutate(value_paper = value_paper_printed)
 
 # Errata spine gate ----
 # Every claim id an errata entry names has to exist here. A missing one is a typo or a
 # claim that has since been renamed, and a published correction pointing at a row that is
 # not in the table is a dangling reference the build should refuse to carry.
-errata_path <- here::here("errata_entries.csv")
-if (file.exists(errata_path)) {
-  errata_spine <- read_csv(errata_path, show_col_types = FALSE)
-  cited_claim_ids <- errata_spine$claim_ids |>
+errata_spine <- read_csv(here::here("errata_entries.csv"),
+                         col_types = cols(.default = col_character()))
+
+spine_ids <- function(spine) {
+  ids <- spine$claim_ids |>
     str_split(";") |>
     unlist() |>
     str_trim()
-  cited_claim_ids <- cited_claim_ids[!is.na(cited_claim_ids) & cited_claim_ids != ""]
-  if (length(setdiff(cited_claim_ids, gt$claim_id)) > 0) {
-    print(setdiff(cited_claim_ids, gt$claim_id))
-  }
-  stopifnot(length(setdiff(cited_claim_ids, gt$claim_id)) == 0)
+  ids[!is.na(ids) & ids != ""]
 }
+
+cited_claim_ids <- spine_ids(errata_spine)
+if (length(setdiff(cited_claim_ids, gt$claim_id)) > 0) {
+  print(setdiff(cited_claim_ids, gt$claim_id))
+}
+stopifnot(length(setdiff(cited_claim_ids, gt$claim_id)) == 0)
+
+# Claim type and printed precision, carried from the extraction ----
+# A row with a claim id takes both from published_claims.csv, which also carries the digit
+# counts the blocks above set for rows with no printed value, and the gate below holds the
+# two copies together. A row with no extraction row of its own is a pipeline quantity, and
+# its precision is the one the block above already carries or, failing that, the one the
+# printed string shows.
+gt <- gt |>
+  left_join(select(published_claims, claim_id, claim_type, extracted_digits = digits,
+                   extracted_location = location),
+            by = "claim_id") |>
+  mutate(extracted_digits = as.integer(extracted_digits), digits = as.integer(digits))
+
+digit_disagreement <- gt |>
+  filter(!is.na(claim_id), !is.na(digits), !is.na(extracted_digits),
+         digits != extracted_digits)
+if (nrow(digit_disagreement) > 0) {
+  print(select(digit_disagreement, claim_id, value_paper, digits, extracted_digits))
+  stop(str_glue("{nrow(digit_disagreement)} claims carry a digit count the extraction does not."))
+}
+
+gt <- gt |>
+  mutate(
+    digits = if_else(is.na(claim_id), digits, extracted_digits),
+    digits = if_else(is.na(digits), excheckr::claim_digits(value_paper), digits),
+    claim_type = if_else(is.na(claim_id), "pipeline", claim_type)
+  )
+
+stopifnot(!anyNA(gt$claim_type), !anyNA(gt$extracted_location[!is.na(gt$claim_id)]))
+
+# Disposition: what became of each defect ----
+# corrected_here is computed from the errata spine and never typed. A note names the
+# passage it quotes and corrects nothing, so only the entries that correct something
+# count. A row a note names is not_corrected, which is what every note in this spine says
+# of itself. The one other judgment is the appendix Table 2 standard errors, which the
+# README documents: the deposited probit call passes no se = argument, the rewrite writes
+# the HC2 errors the published table prints, and the article needs no erratum. Every
+# other defect stays NA until someone has judged it.
+correction_ids <- spine_ids(filter(errata_spine, form != "note"))
+
+note_ids <- errata_spine |>
+  filter(form == "note") |>
+  mutate(claim_id = str_split(claim_ids, ";")) |>
+  unnest(claim_id) |>
+  filter(!is.na(claim_id), claim_id != "") |>
+  summarize(note_entries = str_c(entry, collapse = " and "), .by = claim_id)
+
+gt <- gt |>
+  left_join(note_ids, by = "claim_id") |>
+  mutate(
+    disposition = case_when(
+      is.na(defect_locus) ~ NA_character_,
+      !is.na(claim_id) & claim_id %in% correction_ids ~ "corrected_here",
+      !is.na(note_entries) ~ "not_corrected",
+      defect_locus == "archive" & str_starts(claim, "SE, ") ~ "documented_only",
+      .default = NA_character_
+    ),
+    disposition_reason = case_when(
+      disposition == "not_corrected" ~ str_c(
+        "Errata entry ", note_entries, " is a note: it reprints the passage as published and ",
+        "corrects nothing, because no corrected token can be set without choosing for the authors"),
+      disposition == "documented_only" ~ str_c(
+        "The deposited probit call passes no se = argument and would print the model-based ",
+        "SE; the rewrite writes the HC2 SE the published table prints, and the README ",
+        "documents the difference"),
+      .default = NA_character_
+    )
+  )
+
+undisposed <- gt |> filter(defect_locus == "paper_internal", is.na(disposition))
+if (nrow(undisposed) > 0) {
+  print(select(undisposed, claim_id, table_figure, claim), n = nrow(undisposed))
+  stop(str_glue("{nrow(undisposed)} paper_internal rows carry no disposition."))
+}
+print(gt |> filter(!is.na(defect_locus)) |> dplyr::count(defect_locus, disposition))
+
+# Float coverage ----
+# One row per published float. A table's published_numbers is the count of cells it
+# prints, from the transcriptions above; covered counts the cells compared, and the two
+# reproduced columns count the cells each pipeline matches. The five figures print no
+# numbers, so what each carries is its count of plotted estimates. Every one of them is
+# drawn from a data file the deposit ships pre-computed and the rewrite plots that file,
+# so the rewrite reproduces each plotted estimate the deposit holds.
+appendix_2_cells <- sum(!is.na(select(paper_appendix_2, coef, se, nobs, loglik, aic)))
+
+floats <- tibble(
+  float = c("Table 1", names(figure_files), "Appendix Table 1", "Appendix Table 2"),
+  published_numbers = c(0L, rep(0L, length(figure_files)), 3L * nrow(paper_appendix_1),
+                        appendix_2_cells)
+)
+
+cell_counts <- gt |>
+  filter(table_figure %in% floats$float, !is.na(value_paper)) |>
+  summarize(
+    covered = n(),
+    reproduced_by_rewrite = sum(match_rewrite == 1, na.rm = TRUE),
+    reproduced_by_archive = sum(match == 1, na.rm = TRUE),
+    .by = table_figure
+  )
+
+plotted_counts <- imap(figure_files, \(f, label) tibble(float = label, plotted = nrow(out(f)))) |>
+  list_rbind()
+
+float_coverage <- floats |>
+  left_join(cell_counts, by = c("float" = "table_figure")) |>
+  left_join(plotted_counts, by = "float") |>
+  mutate(
+    across(c(covered, reproduced_by_rewrite, reproduced_by_archive), \(x) replace_na(x, 0L)),
+    plotted_reproduced = plotted,
+    note = case_when(
+      float == "Table 1" ~ "A prose summary of the scope conditions of the five experiments; prints no numbers.",
+      str_starts(float, "Figure") ~ "Prints no numbers on its face. plotted counts the estimates it draws, each with its interval, from a data file the deposit ships pre-computed; the rewrite plots that file.",
+      .default = NA_character_
+    )
+  ) |>
+  select(float, published_numbers, covered, reproduced_by_rewrite, reproduced_by_archive,
+         plotted, plotted_reproduced, note)
+
+stopifnot(
+  nrow(float_coverage) == 8,
+  with(filter(float_coverage, str_starts(float, "Appendix")), all(covered == published_numbers))
+)
+
+write_csv(float_coverage, here::here("ground_truth", "float_coverage.csv"))
+print(float_coverage, n = nrow(float_coverage), width = 200)
+
+# The ground truth, in the canonical column order ----
+# A row the extraction names takes the extraction's location; every other row keeps the
+# label this file gave it, which for a float cell is the float as printed.
+gt <- gt |>
+  mutate(
+    across(c(match, match_rewrite, holds), as.logical),
+    location = if_else(is.na(claim_id), table_figure, extracted_location)
+  ) |>
+  select(paper_id, claim_id, location, claim_type, claim, value_paper, digits,
+         value_script, match, value_rewrite, match_rewrite, holds, defect_locus,
+         disposition, disposition_reason, notes)
 
 write_csv(gt, here::here("ground_truth", "coppock_mcclellan_2019_ground_truth.csv"))
 
-print(gt |> select(table_figure, claim, value_script, value_paper, match, value_rewrite,
-                   match_rewrite, holds, defect_locus),
+print(gt |> select(location, claim, value_script, value_paper, match, value_rewrite,
+                   match_rewrite, holds, defect_locus, disposition),
       n = nrow(gt))
 
 print(tibble(
   rows = nrow(gt),
   comparable = sum(!is.na(gt$match_rewrite)),
-  script_match = sum(gt$match == 1, na.rm = TRUE),
-  script_fail = sum(gt$match == 0, na.rm = TRUE),
-  rewrite_match = sum(gt$match_rewrite == 1, na.rm = TRUE),
-  rewrite_fail = sum(gt$match_rewrite == 0, na.rm = TRUE)
+  script_match = sum(gt$match, na.rm = TRUE),
+  script_fail = sum(!gt$match, na.rm = TRUE),
+  rewrite_match = sum(gt$match_rewrite, na.rm = TRUE),
+  rewrite_fail = sum(!gt$match_rewrite, na.rm = TRUE)
 ))

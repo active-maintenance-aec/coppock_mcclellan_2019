@@ -446,8 +446,9 @@ Every value in `value_paper` is transcribed from the published article or the pu
 
 ```{r gt_table}
 gt |>
-  mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
-  select(table_figure, claim, value_paper, value_script, match, value_rewrite, match_rewrite) |>
+  mutate(across(c(match, match_rewrite), as.integer),
+         across(everything(), \(x) replace_na(as.character(x), ""))) |>
+  select(location, claim, value_paper, value_script, match, value_rewrite, match_rewrite) |>
   kable(
     booktabs = TRUE,
     col.names = c("Location", "Claim", "Paper", "Archive", "Match", "Rewrite", "Match"),
@@ -590,10 +591,16 @@ knitr::include_graphics(
 The article states most of its quantitative content in prose rather than in tables, so `maintained/text_in_text_claims.R` is where the bulk of the number-by-number check happens. That script reads only from `maintained/output/` and holds no published value at all. The article's own figures enter one file, `ground_truth/build_ground_truth.R`, and the two are joined there, which is what the table below shows.
 
 ```{r text_table}
+# A row belongs here unless its location is a float as printed or a section of the
+# appendix study manifest; location names the page and paragraph for everything else.
+# figure_1_standardization is the exception: the builder files it under Figure 1, whose
+# construction it tests, although the sentence it checks is on page 5.
 gt |>
-  filter(str_starts(table_figure, "Text, ")) |>
+  filter(!str_detect(location, "^(Appendix )?(Table|Figure) [0-9]+$"),
+         !str_detect(location, "^Appendix [0-9]+[.][0-9]"),
+         replace_na(claim_id, "") != "figure_1_standardization") |>
   transmute(
-    section = str_remove(table_figure, "^Text, "),
+    section = str_remove(location, "^Text, "),
     claim,
     pipeline = as.character(value_rewrite),
     article = replace_na(as.character(value_paper), "")
